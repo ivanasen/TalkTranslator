@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_8e5e750647e956077cd9d178a547b23827c9bbc4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.0_5b08c8fdfb67d8a6e69e6b2578897a0d77c2f952\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.0_39172a803a453292b58231646b3187457fd9020e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.8.0_95cb48732af51194a3be777143416da51b9134ee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.0_504ea537a7620a84ec9402b052ecd9a5661c9a97\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.1.0_4d77d3aa6fe2a8024c64664849f9e657ca5fb464\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.0_dec584419d22502225bb11ee1da4744263053363\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_760cda611fcc56563ada9727b1c28f0ebdf5156b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_9e1e33b82c47b6f1d8aef60f72acd9be3561b9c9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.0\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\okhttp-3.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.3.0_df0f76ff4b946a85eb27a7fe78e0c2c348462198\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.1.0_1dd5b33f18e072cac2e0aa5d1610def965c728ad\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.0_1ab5a307665b05fb2e479d3ac89f3956405645d9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.1.0_5943517d85cbdf14385a69042af563edd25cdc67\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.1.0_999c1e234613a7ed55c3f5ee87d5344885948976\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="97c8f58f993b9e86599349fa5491634cba730541">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_1797ee573c9d2a7bf25955b07acfb346e3d686a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.0_d1f5a701e00dd3abeccaa851f5c41b21ff8eaaeb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6861ff3f2d6d775c421a8d761e6cab082291798b">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2fd90f4545bc0fcc70851c7c27d0309ae143a151\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.0_6dab0f49879690f2fa648d804c6715c73f4ccbec\classes.dex" />
+    </item>
+
+</items>

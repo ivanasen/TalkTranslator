@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TalkTranslator</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_settings">Settings</string>
+    <string name="base_url">https://translate.yandex.net/api/v1.5/tr.json/translate/</string>
+</resources>

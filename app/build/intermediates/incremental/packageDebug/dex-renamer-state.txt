@@ -1,0 +1,7 @@
+#Sun Jan 15 01:27:34 EET 2017
+base.0=C\:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_1797ee573c9d2a7bf25955b07acfb346e3d686a8
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_2fd90f4545bc0fcc70851c7c27d0309ae143a151\\classes.dex
+base.1=C\:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_2fd90f4545bc0fcc70851c7c27d0309ae143a151
+file.0=C\:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_1797ee573c9d2a7bf25955b07acfb346e3d686a8\\classes.dex
