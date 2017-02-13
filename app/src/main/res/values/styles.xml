@@ -2,15 +2,23 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
+        <item name="actionMenuTextColor">@color/colorPrimaryDark</item>
+    </style>
 
     <style name="SpeakNowBtn">
         <item name="android:layout_width">0dp</item>
@@ -24,12 +32,18 @@
         <item name="android:fontFamily" tools:targetApi="jelly_bean">Roboto-Thin</item>
     </style>
 
-    <style name="leftTranslatorButton" parent="Theme.AppCompat">
+    <style name="LeftTranslatorButton">
         <item name="colorButtonNormal">@color/leftTranslatorColor</item>
     </style>
 
-    <style name="rightTranslatorButton">
+    <style name="RightTranslatorButton">
         <item name="colorButtonNormal">@color/rightTranslatorColor</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Theme.AppCompat.Light">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/colorAccent</item>
     </style>
 
 </resources>

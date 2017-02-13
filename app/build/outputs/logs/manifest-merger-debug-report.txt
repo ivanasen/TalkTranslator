@@ -23,17 +23,18 @@ ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\Andr
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:6:22-64
 application
 ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:8:5-24:19
-MERGED from [com.android.support:design:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:transition:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-compat:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:design:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:transition:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta5] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.0-beta5\AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:11:9-41
 	android:supportsRtl
@@ -64,20 +65,25 @@ ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\Andr
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:21:27-74
 uses-sdk
 INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:design:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:transition:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-compat:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.mikepenz:materialdrawer:5.8.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.mikepenz\materialdrawer\5.8.1\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:materialize:1.0.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.mikepenz\materialize\1.0.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:iconics-core:2.8.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.mikepenz\iconics-core\2.8.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.mikepenz:fastadapter:2.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.mikepenz\fastadapter\2.1.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:design:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-vector-drawable:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta5] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.0-beta5\AndroidManifest.xml:5:5-7:41
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.1.0] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.1.1] C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
 		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml

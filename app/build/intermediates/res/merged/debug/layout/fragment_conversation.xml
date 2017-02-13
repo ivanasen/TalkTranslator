@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    tools:context="talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment">
+
+    <View
+        android:id="@+id/fake_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:id="@+id/left_translator_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@id/fake_view"
+        android:layout_toStartOf="@id/fake_view"
+        android:background="@color/leftTranslatorColorBackground"
+        android:elevation="@dimen/translation_bar_elevation"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/left_translator_language_select_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="0dp"
+                android:background="@drawable/expand_button_background"
+                android:textColor="@android:color/transparent"
+                android:textSize="0sp" />
+
+            <Button
+                android:id="@+id/left_translator"
+                style="@style/SpeakNowBtn"
+                android:theme="@style/LeftTranslatorButton" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/left_translator_langs_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/leftTranslatorColorBackground"
+            android:divider="@null"
+            tools:ignore="Suspicious0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_translator_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@id/fake_view"
+        android:layout_toRightOf="@id/fake_view"
+        android:background="@color/rightTranslatorColorBackground"
+        android:elevation="@dimen/translation_bar_elevation"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/right_translator_language_select_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="0dp"
+                android:background="@drawable/expand_button_background"
+                android:textColor="@android:color/transparent"
+                android:textSize="0sp" />
+
+            <Button
+                android:id="@+id/right_translator"
+                style="@style/SpeakNowBtn"
+                android:theme="@style/RightTranslatorButton" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/right_translator_langs_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/rightTranslatorColorBackground"
+            android:divider="@null"
+            tools:ignore="Suspicious0dp" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/conversation_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/left_translator_container"
+        android:layout_alignParentTop="true"
+        android:background="#FAFAFA"/>
+
+</RelativeLayout>

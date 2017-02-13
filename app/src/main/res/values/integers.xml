@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="unselected_icon_alpha">100</integer>
+    <integer name="selected_icon_alpha">255</integer>
+</resources>

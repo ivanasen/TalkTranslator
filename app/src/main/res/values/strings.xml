@@ -3,5 +3,22 @@
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_settings">Settings</string>
-    <string name="base_url">https://translate.yandex.net/api/v1.5/tr.json/translate/</string>
+    <string name="base_url">https://translate.yandex.net/</string>
+    <string name="chat_mode">Chat mode</string>
+    <string name="interview_mode">Interview mode</string>
+    <string name="interviews">Interviews</string>
+    <string name="settings">Settings</string>
+    <string name="app_logo">App logo</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="communicate_menu_title">Communicate</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="conversation_title">Conversation</string>
+    <string name="interview_title">Interview</string>
+    <string name="translate_title">Translate</string>
+    <string name="tab_text" />
 </resources>

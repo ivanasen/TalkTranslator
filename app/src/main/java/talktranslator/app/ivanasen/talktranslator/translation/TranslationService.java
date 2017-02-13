@@ -1,10 +1,12 @@
 package talktranslator.app.ivanasen.talktranslator.translation;
 
+import retrofit2.Call;
 import retrofit2.http.GET;
-import talktranslator.app.ivanasen.talktranslator.BuildConfig;
+import retrofit2.http.Query;
 
-public interface TranslationService {
-    @GET("key=" + BuildConfig.YANDEX_TRANSLATE_API_KEY + "&text={textToTranslate}" +
-            "&lang={fromLang}-{toLang}")
-    String translate(String textToTranslate, String fromLang, String toLang);
+interface TranslationService {
+    @GET("api/v1.5/tr.json/translate")
+    Call<TranslationResult> translate(@Query("key") String apiKey,
+                                      @Query("text") String textToTranslate,
+                                      @Query("lang") String fromLangToLang);
 }
