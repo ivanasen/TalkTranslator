@@ -2,6 +2,7 @@ package talktranslator.app.ivanasen.talktranslator.views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.transition.TransitionManager;
@@ -16,8 +17,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import talktranslator.app.ivanasen.talktranslator.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.R;
-import talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 /**
@@ -28,21 +29,23 @@ public class TranslationPanel {
 
     private Context mContext;
     private View mRootView;
-    private Button mLeftTranslator;
-    private Button mRightTranslator;
+    private PulsatingButton mLeftTranslator;
+    private PulsatingButton mRightTranslator;
     private SpeechRecognizer mSpeechRecognizer;
+    private ChatAdapter mChatAdapter;
 
     private boolean mJustUsedLeftTranslator;
     private ListView mLeftLanguagesListView;
     private ListView mRightLanguagesListView;
     private ToggleButton mLeftLanguageSelectBtn;
     private ToggleButton mRightLanguageSelectBtn;
+    private boolean mIsSpeechRecognitionOn;
 
-    public TranslationPanel(Context context, View rootView, SpeechRecognizer speechRecognizer) {
+    public TranslationPanel(Context context, View rootView, SpeechRecognizer speechRecognizer, ChatAdapter adapter) {
         mContext = context;
         mRootView = rootView;
         mSpeechRecognizer = speechRecognizer;
-
+        mChatAdapter = adapter;
         setupTranslators();
     }
 
@@ -52,12 +55,26 @@ public class TranslationPanel {
                 mContext.getPackageName());
         speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
                 langCode);
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        mIsSpeechRecognitionOn = true;
         mSpeechRecognizer.startListening(speechIntent);
     }
 
     private void setupTranslators() {
-        mLeftTranslator = (Button) mRootView.findViewById(R.id.left_translator);
-        mRightTranslator = (Button) mRootView.findViewById(R.id.right_translator);
+        mLeftTranslator = (PulsatingButton) mRootView.findViewById(R.id.left_translator);
+        mRightTranslator = (PulsatingButton) mRootView.findViewById(R.id.right_translator);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mLeftTranslator.setPulseColor(mContext.getColor(R.color.leftTranslatorColor));
+            mRightTranslator.setPulseColor(mContext.getColor(R.color.rightTranslatorColor));
+        } else {
+            mLeftTranslator.setPulseColor(
+                    mContext.getResources().getColor(R.color.leftTranslatorColor));
+            mRightTranslator.setPulseColor(
+                    mContext.getResources().getColor(R.color.rightTranslatorColor));
+        }
 
         final String leftTranslatorLang = Utility.getTranslatorLanguage
                 (mContext, Utility.LEFT_TRANSLATOR_LANGUAGE);
@@ -70,6 +87,14 @@ public class TranslationPanel {
         mLeftTranslator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mIsSpeechRecognitionOn) {
+                    mSpeechRecognizer.cancel();
+                    mLeftTranslator.setAnimationOn(false);
+                    mIsSpeechRecognitionOn = false;
+
+                    return;
+                }
+
                 mJustUsedLeftTranslator = true;
                 String lang = Utility.getTranslatorLanguage(mContext, Utility.LEFT_TRANSLATOR_LANGUAGE);
                 String code = Utility.getCodeFromLanguage(mContext, lang);
@@ -80,6 +105,13 @@ public class TranslationPanel {
         mRightTranslator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mIsSpeechRecognitionOn) {
+                    mSpeechRecognizer.cancel();
+                    mRightTranslator.setAnimationOn(false);
+                    mIsSpeechRecognitionOn = false;
+                    return;
+                }
+
                 mJustUsedLeftTranslator = false;
                 String lang = Utility.getTranslatorLanguage(mContext, Utility.RIGHT_TRANSLATOR_LANGUAGE);
                 String code = Utility.getCodeFromLanguage(mContext, lang);
@@ -107,6 +139,9 @@ public class TranslationPanel {
                 Utility.setTranslatorLanguage(mContext, Utility.LEFT_TRANSLATOR_LANGUAGE, language);
                 mLeftTranslator.setText(language);
                 mLeftLanguageSelectBtn.setChecked(false);
+
+                mChatAdapter.changeLanguages(language, (String) mRightTranslator.getText());
+
                 collapseOrExpandLeftTranslator();
             }
         });
@@ -118,6 +153,9 @@ public class TranslationPanel {
                 Utility.setTranslatorLanguage(mContext, Utility.RIGHT_TRANSLATOR_LANGUAGE, language);
                 mRightTranslator.setText(language);
                 mRightLanguageSelectBtn.setChecked(false);
+
+                mChatAdapter.changeLanguages((String) mLeftTranslator.getText(), language);
+
                 collapseOrExpandRightTranslator();
             }
         });
@@ -142,7 +180,9 @@ public class TranslationPanel {
     }
 
     private void collapseOrExpandLeftTranslator() {
-        TransitionManager.beginDelayedTransition((ViewGroup) mRootView);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            TransitionManager.beginDelayedTransition((ViewGroup) mRootView);
+        }
 
         LinearLayout leftTranslatorContainer =
                 (LinearLayout) mRootView.findViewById(R.id.left_translator_container);
@@ -152,11 +192,15 @@ public class TranslationPanel {
                 (LinearLayout.LayoutParams) mLeftLanguagesListView.getLayoutParams();
 
         if (listParams.height == 0) {
-            leftTranslatorContainer.setTranslationZ(mContext.getResources().getDimension(R.dimen.translation_bar_z));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                leftTranslatorContainer.setTranslationZ(mContext.getResources().getDimension(R.dimen.translation_bar_z));
+            }
             containerParams.height = RelativeLayout.LayoutParams.MATCH_PARENT;
             listParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
         } else {
-            leftTranslatorContainer.setTranslationZ(0);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                leftTranslatorContainer.setTranslationZ(0);
+            }
             listParams.height = 0;
             containerParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
         }
@@ -166,7 +210,9 @@ public class TranslationPanel {
     }
 
     private void collapseOrExpandRightTranslator() {
-        TransitionManager.beginDelayedTransition((ViewGroup) mRootView);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            TransitionManager.beginDelayedTransition((ViewGroup) mRootView);
+        }
 
         LinearLayout rightTranslatorContainer =
                 (LinearLayout) mRootView.findViewById(R.id.right_translator_container);
@@ -176,11 +222,15 @@ public class TranslationPanel {
                 (LinearLayout.LayoutParams) mRightLanguagesListView.getLayoutParams();
 
         if (listParams.height == 0) {
-            rightTranslatorContainer.setTranslationZ(mContext.getResources().getDimension(R.dimen.translation_bar_z));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                rightTranslatorContainer.setTranslationZ(mContext.getResources().getDimension(R.dimen.translation_bar_z));
+            }
             containerParams.height = RelativeLayout.LayoutParams.MATCH_PARENT;
             listParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
         } else {
-            rightTranslatorContainer.setTranslationZ(0);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                rightTranslatorContainer.setTranslationZ(0);
+            }
             listParams.height = 0;
             containerParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
         }
@@ -199,5 +249,31 @@ public class TranslationPanel {
 
     public boolean hasJustUsedLeftTranslator() {
         return mJustUsedLeftTranslator;
+    }
+
+    public void onRmsChanged(float rmsdB) {
+        mLeftTranslator.onRmsChanged(rmsdB);
+        mRightTranslator.onRmsChanged(rmsdB);
+    }
+
+    public void setAnimationOn(boolean isAnimationOn) {
+        if (!isAnimationOn) {
+            mIsSpeechRecognitionOn = false;
+        }
+
+        if (mJustUsedLeftTranslator) {
+            mLeftTranslator.setAnimationOn(isAnimationOn);
+        } else {
+            mRightTranslator.setAnimationOn(isAnimationOn);
+        }
+    }
+
+    public void setSpeechRecognizer(SpeechRecognizer mSpeechRecognizer) {
+        this.mSpeechRecognizer = mSpeechRecognizer;
+    }
+
+    public void setEnabled(boolean enabled) {
+        mLeftTranslator.setEnabled(enabled);
+        mRightTranslator.setEnabled(enabled);
     }
 }

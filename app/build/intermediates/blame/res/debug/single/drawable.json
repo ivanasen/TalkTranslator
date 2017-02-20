@@ -20,12 +20,12 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_search_api_material.xml"
     },
     {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_snackbar_background.xml",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\design_snackbar_background.xml"
-    },
-    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_snackbar_background.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\design_snackbar_background.xml"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rounded_corner_right.xml",
@@ -48,10 +48,6 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_badge.xml",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_badge.xml"
-    },
-    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
@@ -72,12 +68,12 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_go_search_api_material.xml"
-    },
-    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_go_search_api_material.xml"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
@@ -86,10 +82,6 @@
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\expand_button_background.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable\\expand_button_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_shadow_right.9.png",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_shadow_right.9.png"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
@@ -106,10 +98,6 @@
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\side_nav_bar.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
-    },
-    {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_shadow_left.9.png",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_shadow_left.9.png"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
@@ -136,10 +124,6 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_circle_mask.xml",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_circle_mask.xml"
-    },
-    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_btn_colored_material.xml"
     },
@@ -150,10 +134,6 @@
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_password_eye.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\design_password_eye.xml"
-    },
-    {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_shadow_bottom.xml",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_shadow_bottom.xml"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
@@ -190,10 +170,6 @@
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\notification_bg_low.xml"
-    },
-    {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\material_drawer_shadow_top.xml",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\drawable\\material_drawer_shadow_top.xml"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",

@@ -311,46 +311,8 @@
                     "startLine": 18,
                     "startColumn": 4,
                     "startOffset": 1170,
-                    "endColumn": 63,
-                    "endOffset": 1229
-                },
-                "from": {
-                    "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialdrawer\\5.8.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 63,
-                        "endOffset": 114
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 19,
-                    "startColumn": 4,
-                    "startOffset": 1234,
-                    "endColumn": 54,
-                    "endOffset": 1284
-                },
-                "from": {
-                    "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 54,
-                        "endOffset": 105
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 1289,
                     "endColumn": 62,
-                    "endOffset": 1347
+                    "endOffset": 1228
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
@@ -365,12 +327,12 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 1352,
-                    "endLine": 24,
+                    "startOffset": 1233,
+                    "endLine": 22,
                     "endColumn": 12,
-                    "endOffset": 1529
+                    "endOffset": 1410
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",

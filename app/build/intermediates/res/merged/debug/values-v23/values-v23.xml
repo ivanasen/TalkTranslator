@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tool_bar_top_padding">24dp</dimen>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
-        <item name="android:windowLightStatusBar">true</item>
     </style>
     <style name="Base.TextAppearance.AppCompat.Widget.ActionBar.Menu" parent="android:TextAppearance.Material.Widget.ActionBar.Menu"/>
     <style name="Base.TextAppearance.AppCompat.Widget.Button.Inverse" parent="android:TextAppearance.Material.Widget.Button.Inverse"/>
@@ -42,4 +40,7 @@
     <style name="Base.Widget.AppCompat.RatingBar.Indicator" parent="android:Widget.Material.RatingBar.Indicator"/>
     <style name="Base.Widget.AppCompat.RatingBar.Small" parent="android:Widget.Material.RatingBar.Small"/>
     <style name="Base.Widget.AppCompat.Spinner.Underlined" parent="android:Widget.Material.Spinner.Underlined"/>
+    <style name="CardView" parent="Base.CardView">
+        <item name="cardBackgroundColor">?android:attr/colorBackgroundFloating</item>
+    </style>
 </resources>

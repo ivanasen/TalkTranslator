@@ -16,4 +16,6 @@
     <dimen name="translation_bar_z">8dp</dimen>
     <dimen name="chat_margin_horizontal">12dp</dimen>
     <dimen name="chat_margin_vertical">4dp</dimen>
+    <dimen name="chat_bubble_elevation">2dp</dimen>
+    <dimen name="list_item_chat_padding_end">256dp</dimen>
 </resources>

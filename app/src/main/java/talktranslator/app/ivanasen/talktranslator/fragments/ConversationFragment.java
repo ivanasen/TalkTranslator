@@ -1,6 +1,9 @@
 package talktranslator.app.ivanasen.talktranslator.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Build;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
@@ -16,9 +19,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -27,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import talktranslator.app.ivanasen.talktranslator.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.R;
-import talktranslator.app.ivanasen.talktranslator.models.ChatTranslation;
+import talktranslator.app.ivanasen.talktranslator.models.Translation;
 import talktranslator.app.ivanasen.talktranslator.translation.TranslationResult;
 import talktranslator.app.ivanasen.talktranslator.translation.Translator;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
@@ -45,8 +50,11 @@ public class ConversationFragment extends Fragment implements RecognitionListene
     private View mRootView;
     private TranslationPanel mTranslationPanel;
     private RecyclerView mConversationView;
+    private TextView mEmptyConversationView;
+
     private ChatAdapter mConversationAdapter;
     private Set<Locale> mLocales;
+    private boolean mRecogntionSuccess;
 
     public ConversationFragment() {
     }
@@ -57,7 +65,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         mRootView = inflater.inflate(R.layout.fragment_conversation, container, false);
         mTranslator = new Translator(getContext());
         setupSpeechRecognizer();
-        mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer);
 
         mTextToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -66,18 +73,28 @@ public class ConversationFragment extends Fragment implements RecognitionListene
                     mLocales = mTextToSpeech.getAvailableLanguages();
                 }
 
-                //TODO: add translations from database
-                mConversationAdapter = new ChatAdapter(getContext(), null, mTextToSpeech);
-                mConversationView.setAdapter(mConversationAdapter);
+                mConversationAdapter.setTextToSpeech(mTextToSpeech);
             }
         });
 
+        mEmptyConversationView = (TextView) mRootView.findViewById(R.id.empty_conversation_textview);
         mConversationView = (RecyclerView) mRootView.findViewById(R.id.conversation_container);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
 
         mConversationView.setLayoutManager(layoutManager);
 
+        List<Translation> translations = Translation.listAll(Translation.class);
+        mConversationAdapter = new ChatAdapter(getContext(), translations, mTextToSpeech);
+        mConversationView.setAdapter(mConversationAdapter);
+        mConversationView.scrollToPosition(mConversationAdapter.getItemCount() - 1);
+
+        if (translations == null || translations.size() == 0) {
+            mConversationView.setVisibility(View.GONE);
+            mEmptyConversationView.setVisibility(View.VISIBLE);
+        }
+
+        mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer, mConversationAdapter);
         checkMicrophonePermission();
 
         return mRootView;
@@ -110,63 +127,27 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
 
     private void setupSpeechRecognizer() {
+        if (mSpeechRecognizer != null) {
+            mSpeechRecognizer.cancel();
+            mSpeechRecognizer.destroy();
+        }
+
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(getContext());
         mSpeechRecognizer.setRecognitionListener(this);
+        if (mTranslationPanel != null) {
+            mTranslationPanel.setSpeechRecognizer(mSpeechRecognizer);
+        }
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
+        super.onDestroy();
         if (mTextToSpeech != null) {
             mTextToSpeech.shutdown();
         }
         if (mSpeechRecognizer != null) {
             mSpeechRecognizer.destroy();
         }
-    }
-
-    @Override
-    public void onReadyForSpeech(Bundle params) {
-
-    }
-
-    @Override
-    public void onBeginningOfSpeech() {
-
-    }
-
-    @Override
-    public void onRmsChanged(float rmsdB) {
-
-    }
-
-    @Override
-    public void onBufferReceived(byte[] buffer) {
-
-    }
-
-    @Override
-    public void onEndOfSpeech() {
-
-    }
-
-    @Override
-    public void onError(int error) {
-        String errorMessage = getErrorText(error);
-        Log.d(LOG_TAG, "FAILED " + errorMessage);
-    }
-
-    @Override
-    public void onResults(Bundle results) {
-        ArrayList<String> matches = results
-                .getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-
-        String text = null;
-        if (matches != null) {
-            text = matches.get(0);
-        }
-        Log.d(LOG_TAG, text);
-        translate(text);
     }
 
     private void translate(final String text) {
@@ -179,18 +160,30 @@ public class ConversationFragment extends Fragment implements RecognitionListene
             @Override
             public void onResponse(Call<TranslationResult> call, Response<TranslationResult> response) {
                 final TranslationResult translation = response.body();
+
                 final String lang = translation.getLang();
 
                 String translatedText = translation.getText()[0];
 
-                ChatTranslation chatTranslation = mTranslationPanel.hasJustUsedLeftTranslator() ?
-                        new ChatTranslation(translatedText, text, true, lang) :
-                        new ChatTranslation(translatedText, text, false, lang);
+                Translation chatTranslation = mTranslationPanel.hasJustUsedLeftTranslator() ?
+                        new Translation(translatedText, text, true, lang) :
+                        new Translation(translatedText, text, false, lang);
+
+                if (mConversationView.getVisibility() == View.GONE) {
+                    mConversationView.setVisibility(View.VISIBLE);
+                    mEmptyConversationView.setVisibility(View.GONE);
+                }
+
                 mConversationAdapter.addTranslation(chatTranslation);
 
-                mConversationView.scrollTo(0, 0);
+                chatTranslation.save();
+
+                if (mConversationAdapter.getItemCount() > 0) {
+                    mConversationView.scrollToPosition(mConversationAdapter.getItemCount() - 1);
+                }
 
                 speakText(translatedText, lang);
+
             }
 
             @Override
@@ -204,17 +197,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         } else {
             mTranslator.translate(text, rightLanguageCode + "-" + leftLanguageCode, callback);
         }
-
-    }
-
-    @Override
-    public void onPartialResults(Bundle partialResults) {
-
-    }
-
-    @Override
-    public void onEvent(int eventType, Bundle params) {
-
     }
 
     private void speakText(String text, String language) {
@@ -223,11 +205,23 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         }
 
         String langCode = Utility.getTranslatedLanguage(language);
+
+        if (langCode.equals(getString(R.string.lang_code_bg))) {
+            langCode = getString(R.string.lang_code_ru);
+            text = Utility.editBulgarianTextForRussianReading(text);
+        }
+
         Locale locale = Utility.getLocaleFromLangCode(langCode, mLocales);
         if (locale == null) {
             Log.d(LOG_TAG, "Language not supported by TextToSpeech.");
             return;
         }
+
+        AudioManager manager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        manager.setStreamVolume(
+                AudioManager.STREAM_MUSIC,
+                manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
+                0);
 
         mTextToSpeech.setLanguage(locale);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -237,39 +231,115 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         }
     }
 
-    public static String getErrorText(int errorCode) {
+    @Override
+    public void onReadyForSpeech(Bundle params) {
+        Log.d(LOG_TAG, "onReadyforSpeach");
+    }
+
+    @Override
+    public void onBeginningOfSpeech() {
+        mTranslationPanel.setAnimationOn(true);
+        Log.d(LOG_TAG, "onBeginningOfSpeach");
+    }
+
+    @Override
+    public void onRmsChanged(float rmsdB) {
+        mTranslationPanel.onRmsChanged(rmsdB);
+        Log.d(LOG_TAG, "onRmsChanged");
+    }
+
+    @Override
+    public void onBufferReceived(byte[] buffer) {
+        Log.d(LOG_TAG, "onBufferReceived");
+    }
+
+    @Override
+    public void onEndOfSpeech() {
+        mTranslationPanel.setAnimationOn(false);
+        Log.d(LOG_TAG, "onEndOfSpeach");
+    }
+
+    @Override
+    public void onError(int error) {
+        if (mRecogntionSuccess) {
+            return;
+        }
+
+        String errorMessage = getErrorText(error);
+        Log.d(LOG_TAG, "FAILED " + errorMessage);
+        Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        mTranslationPanel.setAnimationOn(false);
+
+    }
+
+    @Override
+    public void onResults(Bundle results) {
+        mRecogntionSuccess = true;
+
+        ArrayList<String> matches = results
+                .getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+
+        String text = null;
+        if (matches != null) {
+            text = matches.get(0);
+        }
+        Log.d(LOG_TAG, text);
+
+        refreshTranslationAnimation(); //Because there is a bug in SpeechRecognizer
+        translate(text);
+    }
+
+    private void refreshTranslationAnimation() {
+        AudioManager manager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        manager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+
+        mRecogntionSuccess = false;
+        mSpeechRecognizer.startListening(new Intent());
+        mSpeechRecognizer.cancel();
+    }
+
+    @Override
+    public void onPartialResults(Bundle partialResults) {
+        Log.d(LOG_TAG, "onPartialResults");
+    }
+
+    @Override
+    public void onEvent(int eventType, Bundle params) {
+        Log.d(LOG_TAG, "onEvent");
+    }
+
+    public String getErrorText(int errorCode) {
         String message;
         switch (errorCode) {
             case SpeechRecognizer.ERROR_AUDIO:
-                message = "Audio recording error";
+                message = getString(R.string.error_audio);
                 break;
             case SpeechRecognizer.ERROR_CLIENT:
-                message = "Client side error";
+                message = getString(R.string.error_something_wrong);
                 break;
             case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
-                message = "Insufficient permissions";
+                message = getString(R.string.error_permissions);
                 break;
             case SpeechRecognizer.ERROR_NETWORK:
-                message = "Network error";
+                message = getString(R.string.error_network);
                 break;
             case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
-                message = "Network timeout";
+                message = getString(R.string.error_server);
                 break;
             case SpeechRecognizer.ERROR_NO_MATCH:
-                message = "No match";
+                message = getString(R.string.error_no_match);
                 break;
             case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
-                message = "RecognitionService busy";
+                message = getString(R.string.error_recognition_service);
                 break;
             case SpeechRecognizer.ERROR_SERVER:
-                message = "error from server";
+                message = getString(R.string.error_server);
                 break;
             case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
-                message = "No speech input";
+                message = getString(R.string.error_no_speech);
                 break;
             default:
-                message = "Didn't understand, please try again.";
-                break;
+                message = getString(R.string.error_no_match);
         }
         return message;
     }

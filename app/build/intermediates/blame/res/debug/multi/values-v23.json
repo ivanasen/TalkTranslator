@@ -7,28 +7,9 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 51,
-                    "endOffset": 102
-                },
-                "from": {
-                    "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.mikepenz\\materialize\\1.0.0\\res\\values-v23\\values-v23.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 51,
-                        "endOffset": 102
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 107,
-                    "endLine": 8,
+                    "endLine": 6,
                     "endColumn": 12,
-                    "endOffset": 444
+                    "endOffset": 330
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\values-v23\\styles.xml",
@@ -36,19 +17,19 @@
                         "startLine": 3,
                         "startColumn": 4,
                         "startOffset": 59,
-                        "endLine": 8,
+                        "endLine": 7,
                         "endColumn": 12,
-                        "endOffset": 401
+                        "endOffset": 338
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 449,
+                    "startOffset": 335,
                     "endColumn": 134,
-                    "endOffset": 579
+                    "endOffset": 465
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -63,11 +44,11 @@
             },
             {
                 "to": {
-                    "startLine": 10,
+                    "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 584,
+                    "startOffset": 470,
                     "endColumn": 134,
-                    "endOffset": 714
+                    "endOffset": 600
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -82,11 +63,11 @@
             },
             {
                 "to": {
-                    "startLine": 11,
+                    "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 719,
+                    "startOffset": 605,
                     "endColumn": 74,
-                    "endOffset": 789
+                    "endOffset": 675
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -101,11 +82,11 @@
             },
             {
                 "to": {
-                    "startLine": 12,
+                    "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 794,
+                    "startOffset": 680,
                     "endColumn": 86,
-                    "endOffset": 876
+                    "endOffset": 762
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -120,12 +101,12 @@
             },
             {
                 "to": {
-                    "startLine": 13,
+                    "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 881,
-                    "endLine": 25,
+                    "startOffset": 767,
+                    "endLine": 23,
                     "endColumn": 12,
-                    "endOffset": 1666
+                    "endOffset": 1552
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -141,12 +122,12 @@
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1671,
-                    "endLine": 38,
+                    "startOffset": 1557,
+                    "endLine": 36,
                     "endColumn": 12,
-                    "endOffset": 2468
+                    "endOffset": 2354
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -162,11 +143,11 @@
             },
             {
                 "to": {
-                    "startLine": 39,
+                    "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 2473,
+                    "startOffset": 2359,
                     "endColumn": 126,
-                    "endOffset": 2595
+                    "endOffset": 2481
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -181,11 +162,11 @@
             },
             {
                 "to": {
-                    "startLine": 40,
+                    "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 2600,
+                    "startOffset": 2486,
                     "endColumn": 104,
-                    "endOffset": 2700
+                    "endOffset": 2586
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -200,11 +181,11 @@
             },
             {
                 "to": {
-                    "startLine": 41,
+                    "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 2705,
+                    "startOffset": 2591,
                     "endColumn": 114,
-                    "endOffset": 2815
+                    "endOffset": 2701
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -219,11 +200,11 @@
             },
             {
                 "to": {
-                    "startLine": 42,
+                    "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 2820,
+                    "startOffset": 2706,
                     "endColumn": 106,
-                    "endOffset": 2922
+                    "endOffset": 2808
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -238,11 +219,11 @@
             },
             {
                 "to": {
-                    "startLine": 43,
+                    "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 2927,
+                    "startOffset": 2813,
                     "endColumn": 112,
-                    "endOffset": 3035
+                    "endOffset": 2921
                 },
                 "from": {
                     "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
@@ -252,6 +233,27 @@
                         "startOffset": 2533,
                         "endColumn": 112,
                         "endOffset": 2641
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 2926,
+                    "endLine": 44,
+                    "endColumn": 12,
+                    "endOffset": 3071
+                },
+                "from": {
+                    "file": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\25.1.1\\res\\values-v23\\values-v23.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 200
                     }
                 }
             }

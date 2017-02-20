@@ -2,15 +2,23 @@ package talktranslator.app.ivanasen.talktranslator.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 
+import com.google.common.primitives.Chars;
+
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
 import talktranslator.app.ivanasen.talktranslator.R;
 
 public class Utility {
+
 
     private static final String LOG_TAG = Utility.class.getSimpleName();
     public static final String PREFERENCES_NAME = "Translator_prefs";
@@ -52,8 +60,14 @@ public class Utility {
 
     public static Locale getLocaleFromLangCode(String langCode, Set<Locale> locales) {
         for (Locale locale : locales) {
-            if (locale.getISO3Language().equals(langCode) ||
-                    locale.getISO3Language().contains(langCode)) {
+            String currentLang = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                currentLang = locale.toLanguageTag();
+            } else {
+                currentLang = locale.getDisplayLanguage();
+            }
+
+            if (currentLang.contains(langCode)) {
                 return locale;
             }
         }
@@ -61,4 +75,52 @@ public class Utility {
         return null;
     }
 
+    public static String editBulgarianTextForRussianReading(String text) {
+        List<Character> charsList = new ArrayList<>( Chars.asList(text.toCharArray()) );
+
+        for (int i = 0; i < charsList.size(); i++) {
+            switch (charsList.get(i)) {
+                case 'e':
+                    if (i > 0 && charsList.get(i - 1) == ' ') {
+                        charsList.remove(i - 1);
+                    }
+                    break;
+                case 'ъ':
+                    charsList.remove(i);
+                    charsList.add(i, 'э');
+                    break;
+                case 'щ':
+                    if (i == charsList.size() - 1) {
+                        charsList.add('т');
+                    } else {
+                        charsList.add(i + 1, 'т');
+                    }
+                    break;
+                case 'о':
+                    charsList.remove(i);
+                    charsList.add(i, 'у');
+                    break;
+            }
+        }
+
+        String result = listToString(charsList);
+
+        return result;
+    }
+
+    private static String listToString(List<Character> charsList) {
+        StringBuilder builder = new StringBuilder();
+
+        for(Character aChar : charsList) {
+            builder.append(aChar);
+        }
+
+        return builder.toString();
+    }
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null;
+    }
 }

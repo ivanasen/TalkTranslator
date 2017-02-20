@@ -4,16 +4,33 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="vertical"
     tools:context="talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment">
 
-    <View
+    <LinearLayout
         android:id="@+id/fake_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <ToggleButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="0dp"
+            android:background="@drawable/expand_button_background"
+            android:textColor="@android:color/transparent"
+            android:textSize="0sp" />
+
+        <Button
+            style="@style/SpeakNowBtn"
+            android:theme="@style/LeftTranslatorButton" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/left_translator_container"
@@ -25,12 +42,13 @@
         android:layout_toLeftOf="@id/fake_view"
         android:layout_toStartOf="@id/fake_view"
         android:background="@color/leftTranslatorColorBackground"
-        android:elevation="@dimen/translation_bar_elevation"
+        android:clipChildren="false"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             android:orientation="vertical">
 
             <ToggleButton
@@ -43,7 +61,7 @@
                 android:textColor="@android:color/transparent"
                 android:textSize="0sp" />
 
-            <Button
+            <talktranslator.app.ivanasen.talktranslator.views.PulsatingButton
                 android:id="@+id/left_translator"
                 style="@style/SpeakNowBtn"
                 android:theme="@style/LeftTranslatorButton" />
@@ -70,12 +88,13 @@
         android:layout_toEndOf="@id/fake_view"
         android:layout_toRightOf="@id/fake_view"
         android:background="@color/rightTranslatorColorBackground"
-        android:elevation="@dimen/translation_bar_elevation"
+        android:clipChildren="false"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             android:orientation="vertical">
 
             <ToggleButton
@@ -88,7 +107,7 @@
                 android:textColor="@android:color/transparent"
                 android:textSize="0sp" />
 
-            <Button
+            <talktranslator.app.ivanasen.talktranslator.views.PulsatingButton
                 android:id="@+id/right_translator"
                 style="@style/SpeakNowBtn"
                 android:theme="@style/RightTranslatorButton" />
@@ -105,12 +124,23 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/conversation_container"
+    <TextView
+        android:id="@+id/empty_conversation_textview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@id/left_translator_container"
         android:layout_alignParentTop="true"
-        android:background="#FAFAFA"/>
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="@string/empty_conversation_text"
+        android:textSize="24sp"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/conversation_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/fake_view"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

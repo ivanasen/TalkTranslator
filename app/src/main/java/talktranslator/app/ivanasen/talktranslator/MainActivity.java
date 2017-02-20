@@ -1,39 +1,23 @@
 package talktranslator.app.ivanasen.talktranslator;
 
-import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Filter;
-
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.util.DrawerItemViewHelper;
-
-import java.security.Permission;
-import java.util.List;
-import java.util.jar.Manifest;
 
 import talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.InterviewFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment;
+import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,16 +40,17 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
 
-        Drawer drawer = new DrawerBuilder()
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .withActionBarDrawerToggle(true)
-                .withTranslucentStatusBar(false)
-                .withHeader(R.layout.nav_header_main)
-                .inflateMenu(R.menu.activity_main_drawer)
-                .build();
+        checkInternetConnection();
 
         setupTabNavigation();
+    }
+
+    private void checkInternetConnection() {
+        boolean isConnected = Utility.isNetworkConnected(this);
+
+        if (!isConnected) {
+
+        }
     }
 
     private void setupTabNavigation() {
@@ -123,10 +108,11 @@ public class MainActivity extends AppCompatActivity {
     private void markSelectedTab(TabLayout.Tab tab) {
         int pos = tab.getPosition();
         setTitle(mPagerAdapter.getPageTitle(pos));
-        mTabLayout.getTabAt(pos).getIcon()
-                .setColorFilter(getColor(R.color.accent), PorterDuff.Mode.SRC_ATOP);
-        mTabLayout.getTabAt(pos).getIcon()
-                .setAlpha(getResources().getInteger(R.integer.selected_icon_alpha));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            tab.getIcon().setColorFilter(getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+        }
+        tab.getIcon().setAlpha(getResources().getInteger(R.integer.selected_icon_alpha));
     }
 
     @Override

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#e0e0e0</color>
-    <color name="colorAccent">#3F51B5</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#FFFFFF</color>
     <color name="rightTranslatorColor">#448AFF</color>
     <color name="rightChatBubbleColor">#448AFF</color>
     <color name="leftTranslatorColor">#FF5252</color>
     <color name="leftChatBubbleColor">#EF5350</color>
     <color name="leftTranslatorColorBackground">#FFCDD2</color>
     <color name="rightTranslatorColorBackground">#BBDEFB</color>
-    <color name="tabColor">#f5f5f5</color>
+    <color name="tabColor">#3F51B5</color>
     <color name="chat_secondary_text">#c3ffffff</color>
+    <color name="windowBackground">#f1f3ff</color>
 </resources>

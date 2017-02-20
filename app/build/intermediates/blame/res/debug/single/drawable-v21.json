@@ -4,8 +4,16 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\rounded_corner_right.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-v21\\rounded_corner_right.xml"
+    },
+    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\rounded_corner_left.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-v21\\rounded_corner_left.xml"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_password_eye.xml",

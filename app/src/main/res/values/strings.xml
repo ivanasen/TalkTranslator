@@ -21,4 +21,18 @@
     <string name="interview_title">Interview</string>
     <string name="translate_title">Translate</string>
     <string name="tab_text" />
+    <string name="notify_text_copied">Translation copied to clipboard.</string>
+    <string name="lang_code_bg">bg</string>
+    <string name="lang_code_ru">ru</string>
+    <string name="empty_conversation_text">Tap one of the buttons below to start a conversation.</string>
+    <string name="changed_langs_label">Switched to %1$s-%2$s</string>
+    <string name="error_no_match">Didn\'t understand, please try again.</string>
+    <string name="error_no_speech">No speech was recognized</string>
+    <string name="error_server">Sorry, server error</string>
+    <string name="error_recognition_service">Still listening</string>
+    <string name="error_audio">Failed to record your voice</string>
+    <string name="error_sometghing_wrong">Somethin went wrong</string>
+    <string name="error_something_wrong">Something went wrong</string>
+    <string name="error_permissions">Check the app\'s permissions</string>
+    <string name="error_network">Check your internet connection</string>
 </resources>
