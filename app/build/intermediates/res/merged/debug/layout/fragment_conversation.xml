@@ -9,6 +9,19 @@
     android:orientation="vertical"
     tools:context="talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment">
 
+    <TextView
+        android:id="@+id/no_connection_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/dark_gray"
+        android:elevation="@dimen/app_elevation_default"
+        android:padding="@dimen/list_item_padding_vertical"
+        android:text="@string/error_network"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/primary_text_dark"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:id="@+id/fake_view"
         android:layout_width="0dp"
@@ -43,6 +56,7 @@
         android:layout_toStartOf="@id/fake_view"
         android:background="@color/leftTranslatorColorBackground"
         android:clipChildren="false"
+        android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
 
         <LinearLayout
@@ -89,6 +103,7 @@
         android:layout_toRightOf="@id/fake_view"
         android:background="@color/rightTranslatorColorBackground"
         android:clipChildren="false"
+        android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
 
         <LinearLayout
@@ -139,8 +154,11 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/conversation_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/fake_view"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:paddingTop="@dimen/list_item_padding_vertical"
+        android:paddingBottom="@dimen/list_item_padding_vertical"
+        android:clipToPadding="false"/>
 
 </RelativeLayout>

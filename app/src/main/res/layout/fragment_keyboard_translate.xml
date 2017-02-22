@@ -1,13 +1,54 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/app_elevation_default"
+        android:background="@color/windowBackground"
+        android:layout_gravity="bottom">
 
-</FrameLayout>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/languages"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            style="?android:attr/actionButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_gray"
+            android:src="@android:drawable/stat_notify_sync" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:entries="@array/languages" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:inputType="text" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/colorAccent"
+        android:layout_margin="@dimen/translate_margin"/>
+
+
+
+</LinearLayout>

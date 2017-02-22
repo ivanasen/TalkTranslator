@@ -9,7 +9,7 @@
     <View
         android:layout_height="0.5dp"
         android:layout_width="match_parent"
-        android:background="#bdbfc8"
+        android:background="#cfd8dc"
         android:alpha="100"
         android:layout_marginBottom="8dp">
     </View>

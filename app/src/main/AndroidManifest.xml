@@ -36,6 +36,7 @@
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="talktranslator.app.ivanasen" />
+
     </application>
 
 </manifest>

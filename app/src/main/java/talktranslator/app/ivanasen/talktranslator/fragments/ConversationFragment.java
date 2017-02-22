@@ -42,7 +42,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
     private final String LOG_TAG = ConversationFragment.class.getSimpleName();
     private static final int PERMISSION_REQUEST_RECORD_AUDIO = 1;
-
     private Translator mTranslator;
 
     private SpeechRecognizer mSpeechRecognizer;
@@ -293,7 +292,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         AudioManager manager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         manager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
 
-        mRecogntionSuccess = false;
         mSpeechRecognizer.startListening(new Intent());
         mSpeechRecognizer.cancel();
     }

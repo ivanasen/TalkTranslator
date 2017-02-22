@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.InterviewFragment;
@@ -40,16 +42,16 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
 
-        checkInternetConnection();
-
         setupTabNavigation();
+        checkInternetConnection();
     }
 
     private void checkInternetConnection() {
         boolean isConnected = Utility.isNetworkConnected(this);
 
         if (!isConnected) {
-
+            TextView noConnectionTextView = (TextView) findViewById(R.id.no_connection_textview);
+            noConnectionTextView.setVisibility(View.VISIBLE);
         }
     }
 

@@ -303,9 +303,10 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="chat_secondary_text">#c3ffffff</color>
-    <color name="colorAccent">#FFFFFF</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorAccent">#3F51B5</color>
+    <color name="colorPrimary">#f1f3ff</color>
     <color name="colorPrimaryDark">#303f9f</color>
+    <color name="dark_gray">#424242</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
@@ -360,11 +361,12 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="statusBarColor">@color/colorPrimary</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <color name="tabColor">#3F51B5</color>
+    <color name="tabColor">#f1f3ff</color>
     <color name="windowBackground">#f1f3ff</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode">
             
@@ -833,6 +835,7 @@
     <dimen name="notification_top_pad_large_text">5dp</dimen>
     <dimen name="profile_height">75dp</dimen>
     <dimen name="profile_width">75dp</dimen>
+    <dimen name="translate_margin">8dp</dimen>
     <dimen name="translation_bar_elevation">8dp</dimen>
     <dimen name="translation_bar_z">8dp</dimen>
     <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
@@ -868,7 +871,7 @@
     <integer name="selected_icon_alpha">255</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <integer name="unselected_icon_alpha">156</integer>
+    <integer name="unselected_icon_alpha">128</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -952,7 +955,7 @@
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/statusBarColor</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="android:windowBackground">@color/windowBackground</item>
     </style>

@@ -3,6 +3,7 @@ package talktranslator.app.ivanasen.talktranslator.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import com.google.common.primitives.Chars;
 
@@ -120,7 +121,7 @@ public class Utility {
 
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        return cm.getActiveNetworkInfo() != null;
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return cm.getActiveNetworkInfo() != null && info.isConnectedOrConnecting();
     }
 }
