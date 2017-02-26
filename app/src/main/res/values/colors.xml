@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#f1f3ff</color>
+    <color name="colorLanguageSelectBar">#e8e9f4</color>
     <color name="statusBarColor">@color/colorPrimary</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#3F51B5</color>

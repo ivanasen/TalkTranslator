@@ -46,7 +46,6 @@
     </style>
 
     <style name="ProgressBarTheme">
-        <item name="colorAccent">#9E9E9E</item>
+        <item name="colorAccent">@android:color/white</item>
     </style>
-
 </resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:paddingBottom="@dimen/list_item_padding_vertical"
+    android:paddingEnd="@dimen/list_item_padding_horizontal"
+    android:paddingLeft="@dimen/list_item_padding_horizontal"
+    android:paddingRight="@dimen/list_item_padding_horizontal"
+    android:paddingStart="@dimen/list_item_padding_horizontal"
+    android:paddingTop="@dimen/list_item_padding_vertical"
+    android:textColor="@color/leftTranslatorColor"
+    android:textSize="16sp" />

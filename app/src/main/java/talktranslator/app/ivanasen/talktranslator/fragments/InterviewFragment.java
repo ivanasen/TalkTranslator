@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import talktranslator.app.ivanasen.talktranslator.utils.ITextToSpeechUser;
 import talktranslator.app.ivanasen.talktranslator.R;
 
 /**
@@ -18,7 +19,7 @@ import talktranslator.app.ivanasen.talktranslator.R;
  * Use the {@link InterviewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InterviewFragment extends Fragment {
+public class InterviewFragment extends Fragment implements ITextToSpeechUser {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -91,6 +92,11 @@ public class InterviewFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void setTextToSpeechReadyForUsing(boolean isReady) {
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this

@@ -1,9 +1,15 @@
-package talktranslator.app.ivanasen.talktranslator;
+package talktranslator.app.ivanasen.talktranslator.activities;
 
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
+import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +17,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Set;
+
+import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.InterviewFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment;
@@ -23,11 +36,15 @@ import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String UTTERANCE_ID = "translator utterance id";
     private final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private ViewPager mViewPager;
     private FragmentPagerAdapter mPagerAdapter;
-    private TabLayout mTabLayout;
+    private AppBarLayout mAppBar;
+
+    private TextToSpeech mTextToSpeech;
+    private Set<Locale> mLocales;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +54,23 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mTextToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    mLocales = mTextToSpeech.getAvailableLanguages();
+                }
+
+//                ITextToSpeechUser user = (ITextToSpeechUser)
+//                        mPagerAdapter.getItem(mViewPager.getCurrentItem());
+
+//                user.setTextToSpeechReadyForUsing(true);
+            }
+        });
+
+
+        mAppBar = (AppBarLayout) findViewById(R.id.appbar);
 
         mPagerAdapter = new TranslatorPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -55,9 +89,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mTextToSpeech != null) {
+            mTextToSpeech.shutdown();
+        }
+    }
+
     private void setupTabNavigation() {
-        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        mTabLayout.setupWithViewPager(mViewPager);
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(mViewPager);
 
         Drawable conversationDrawable;
         Drawable interviewDrawable;
@@ -77,18 +120,26 @@ public class MainActivity extends AppCompatActivity {
             translateDrawable.setAlpha(getResources().getInteger(R.integer.unselected_icon_alpha));
         }
 
-        mTabLayout.getTabAt(0).setIcon(conversationDrawable).setText(R.string.tab_text);
-        mTabLayout.getTabAt(1).setIcon(interviewDrawable).setText(R.string.tab_text);
-        mTabLayout.getTabAt(2).setIcon(translateDrawable).setText(R.string.tab_text);
+        tabLayout.getTabAt(0).setIcon(conversationDrawable).setText(R.string.tab_text);
+        tabLayout.getTabAt(1).setIcon(interviewDrawable).setText(R.string.tab_text);
+        tabLayout.getTabAt(2).setIcon(translateDrawable).setText(R.string.tab_text);
 
-        TabLayout.Tab selectedTab = mTabLayout.getTabAt(mTabLayout.getSelectedTabPosition());
+        TabLayout.Tab selectedTab = tabLayout.getTabAt(tabLayout.getSelectedTabPosition());
         markSelectedTab(selectedTab);
 
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 String title = (String) mPagerAdapter.getPageTitle(tab.getPosition());
                 setTitle(title);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (title.equals(getString(R.string.translate_title))) {
+                        mAppBar.setElevation(0);
+
+                    } else {
+                        mAppBar.setElevation(getResources().getDimension(R.dimen.app_elevation_default));
+                    }
+                }
                 markSelectedTab(tab);
             }
 
@@ -132,6 +183,59 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void speakText(String text, String language, @Nullable UtteranceProgressListener listener) {
+        if (mTextToSpeech == null || mTextToSpeech.isSpeaking() || mLocales == null) {
+            return;
+        }
+
+        String langCode = Utility.getTranslatedLanguage(language);
+
+        if (langCode.equals(getString(R.string.lang_code_bg))) {
+            langCode = getString(R.string.lang_code_ru);
+            text = Utility.editBulgarianTextForRussianReading(text);
+        }
+
+        Locale locale = Utility.getLocaleFromLangCode(langCode, mLocales);
+        if (locale == null) {
+            Log.d(LOG_TAG, "Language not supported by TextToSpeech.");
+            return;
+        }
+
+        AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        manager.setStreamVolume(
+                AudioManager.STREAM_MUSIC,
+                manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
+                0);
+
+        mTextToSpeech.setLanguage(locale);
+
+        mTextToSpeech.setOnUtteranceProgressListener(listener);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Bundle params = new Bundle();
+            params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, UTTERANCE_ID);
+            mTextToSpeech.speak(text, TextToSpeech.QUEUE_ADD, params, UTTERANCE_ID);
+        } else {
+            HashMap<String, String> map = new HashMap<>();
+            map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, UTTERANCE_ID);
+            mTextToSpeech.speak(text, TextToSpeech.QUEUE_ADD, map);
+        }
+    }
+
+    public Set<Locale> getLocales() {
+        return mLocales;
+    }
+
+    public TextToSpeech getTextToSpeech() {
+        return mTextToSpeech;
+    }
+
+    public void onTranslationFailure() {
+        Log.e(LOG_TAG, "Translation failed");
+        Toast.makeText(this, getString(R.string.translation_failed), Toast.LENGTH_LONG).show();
     }
 
     private class TranslatorPagerAdapter extends FragmentPagerAdapter {

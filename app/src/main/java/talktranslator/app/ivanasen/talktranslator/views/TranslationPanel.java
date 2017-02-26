@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import talktranslator.app.ivanasen.talktranslator.ChatAdapter;
+import talktranslator.app.ivanasen.talktranslator.adapters.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
@@ -97,7 +97,7 @@ public class TranslationPanel {
 
                 mJustUsedLeftTranslator = true;
                 String lang = Utility.getTranslatorLanguage(mContext, Utility.LEFT_TRANSLATOR_LANGUAGE);
-                String code = Utility.getCodeFromLanguage(mContext, lang);
+                String code = Utility.getCodeFromLanguage(mContext, lang, false);
                 promptSpeechInput(code);
             }
         });
@@ -114,7 +114,7 @@ public class TranslationPanel {
 
                 mJustUsedLeftTranslator = false;
                 String lang = Utility.getTranslatorLanguage(mContext, Utility.RIGHT_TRANSLATOR_LANGUAGE);
-                String code = Utility.getCodeFromLanguage(mContext, lang);
+                String code = Utility.getCodeFromLanguage(mContext, lang, false);
                 promptSpeechInput(code);
             }
         });

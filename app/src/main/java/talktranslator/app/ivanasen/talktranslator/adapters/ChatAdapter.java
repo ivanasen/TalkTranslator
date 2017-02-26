@@ -1,10 +1,10 @@
-package talktranslator.app.ivanasen.talktranslator;
+package talktranslator.app.ivanasen.talktranslator.adapters;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.os.Build;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import talktranslator.app.ivanasen.talktranslator.models.Translation;
+import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
+import talktranslator.app.ivanasen.talktranslator.R;
+import talktranslator.app.ivanasen.talktranslator.models.ChatTranslation;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 /**
@@ -29,17 +31,27 @@ import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+
     private static final int VIEW_TYPE_LEFT_TRANSLATION = 0;
     private static final int VIEW_TYPE_RIGHT_TRANSLATION = 1;
     private static final int VIEW_TYPE_CHANGED_LANGUAGES = 2;
+    private final MainActivity mActivity;
 
-    private Set<Locale> mLocales;
     private Context mContext;
     private List<Object> mListItems;
-    private TextToSpeech mTextToSpeech;
-    private boolean mIsTextToSpeechDisabled;
+    private boolean mJustAddedItem;
+    private boolean mShouldScrollToBottom;
+
+    public void removeTranslation(int index) {
+        if (getItemViewType(index) != VIEW_TYPE_CHANGED_LANGUAGES) {
+            ChatTranslation.delete(mListItems.get(index));
+            mListItems.remove(index);
+            notifyItemRemoved(index);
+        }
+    }
 
     private class TranslationViewHolder extends RecyclerView.ViewHolder {
+
         TextView translatedTextView;
         TextView originalTextView;
         ImageButton replayTranslationBtn;
@@ -50,22 +62,26 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             super(itemView);
             translatedTextView = (TextView) itemView.findViewById(R.id.translated_textview);
             originalTextView = (TextView) itemView.findViewById(R.id.original_text_textview);
-            replayTranslationBtn = (ImageButton) itemView.findViewById(R.id.replay_translation_btn);
+            replayTranslationBtn = (ImageButton) itemView.findViewById(R.id.speak_translation_btn);
             mChatBubble = (LinearLayout) itemView.findViewById(R.id.chat_bubble);
             progressBar = (ProgressBar) itemView.findViewById(R.id.progressbar);
         }
+
     }
 
     private class ChangedLanguagesViewHolder extends RecyclerView.ViewHolder {
+
         TextView changedLangsTextView;
 
         private ChangedLanguagesViewHolder(View itemView) {
             super(itemView);
             changedLangsTextView = (TextView) itemView.findViewById(R.id.changed_languages_textview);
         }
+
     }
 
     private class LanguagesChange {
+
         String language1;
         String language2;
 
@@ -73,16 +89,18 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.language1 = language1;
             this.language2 = language2;
         }
+
     }
 
-    public ChatAdapter(Context context, List<Translation> translations, TextToSpeech mTextToSpeech) { //Language changes aren't saved in db
+    public ChatAdapter(Context context, List<ChatTranslation> chatTranslations, MainActivity activity) { //Language changes aren't saved in db
         mContext = context;
+        mActivity = activity;
 
-        if (translations == null) {
-            translations = new ArrayList<>();
+        if (chatTranslations == null) {
+            chatTranslations = new ArrayList<>();
         }
 
-        mListItems = new ArrayList<Object>(translations);
+        mListItems = new ArrayList<Object>(chatTranslations);
     }
 
     @Override
@@ -120,14 +138,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return;
         }
 
-        final Translation translation = (Translation) mListItems.get(position);
+        final ChatTranslation chatTranslation = (ChatTranslation) mListItems.get(position);
         final TranslationViewHolder translationViewHolder = (TranslationViewHolder) holder;
 
-        translationViewHolder.translatedTextView.setText(translation.getTranslatedText());
-        translationViewHolder.originalTextView.setText(translation.getOriginalText());
+        translationViewHolder.translatedTextView.setText(chatTranslation.getTranslatedText());
+        translationViewHolder.originalTextView.setText(chatTranslation.getOriginalText());
 
-        if (mTextToSpeech != null) {
-            setupReplayTranslationButton(translationViewHolder, translation);
+        if (mActivity.getTextToSpeech() != null) {
+            setupReplayTranslationButton(translationViewHolder, chatTranslation);
         }
 
         final CharSequence translatedText = translationViewHolder.translatedTextView.getText();
@@ -135,23 +153,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        copyTextToClipboard(translatedText);
+                        Utility.copyTextToClipboard(mContext, translatedText);
                         return true;
                     }
                 });
 
-    }
-
-    private void copyTextToClipboard(CharSequence translatedText) {
-        ClipboardManager clipboard = (ClipboardManager)
-                mContext.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText(mContext.getString(R.string.app_name),
-                translatedText);
-        clipboard.setPrimaryClip(clip);
-
-        Toast msg = Toast.makeText(mContext,
-                mContext.getString(R.string.notify_text_copied), Toast.LENGTH_SHORT);
-        msg.show();
     }
 
     @Override
@@ -159,8 +165,8 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Object listItem = mListItems.get(position);
         if (listItem instanceof LanguagesChange) {
             return VIEW_TYPE_CHANGED_LANGUAGES;
-        } else if (listItem instanceof Translation) {
-            Translation tr = (Translation) listItem;
+        } else if (listItem instanceof ChatTranslation) {
+            ChatTranslation tr = (ChatTranslation) listItem;
             if (tr.isLeftTranslation()) {
                 return VIEW_TYPE_LEFT_TRANSLATION;
             } else {
@@ -176,9 +182,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mListItems.size();
     }
 
-    private void setupReplayTranslationButton(TranslationViewHolder holder,
-                                              final Translation chatTranslation) {
-        String langCode = Utility.getTranslatedLanguage(chatTranslation.getLanguages());
+    private void setupReplayTranslationButton(final TranslationViewHolder holder,
+                                              final ChatTranslation chatTranslation) {
+        String languages = chatTranslation.getLanguages();
+        String langCode = Utility.getTranslatedLanguage(languages);
         String translation = chatTranslation.getTranslatedText();
 
         if (langCode.equals(mContext.getString(R.string.lang_code_bg))) {
@@ -186,32 +193,82 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             translation = Utility.editBulgarianTextForRussianReading(translation);
         }
 
-        final Locale locale = Utility.getLocaleFromLangCode(langCode, mLocales);
+        Set<Locale> locales = mActivity.getLocales();
+        Locale locale = null;
+        if (locales != null) {
+            locale = Utility.getLocaleFromLangCode(langCode, locales);
+        }
 
         if (locale == null) {
             holder.replayTranslationBtn.setVisibility(View.GONE);
-            return;
+        } else {
+            holder.replayTranslationBtn.setVisibility(View.VISIBLE);
         }
 
+        final Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                holder.progressBar.setVisibility(View.GONE);
+                holder.replayTranslationBtn.setVisibility(View.VISIBLE);
+            }
+        };
+
+        final UtteranceProgressListener progressListener = new UtteranceProgressListener() {
+            @Override
+            public void onStart(String utteranceId) {
+                mActivity.runOnUiThread(r);
+            }
+
+            @Override
+            public void onDone(String utteranceId) {
+                mActivity.runOnUiThread(r);
+                mShouldScrollToBottom = false;
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+                mActivity.runOnUiThread(r);
+                mShouldScrollToBottom = false;
+            }
+        };
+
         final String finalTranslation = translation;
+        if (mJustAddedItem && locale != null) {
+            mShouldScrollToBottom = true;
+            mActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    holder.progressBar.setVisibility(View.VISIBLE);
+                    holder.replayTranslationBtn.setVisibility(View.GONE);
+                }
+            });
+
+            mActivity.speakText(finalTranslation, chatTranslation.getLanguages(), progressListener);
+        }
+        mJustAddedItem = false;
         holder.replayTranslationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTextToSpeech.setLanguage(locale);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mTextToSpeech.speak(finalTranslation,
-                            TextToSpeech.QUEUE_FLUSH, null, null);
-                } else {
-                    mTextToSpeech.speak(finalTranslation,
-                            TextToSpeech.QUEUE_FLUSH, null);
-                }
+                mActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        holder.progressBar.setVisibility(View.VISIBLE);
+                        holder.replayTranslationBtn.setVisibility(View.GONE);
+                    }
+                });
+                mActivity.speakText(finalTranslation, chatTranslation.getLanguages(), progressListener);
             }
         });
     }
 
-    public void addTranslation(Translation translation) {
-        mListItems.add(translation);
+    @Override
+    public void onViewRecycled(RecyclerView.ViewHolder holder) {
+        super.onViewRecycled(holder);
+    }
+
+    public void addTranslation(ChatTranslation chatTranslation) {
+        mJustAddedItem = true;
+        mListItems.add(chatTranslation);
         notifyDataSetChanged();
     }
 
@@ -221,15 +278,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void setTextToSpeech(TextToSpeech mTextToSpeech) {
-        this.mTextToSpeech = mTextToSpeech;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mLocales = mTextToSpeech.getAvailableLanguages();
-            mIsTextToSpeechDisabled = false;
-        } else {
-            mLocales = null;
-            mIsTextToSpeechDisabled = true;
-        }
+    public boolean shouldScrollToBottom() {
+        return mShouldScrollToBottom;
     }
 }

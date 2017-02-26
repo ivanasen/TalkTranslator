@@ -35,4 +35,8 @@
     <string name="error_something_wrong">Something went wrong</string>
     <string name="error_permissions">Check the app\'s permissions</string>
     <string name="error_network">Check your internet connection</string>
+    <string name="edit_text_translation_hint">Tap to enter text</string>
+    <string name="chatTranslation">Translation</string>
+    <string name="translation_history_label">History</string>
+    <string name="translation_failed">Translation failed</string>
 </resources>

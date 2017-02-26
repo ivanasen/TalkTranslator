@@ -1,9 +1,12 @@
 package talktranslator.app.ivanasen.talktranslator.utils;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Toast;
 
 import com.google.common.primitives.Chars;
 
@@ -36,14 +39,46 @@ public class Utility {
         prefs.edit().putString(translatorLanguageName, language).apply();
     }
 
-    public static String getCodeFromLanguage(Context context, String language) {
+    public static String getLanguageFromCode(Context context, String langCode) {
+        int i = -1;
+        for (String currentLang : context.getResources().getStringArray(R.array.lang_codes)) {
+            i++;
+            if (currentLang.equals(langCode)) {
+                return context.getResources().getStringArray(R.array.languages)[i];
+            }
+        }
+        return null;
+    }
+
+    public static String getCodeFromLanguage(Context context, String language, boolean forTextToSpeech) {
         int i = -1;
         for (String currentLang : context.getResources().getStringArray(R.array.languages)) {
             i++;
-            if (language.equals(currentLang))
-                break;
+            if (currentLang.equals(language)) {
+                String langCode = context.getResources().getStringArray(R.array.lang_codes)[i];
+                if (langCode.equals(context.getResources().getString(R.string.lang_code_bg))
+                        && forTextToSpeech) {
+                    return context.getResources().getString(R.string.lang_code_ru);
+                }
+                return langCode;
+            }
         }
-        return context.getResources().getStringArray(R.array.lang_codes)[i];
+        return null;
+    }
+
+    public static String getTranslateFromLanguage(String fromLangToLang) {
+        if (fromLangToLang == null || fromLangToLang.length() == 0) {
+            return null;
+        }
+        String langCode = "";
+        char[] chars = fromLangToLang.toCharArray();
+        for (char aChar : chars) {
+            if (aChar == '-') {
+                break;
+            }
+            langCode += aChar;
+        }
+        return langCode;
     }
 
     public static String getTranslatedLanguage(String fromLangToLang) {
@@ -60,8 +95,9 @@ public class Utility {
     }
 
     public static Locale getLocaleFromLangCode(String langCode, Set<Locale> locales) {
+        Locale resultLocale = null;
         for (Locale locale : locales) {
-            String currentLang = null;
+            String currentLang;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 currentLang = locale.toLanguageTag();
             } else {
@@ -69,11 +105,12 @@ public class Utility {
             }
 
             if (currentLang.contains(langCode)) {
-                return locale;
+                resultLocale = locale;
+                break;
             }
         }
 
-        return null;
+        return resultLocale;
     }
 
     public static String editBulgarianTextForRussianReading(String text) {
@@ -124,4 +161,17 @@ public class Utility {
         NetworkInfo info = cm.getActiveNetworkInfo();
         return cm.getActiveNetworkInfo() != null && info.isConnectedOrConnecting();
     }
+
+    public static void copyTextToClipboard(Context context, CharSequence translatedText) {
+        ClipboardManager clipboard = (ClipboardManager)
+                context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText(context.getString(R.string.app_name),
+                translatedText);
+        clipboard.setPrimaryClip(clip);
+
+        Toast msg = Toast.makeText(context,
+                context.getString(R.string.notify_text_copied), Toast.LENGTH_SHORT);
+        msg.show();
+    }
+
 }

@@ -2,29 +2,21 @@ package talktranslator.app.ivanasen.talktranslator.models;
 
 import com.orm.SugarRecord;
 
-import java.util.Locale;
-import java.util.Set;
-
-import talktranslator.app.ivanasen.talktranslator.utils.Utility;
-
 /**
- * Created by ivan on 2/11/2017.
+ * Created by ivan on 2/25/2017.
  */
 
 public class Translation extends SugarRecord {
     private String translatedText;
     private String originalText;
-    private boolean isLeftTranslation;
     private String language;
 
     public Translation() {
     }
 
-    public Translation(String translatedText, String originalText, boolean isLeftTranslation,
-                       String language) {
+    public Translation(String translatedText, String originalText, String language) {
         this.translatedText = translatedText;
         this.originalText = originalText;
-        this.isLeftTranslation = isLeftTranslation;
         this.language = language;
     }
 
@@ -44,20 +36,11 @@ public class Translation extends SugarRecord {
         this.originalText = originalText;
     }
 
-    public boolean isLeftTranslation() {
-        return isLeftTranslation;
-    }
-
-    public void setLeftTranslation(boolean leftTranslation) {
-        isLeftTranslation = leftTranslation;
-    }
-
-    public String getLanguages() {
+    public String getLanguage() {
         return language;
     }
 
     public void setLanguage(String language) {
         this.language = language;
     }
-
 }

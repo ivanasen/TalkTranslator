@@ -1,54 +1,120 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="@dimen/app_elevation_default"
-        android:background="@color/windowBackground"
-        android:layout_gravity="bottom">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment">
 
-        <Spinner
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:entries="@array/languages"
-            android:layout_weight="1"/>
+            app:cardCornerRadius="0dp"
+            app:cardElevation="4dp">
 
-        <ImageButton
-            style="?android:attr/actionButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_gray"
-            android:src="@android:drawable/stat_notify_sync" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorLanguageSelectBar">
 
-        <Spinner
-            android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/translate_from_language_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/leftTranslatorColor"
+                    android:dropDownVerticalOffset="48dp"
+                    android:dropDownWidth="156dp"
+                    android:entries="@array/languages"
+                    android:popupBackground="@color/colorPrimary" />
+
+                <ImageButton
+                    android:id="@+id/swap_languages_btn"
+                    style="?android:attr/actionButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/swap_horizontal" />
+
+                <Spinner
+                    android:id="@+id/translate_to_language_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/rightTranslatorColor"
+                    android:dropDownVerticalOffset="48dp"
+                    android:dropDownWidth="156dp"
+                    android:entries="@array/languages"
+                    android:popupBackground="@color/colorPrimary" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:entries="@array/languages" />
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_input_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:textColor="@color/leftTranslatorColor" />
+
+                <ImageButton
+                    android:id="@+id/clear_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:tint="@android:color/black"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/translate_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_input_language"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:hint="@string/edit_text_translation_hint"
+                    android:imeOptions="actionSend"
+                    android:inputType="text"
+                    android:textCursorDrawable="@null"
+                    android:textSize="24sp" />
+
+                <ImageButton
+                    android:id="@+id/speak_text_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/translate_text_input"
+                    android:layout_margin="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_volume_up_white_24dp"
+                    android:tint="@color/leftTranslatorColor" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <include layout="@layout/head_translation" />
+
+        <include layout="@layout/translation_history" />
     </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
 
-    <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:inputType="text" />
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:cardBackgroundColor="@color/colorAccent"
-        android:layout_margin="@dimen/translate_margin"/>
-
-
-
-</LinearLayout>

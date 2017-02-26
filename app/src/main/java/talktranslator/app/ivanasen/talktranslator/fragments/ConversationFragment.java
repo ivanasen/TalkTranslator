@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
-import android.os.Build;
+import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -15,44 +14,44 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import talktranslator.app.ivanasen.talktranslator.ChatAdapter;
+import talktranslator.app.ivanasen.talktranslator.adapters.ChatAdapter;
+import talktranslator.app.ivanasen.talktranslator.models.ChatTranslation;
+import talktranslator.app.ivanasen.talktranslator.utils.ITextToSpeechUser;
+import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
 import talktranslator.app.ivanasen.talktranslator.R;
-import talktranslator.app.ivanasen.talktranslator.models.Translation;
 import talktranslator.app.ivanasen.talktranslator.translation.TranslationResult;
 import talktranslator.app.ivanasen.talktranslator.translation.Translator;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 import talktranslator.app.ivanasen.talktranslator.views.TranslationPanel;
 
-public class ConversationFragment extends Fragment implements RecognitionListener {
+public class ConversationFragment extends Fragment implements RecognitionListener, ITextToSpeechUser {
 
     private final String LOG_TAG = ConversationFragment.class.getSimpleName();
     private static final int PERMISSION_REQUEST_RECORD_AUDIO = 1;
-    private Translator mTranslator;
 
+    private Translator mTranslator;
     private SpeechRecognizer mSpeechRecognizer;
-    private TextToSpeech mTextToSpeech;
     private View mRootView;
     private TranslationPanel mTranslationPanel;
-    private RecyclerView mConversationView;
+    private RecyclerView mChatView;
     private TextView mEmptyConversationView;
 
-    private ChatAdapter mConversationAdapter;
-    private Set<Locale> mLocales;
+    private ChatAdapter mChatAdapter;
     private boolean mRecogntionSuccess;
 
     public ConversationFragment() {
@@ -65,38 +64,75 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         mTranslator = new Translator(getContext());
         setupSpeechRecognizer();
 
-        mTextToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+        setupChat();
+
+
+
+        mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer, mChatAdapter);
+
+        checkMicrophonePermission();
+
+        Handler waitForTextToSpeechToInitHandler = new Handler();
+        waitForTextToSpeechToInitHandler.postDelayed(new Runnable() {
             @Override
-            public void onInit(int status) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    mLocales = mTextToSpeech.getAvailableLanguages();
-                }
-
-                mConversationAdapter.setTextToSpeech(mTextToSpeech);
+            public void run() {
+                mChatAdapter.notifyDataSetChanged();
             }
-        });
+        }, getResources().getInteger(R.integer.wait_for_text_to_speech_to_init_millis));
 
+        return mRootView;
+    }
+
+    private void setupChat() {
         mEmptyConversationView = (TextView) mRootView.findViewById(R.id.empty_conversation_textview);
-        mConversationView = (RecyclerView) mRootView.findViewById(R.id.conversation_container);
+        mChatView = (RecyclerView) mRootView.findViewById(R.id.conversation_container);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
+        mChatView.setLayoutManager(layoutManager);
 
-        mConversationView.setLayoutManager(layoutManager);
+        List<ChatTranslation> chatTranslations = ChatTranslation.listAll(ChatTranslation.class);
+        mChatAdapter = new ChatAdapter(getContext(), chatTranslations, (MainActivity) getActivity());
+        mChatView.setAdapter(mChatAdapter);
+        mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
+        mChatView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
+            @Override
+            public void onChildViewAttachedToWindow(View view) {
+                if (mChatAdapter.shouldScrollToBottom()) {
+                    int position = mChatAdapter.getItemCount() - 1;
+                    mChatView.scrollToPosition(position);
+                }
+            }
 
-        List<Translation> translations = Translation.listAll(Translation.class);
-        mConversationAdapter = new ChatAdapter(getContext(), translations, mTextToSpeech);
-        mConversationView.setAdapter(mConversationAdapter);
-        mConversationView.scrollToPosition(mConversationAdapter.getItemCount() - 1);
-
-        if (translations == null || translations.size() == 0) {
-            mConversationView.setVisibility(View.GONE);
+            @Override
+            public void onChildViewDetachedFromWindow(View view) {
+            }
+        });
+        if (chatTranslations == null || chatTranslations.size() == 0) {
+            mChatView.setVisibility(View.GONE);
             mEmptyConversationView.setVisibility(View.VISIBLE);
         }
 
-        mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer, mConversationAdapter);
-        checkMicrophonePermission();
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
+                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
-        return mRootView;
+                    @Override
+                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                        mChatAdapter.removeTranslation(viewHolder.getAdapterPosition());
+
+                        if (mChatAdapter.getItemCount() == 0) {
+                            mChatView.setVisibility(View.GONE);
+                            mEmptyConversationView.setVisibility(View.VISIBLE);
+                        }
+                    }
+                };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(mChatView);
     }
 
     public void checkMicrophonePermission() {
@@ -141,9 +177,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mTextToSpeech != null) {
-            mTextToSpeech.shutdown();
-        }
         if (mSpeechRecognizer != null) {
             mSpeechRecognizer.destroy();
         }
@@ -151,38 +184,35 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
     private void translate(final String text) {
         String leftLanguageCode = Utility.getCodeFromLanguage(getContext(),
-                Utility.getTranslatorLanguage(getContext(), Utility.LEFT_TRANSLATOR_LANGUAGE));
+                Utility.getTranslatorLanguage(getContext(), Utility.LEFT_TRANSLATOR_LANGUAGE),
+                false);
         String rightLanguageCode = Utility.getCodeFromLanguage(getContext(),
-                Utility.getTranslatorLanguage(getContext(), Utility.RIGHT_TRANSLATOR_LANGUAGE));
+                Utility.getTranslatorLanguage(getContext(), Utility.RIGHT_TRANSLATOR_LANGUAGE),
+                false);
 
         Callback<TranslationResult> callback = new Callback<TranslationResult>() {
             @Override
             public void onResponse(Call<TranslationResult> call, Response<TranslationResult> response) {
                 final TranslationResult translation = response.body();
-
                 final String lang = translation.getLang();
-
                 String translatedText = translation.getText()[0];
 
-                Translation chatTranslation = mTranslationPanel.hasJustUsedLeftTranslator() ?
-                        new Translation(translatedText, text, true, lang) :
-                        new Translation(translatedText, text, false, lang);
+                ChatTranslation chatTranslation = mTranslationPanel.hasJustUsedLeftTranslator() ?
+                        new ChatTranslation(translatedText, text, true, lang) :
+                        new ChatTranslation(translatedText, text, false, lang);
 
-                if (mConversationView.getVisibility() == View.GONE) {
-                    mConversationView.setVisibility(View.VISIBLE);
+                if (mChatView.getVisibility() == View.GONE) {
+                    mChatView.setVisibility(View.VISIBLE);
                     mEmptyConversationView.setVisibility(View.GONE);
                 }
 
-                mConversationAdapter.addTranslation(chatTranslation);
+                mChatAdapter.addTranslation(chatTranslation);
 
                 chatTranslation.save();
 
-                if (mConversationAdapter.getItemCount() > 0) {
-                    mConversationView.scrollToPosition(mConversationAdapter.getItemCount() - 1);
+                if (mChatAdapter.getItemCount() > 0) {
+                    mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
                 }
-
-                speakText(translatedText, lang);
-
             }
 
             @Override
@@ -198,37 +228,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         }
     }
 
-    private void speakText(String text, String language) {
-        if (mTextToSpeech == null || mTextToSpeech.isSpeaking() || mLocales == null) {
-            return;
-        }
-
-        String langCode = Utility.getTranslatedLanguage(language);
-
-        if (langCode.equals(getString(R.string.lang_code_bg))) {
-            langCode = getString(R.string.lang_code_ru);
-            text = Utility.editBulgarianTextForRussianReading(text);
-        }
-
-        Locale locale = Utility.getLocaleFromLangCode(langCode, mLocales);
-        if (locale == null) {
-            Log.d(LOG_TAG, "Language not supported by TextToSpeech.");
-            return;
-        }
-
-        AudioManager manager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-        manager.setStreamVolume(
-                AudioManager.STREAM_MUSIC,
-                manager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
-                0);
-
-        mTextToSpeech.setLanguage(locale);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
-        } else {
-            mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-        }
-    }
 
     @Override
     public void onReadyForSpeech(Bundle params) {
@@ -342,4 +341,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         return message;
     }
 
+    @Override
+    public void setTextToSpeechReadyForUsing(boolean isReady) {
+    }
 }

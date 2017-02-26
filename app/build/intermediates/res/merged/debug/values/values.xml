@@ -304,6 +304,7 @@
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="chat_secondary_text">#c3ffffff</color>
     <color name="colorAccent">#3F51B5</color>
+    <color name="colorLanguageSelectBar">#e8e9f4</color>
     <color name="colorPrimary">#f1f3ff</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="dark_gray">#424242</color>
@@ -761,6 +762,8 @@
     <dimen name="chat_bubble_elevation">2dp</dimen>
     <dimen name="chat_margin_horizontal">12dp</dimen>
     <dimen name="chat_margin_vertical">4dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_padding">6dp</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width">168dp</dimen>
     <dimen name="design_bottom_navigation_active_text_size">14sp</dimen>
@@ -835,7 +838,6 @@
     <dimen name="notification_top_pad_large_text">5dp</dimen>
     <dimen name="profile_height">75dp</dimen>
     <dimen name="profile_width">75dp</dimen>
-    <dimen name="translate_margin">8dp</dimen>
     <dimen name="translation_bar_elevation">8dp</dimen>
     <dimen name="translation_bar_z">8dp</dimen>
     <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
@@ -851,6 +853,7 @@
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="home" type="id"/>
+    <item name="item_click_support" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
@@ -872,6 +875,7 @@
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <integer name="unselected_icon_alpha">128</integer>
+    <integer name="wait_for_text_to_speech_to_init_millis">100</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -911,9 +915,11 @@
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="changed_langs_label">Switched to %1$s-%2$s</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="chatTranslation">Translation</string>
     <string name="chat_mode">Chat mode</string>
     <string name="communicate_menu_title">Communicate</string>
     <string name="conversation_title">Conversation</string>
+    <string name="edit_text_translation_hint">Tap to enter text</string>
     <string name="empty_conversation_text">Tap one of the buttons below to start a conversation.</string>
     <string name="error_audio">Failed to record your voice</string>
     <string name="error_network">Check your internet connection</string>
@@ -934,10 +940,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="notify_text_copied">Translation copied to clipboard.</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
-    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
-    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
-    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
-    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+    <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="search_menu_title">Search</string>
     <string name="settings">Settings</string>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -945,6 +951,8 @@
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_settings">Settings</string>
     <string name="translate_title">Translate</string>
+    <string name="translation_failed">Translation failed</string>
+    <string name="translation_history_label">History</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -2114,7 +2122,7 @@
     </style>
     <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Spinner"/>
     <style name="ProgressBarTheme">
-        <item name="colorAccent">#9E9E9E</item>
+        <item name="colorAccent">@android:color/white</item>
     </style>
     <style name="RightTranslatorButton">
         <item name="colorButtonNormal">@color/rightTranslatorColor</item>

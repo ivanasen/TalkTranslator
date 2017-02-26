@@ -27,14 +27,23 @@
             android:minWidth="64dp">
 
             <ImageButton
-                android:id="@+id/replay_translation_btn"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
+                android:id="@+id/speak_translation_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:layout_margin="8dp"
+                android:layout_margin="16dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_volume_up_white_24dp"
-                android:tint="@android:color/white" />
+                android:tint="@android:color/white"/>
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:theme="@style/ProgressBarTheme"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/text_container"
@@ -75,18 +84,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="-90dp"
-        android:layout_marginRight="-90dp"
-        android:layout_toLeftOf="@id/chat_bubble_container"
-        android:layout_toStartOf="@id/chat_bubble_container"
-        android:theme="@style/ProgressBarTheme"
-        android:visibility="gone"/>
-
-
 </RelativeLayout>
