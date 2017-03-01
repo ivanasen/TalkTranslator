@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.speech.SpeechRecognizer;
 import android.widget.Toast;
 
 import com.google.common.primitives.Chars;
@@ -114,7 +115,7 @@ public class Utility {
     }
 
     public static String editBulgarianTextForRussianReading(String text) {
-        List<Character> charsList = new ArrayList<>( Chars.asList(text.toCharArray()) );
+        List<Character> charsList = new ArrayList<>(Chars.asList(text.toCharArray()));
 
         for (int i = 0; i < charsList.size(); i++) {
             switch (charsList.get(i)) {
@@ -149,7 +150,7 @@ public class Utility {
     private static String listToString(List<Character> charsList) {
         StringBuilder builder = new StringBuilder();
 
-        for(Character aChar : charsList) {
+        for (Character aChar : charsList) {
             builder.append(aChar);
         }
 
@@ -172,6 +173,42 @@ public class Utility {
         Toast msg = Toast.makeText(context,
                 context.getString(R.string.notify_text_copied), Toast.LENGTH_SHORT);
         msg.show();
+    }
+
+    public static String getSpeechRecognitionErrorText(Context context, int errorCode) {
+        String message;
+        switch (errorCode) {
+            case SpeechRecognizer.ERROR_AUDIO:
+                message = context.getString(R.string.error_audio);
+                break;
+            case SpeechRecognizer.ERROR_CLIENT:
+                message = context.getString(R.string.error_something_wrong);
+                break;
+            case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
+                message = context.getString(R.string.error_permissions);
+                break;
+            case SpeechRecognizer.ERROR_NETWORK:
+                message = context.getString(R.string.error_network);
+                break;
+            case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
+                message = context.getString(R.string.error_server);
+                break;
+            case SpeechRecognizer.ERROR_NO_MATCH:
+                message = context.getString(R.string.error_no_match);
+                break;
+            case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
+                message = context.getString(R.string.error_recognition_service);
+                break;
+            case SpeechRecognizer.ERROR_SERVER:
+                message = context.getString(R.string.error_server);
+                break;
+            case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
+                message = context.getString(R.string.error_no_speech);
+                break;
+            default:
+                message = context.getString(R.string.error_no_match);
+        }
+        return message;
     }
 
 }

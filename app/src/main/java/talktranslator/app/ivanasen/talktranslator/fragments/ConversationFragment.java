@@ -14,12 +14,10 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,10 +61,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         mRootView = inflater.inflate(R.layout.fragment_conversation, container, false);
         mTranslator = new Translator(getContext());
         setupSpeechRecognizer();
-
         setupChat();
-
-
 
         mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer, mChatAdapter);
 
@@ -91,7 +86,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         mChatView.setLayoutManager(layoutManager);
 
         List<ChatTranslation> chatTranslations = ChatTranslation.listAll(ChatTranslation.class);
-        mChatAdapter = new ChatAdapter(getContext(), chatTranslations, (MainActivity) getActivity());
+        mChatAdapter = new ChatAdapter(getContext(), chatTranslations, (MainActivity) getActivity(), false);
         mChatView.setAdapter(mChatAdapter);
         mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
         mChatView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
@@ -100,6 +95,12 @@ public class ConversationFragment extends Fragment implements RecognitionListene
                 if (mChatAdapter.shouldScrollToBottom()) {
                     int position = mChatAdapter.getItemCount() - 1;
                     mChatView.scrollToPosition(position);
+                }
+
+                if (mChatAdapter.shouldScroll()) {
+                    mChatView.setNestedScrollingEnabled(true);
+                } else {
+                    mChatView.setNestedScrollingEnabled(false);
                 }
             }
 
@@ -112,27 +113,27 @@ public class ConversationFragment extends Fragment implements RecognitionListene
             mEmptyConversationView.setVisibility(View.VISIBLE);
         }
 
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
-                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
-                    @Override
-                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                        return false;
-                    }
-
-                    @Override
-                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                        mChatAdapter.removeTranslation(viewHolder.getAdapterPosition());
-
-                        if (mChatAdapter.getItemCount() == 0) {
-                            mChatView.setVisibility(View.GONE);
-                            mEmptyConversationView.setVisibility(View.VISIBLE);
-                        }
-                    }
-                };
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(mChatView);
+//        ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
+//                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+//
+//                    @Override
+//                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+//                        mChatAdapter.removeTranslation(viewHolder.getAdapterPosition());
+//
+//                        if (mChatAdapter.getItemCount() == 0) {
+//                            mChatView.setVisibility(View.GONE);
+//                            mEmptyConversationView.setVisibility(View.VISIBLE);
+//                        }
+//                    }
+//                };
+//
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+//        itemTouchHelper.attachToRecyclerView(mChatView);
     }
 
     public void checkMicrophonePermission() {
@@ -159,7 +160,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
                 }
         }
     }
-
 
     private void setupSpeechRecognizer() {
         if (mSpeechRecognizer != null) {
@@ -263,7 +263,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
             return;
         }
 
-        String errorMessage = getErrorText(error);
+        String errorMessage = Utility.getSpeechRecognitionErrorText(getContext(), error);
         Log.d(LOG_TAG, "FAILED " + errorMessage);
         Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
         mTranslationPanel.setAnimationOn(false);
@@ -305,41 +305,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         Log.d(LOG_TAG, "onEvent");
     }
 
-    public String getErrorText(int errorCode) {
-        String message;
-        switch (errorCode) {
-            case SpeechRecognizer.ERROR_AUDIO:
-                message = getString(R.string.error_audio);
-                break;
-            case SpeechRecognizer.ERROR_CLIENT:
-                message = getString(R.string.error_something_wrong);
-                break;
-            case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
-                message = getString(R.string.error_permissions);
-                break;
-            case SpeechRecognizer.ERROR_NETWORK:
-                message = getString(R.string.error_network);
-                break;
-            case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
-                message = getString(R.string.error_server);
-                break;
-            case SpeechRecognizer.ERROR_NO_MATCH:
-                message = getString(R.string.error_no_match);
-                break;
-            case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
-                message = getString(R.string.error_recognition_service);
-                break;
-            case SpeechRecognizer.ERROR_SERVER:
-                message = getString(R.string.error_server);
-                break;
-            case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
-                message = getString(R.string.error_no_speech);
-                break;
-            default:
-                message = getString(R.string.error_no_match);
-        }
-        return message;
-    }
 
     @Override
     public void setTextToSpeechReadyForUsing(boolean isReady) {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="unselected_icon_alpha">128</integer>
+    <integer name="unselected_icon_alpha">100</integer>
     <integer name="selected_icon_alpha">255</integer>
     <integer name="wait_for_text_to_speech_to_init_millis">100</integer>
 </resources>

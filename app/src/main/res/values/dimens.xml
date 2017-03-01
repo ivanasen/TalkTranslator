@@ -20,4 +20,6 @@
     <dimen name="list_item_chat_padding_end">256dp</dimen>
     <dimen name="default_margin">8dp</dimen>
     <dimen name="default_padding">6dp</dimen>
+    <dimen name="translator_panel_margin">4dp</dimen>
+    <dimen name="record_btn_margin_horizontal">50dp</dimen>
 </resources>

@@ -37,6 +37,17 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="talktranslator.app.ivanasen" />
 
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/settings_title"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.InterviewsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package talktranslator.app.ivanasen.talktranslator.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         mAppBar = (AppBarLayout) findViewById(R.id.appbar);
 
         mPagerAdapter = new TranslatorPagerAdapter(getSupportFragmentManager());
@@ -133,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 String title = (String) mPagerAdapter.getPageTitle(tab.getPosition());
                 setTitle(title);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (title.equals(getString(R.string.translate_title))) {
+                    if (title.equals(getString(R.string.translate_title)) ||
+                            title.equals(getString(R.string.interview_title))) {
                         mAppBar.setElevation(0);
 
                     } else {
@@ -179,6 +180,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
             return true;
         }
 

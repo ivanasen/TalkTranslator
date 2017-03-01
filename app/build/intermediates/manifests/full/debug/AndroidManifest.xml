@@ -42,6 +42,17 @@
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="talktranslator.app.ivanasen" />
+
+        <activity
+            android:name="talktranslator.app.ivanasen.talktranslator.activities.SettingsActivity"
+            android:label="@string/settings_title"
+            android:parentActivityName="talktranslator.app.ivanasen.talktranslator.activities.MainActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

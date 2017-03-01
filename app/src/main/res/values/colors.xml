@@ -4,15 +4,15 @@
     <color name="colorLanguageSelectBar">#e8e9f4</color>
     <color name="statusBarColor">@color/colorPrimary</color>
     <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#3F51B5</color>
-    <color name="rightTranslatorColor">#448AFF</color>
-    <color name="rightChatBubbleColor">#448AFF</color>
-    <color name="leftTranslatorColor">#FF5252</color>
-    <color name="leftChatBubbleColor">#EF5350</color>
-    <color name="leftTranslatorColorBackground">#FFCDD2</color>
-    <color name="rightTranslatorColorBackground">#BBDEFB</color>
+    <color name="colorAccent">@color/dark_gray</color>
+    <color name="rightTranslatorColor">#FF5252</color>
+    <color name="rightChatBubbleColor">#EF5350</color>
+    <color name="leftTranslatorColor">#448AFF</color>
+    <color name="leftChatBubbleColor">#448AFF</color>
+    <color name="leftTranslatorColorBackground">#BBDEFB</color>
+    <color name="rightTranslatorColorBackground">#FFCDD2</color>
     <color name="tabColor">#f1f3ff</color>
     <color name="chat_secondary_text">#c3ffffff</color>
-    <color name="windowBackground">#f1f3ff</color>
+    <color name="windowBackground">#f9faff</color>
     <color name="dark_gray">#424242</color>
 </resources>

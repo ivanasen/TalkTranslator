@@ -1,9 +1,6 @@
 package talktranslator.app.ivanasen.talktranslator.adapters;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +32,13 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_RIGHT_TRANSLATION = 1;
     private static final int VIEW_TYPE_CHANGED_LANGUAGES = 2;
     private final MainActivity mActivity;
-
     private Context mContext;
+
     private List<Object> mListItems;
     private boolean mJustAddedItem;
     private boolean mShouldScrollToBottom;
+    private boolean mScrollingEnabled;
+    private boolean mIsInterviewFragment;
 
     public void removeTranslation(int index) {
         if (getItemViewType(index) != VIEW_TYPE_CHANGED_LANGUAGES) {
@@ -48,6 +46,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mListItems.remove(index);
             notifyItemRemoved(index);
         }
+    }
+
+    public boolean shouldScroll() {
+        return mScrollingEnabled;
     }
 
     private class TranslationViewHolder extends RecyclerView.ViewHolder {
@@ -92,9 +94,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     }
 
-    public ChatAdapter(Context context, List<ChatTranslation> chatTranslations, MainActivity activity) { //Language changes aren't saved in db
+    public ChatAdapter(Context context, List<ChatTranslation> chatTranslations,
+                       MainActivity activity, boolean isInterviewFragment) {
         mContext = context;
         mActivity = activity;
+        mIsInterviewFragment = isInterviewFragment;
 
         if (chatTranslations == null) {
             chatTranslations = new ArrayList<>();
@@ -112,8 +116,13 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         .inflate(R.layout.list_item_chat_left, parent, false);
                 break;
             case VIEW_TYPE_RIGHT_TRANSLATION:
-                itemView = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.list_item_chat_right, parent, false);
+                if (mIsInterviewFragment) {
+                    itemView = LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.list_item_chat_right_white_bck, parent, false);
+                } else {
+                    itemView = LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.list_item_chat_right, parent, false);
+                }
                 break;
             case VIEW_TYPE_CHANGED_LANGUAGES:
                 itemView = LayoutInflater.from(parent.getContext())
@@ -223,12 +232,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             public void onDone(String utteranceId) {
                 mActivity.runOnUiThread(r);
                 mShouldScrollToBottom = false;
+                mScrollingEnabled = true;
             }
 
             @Override
             public void onError(String utteranceId) {
                 mActivity.runOnUiThread(r);
                 mShouldScrollToBottom = false;
+                mScrollingEnabled = true;
             }
         };
 
@@ -256,6 +267,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         holder.replayTranslationBtn.setVisibility(View.GONE);
                     }
                 });
+                mScrollingEnabled = false;
                 mActivity.speakText(finalTranslation, chatTranslation.getLanguages(), progressListener);
             }
         });

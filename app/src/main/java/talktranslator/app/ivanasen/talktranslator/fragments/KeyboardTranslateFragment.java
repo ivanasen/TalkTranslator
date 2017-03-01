@@ -1,7 +1,6 @@
 package talktranslator.app.ivanasen.talktranslator.fragments;
 
 import android.content.Context;
-import android.inputmethodservice.Keyboard;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -348,8 +347,8 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
         mTranslateToLanguageSpinner = (Spinner) mRootView.findViewById(R.id.translate_to_language_spinner);
         List<String> langs = Arrays.asList(getResources().getStringArray(R.array.languages));
 
-        ArrayAdapter<String> leftAdapter = new ArrayAdapter<>(getContext(), R.layout.list_item_language_red, langs);
-        ArrayAdapter<String> rightAdapter = new ArrayAdapter<>(getContext(), R.layout.list_item_language_blue, langs);
+        ArrayAdapter<String> leftAdapter = new ArrayAdapter<>(getContext(), R.layout.list_item_language_light, langs);
+        ArrayAdapter<String> rightAdapter = new ArrayAdapter<>(getContext(), R.layout.list_item_language_light, langs);
         mTranslateFromLanguageSpinner.setAdapter(leftAdapter);
         mTranslateToLanguageSpinner.setAdapter(rightAdapter);
 

@@ -3,12 +3,12 @@
     <item>
         <shape android:shape="rectangle">
             <stroke
-                android:width="0.5dp"
-                android:color="#cfd8dc" />
+                android:width="1dp"
+                android:color="@color/colorLanguageSelectBar" />
         </shape>
     </item>
 
-    <item android:top="1dp" android:drawable="@color/colorLanguageSelectBar">
+    <item android:top="1dp" android:drawable="@color/colorPrimary">
         <shape android:shape="rectangle">
             <stroke
                 android:width="1dp"
