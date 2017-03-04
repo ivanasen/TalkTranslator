@@ -6,7 +6,7 @@
     <string name="base_url">https://translate.yandex.net/</string>
     <string name="chat_mode">Chat mode</string>
     <string name="interview_mode">Interview mode</string>
-    <string name="interviews">Interviews</string>
+    <string name="interviews_activity_title">Interviews</string>
     <string name="settings">Settings</string>
 
     <string name="conversation_title">Conversation</string>
@@ -47,4 +47,5 @@
     <string name="interviews_title">Interviews</string>
     <string name="interview_record_hint">Tap the record button to start an interview</string>
     <string name="interview_length_start">00:00</string>
+    <string name="interview_default_name">Interview</string>
 </resources>

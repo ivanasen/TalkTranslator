@@ -15,49 +15,49 @@
         android:padding="@dimen/list_item_padding_horizontal"
         app:elevation="@dimen/app_elevation_default">
 
-        <TextView
-            android:id="@+id/record_length_textview"
+        <Chronometer
+            android:id="@+id/interview_length_chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00"/>
+            android:gravity="center"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/start_recording_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
             android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
             android:layout_marginRight="@dimen/record_btn_margin_horizontal"
             android:layout_marginStart="@dimen/record_btn_margin_horizontal"
-            android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
-            app:fabSize="normal"
             android:src="@drawable/ic_fiber_manual_record_black_24dp"
-            app:backgroundTint="@color/rightTranslatorColor"
-            app:elevation="0dp" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/stop_recording_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
-            android:layout_marginRight="@dimen/record_btn_margin_horizontal"
-            android:layout_marginStart="@dimen/record_btn_margin_horizontal"
-            android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
-            app:fabSize="normal"
-            android:visibility="gone"
-            android:src="@drawable/ic_stop_black_24dp"
-            app:backgroundTint="@color/leftTranslatorColor"
-            app:elevation="0dp" />
+            app:backgroundTint="@color/materialRed"
+            app:elevation="0dp"
+            app:fabSize="normal" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/pause_recording_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
+            android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
+            android:layout_marginRight="@dimen/record_btn_margin_horizontal"
+            android:layout_marginStart="@dimen/record_btn_margin_horizontal"
+            android:src="@drawable/ic_pause_black_24dp"
+            android:visibility="gone"
+            app:backgroundTint="@color/materialBlue"
+            app:elevation="0dp"
+            app:fabSize="normal" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/stop_recording_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:fabSize="mini"
             android:contentDescription="@string/pause_recording_btn_content_desc"
-            android:src="@drawable/ic_pause_black_24dp"
-            app:backgroundTint="@color/leftTranslatorColor"
-            app:elevation="0dp" />
+            android:src="@drawable/ic_stop_black_24dp"
+            app:backgroundTint="@color/materialBlue"
+            app:elevation="0dp"
+            app:fabSize="mini" />
 
     </LinearLayout>
 

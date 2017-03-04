@@ -54,7 +54,7 @@
                     android:layout_gravity="end|top"
                     android:visibility="gone"
                     android:layout="@layout/notification_template_part_time" />
-                <ViewStub android:id="@+id/chronometer"
+                <ViewStub android:id="@+id/interview_length_chronometer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|top"

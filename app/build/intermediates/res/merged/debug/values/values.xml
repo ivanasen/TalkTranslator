@@ -304,7 +304,6 @@
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="chat_secondary_text">#c3ffffff</color>
     <color name="colorAccent">@color/dark_gray</color>
-    <color name="colorLanguageSelectBar">#e8e9f4</color>
     <color name="colorPrimary">#f1f3ff</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="dark_gray">#424242</color>
@@ -328,8 +327,10 @@
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="leftChatBubbleColor">#448AFF</color>
-    <color name="leftTranslatorColor">#448AFF</color>
     <color name="leftTranslatorColorBackground">#BBDEFB</color>
+    <color name="lightGray">#e8e9f4</color>
+    <color name="materialBlue">#448AFF</color>
+    <color name="materialRed">#FF5252</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
@@ -354,7 +355,6 @@
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
     <color name="rightChatBubbleColor">#EF5350</color>
-    <color name="rightTranslatorColor">#FF5252</color>
     <color name="rightTranslatorColorBackground">#FFCDD2</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
@@ -878,7 +878,7 @@
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <integer name="unselected_icon_alpha">100</integer>
-    <integer name="wait_for_text_to_speech_to_init_millis">100</integer>
+    <integer name="wait_for_text_to_speech_to_init_millis">50</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -937,13 +937,14 @@
     <string name="error_server">Sorry, server error</string>
     <string name="error_sometghing_wrong">Somethin went wrong</string>
     <string name="error_something_wrong">Something went wrong</string>
+    <string name="interview_default_name">Interview</string>
     <string name="interview_length_start">00:00</string>
     <string name="interview_mode">Interview mode</string>
     <string name="interview_record_hint">Tap the record button to start an interview</string>
     <string name="interview_title">Interview</string>
     <string name="interviewee_title">Interviewee</string>
     <string name="interviewer_title">Interviewer</string>
-    <string name="interviews">Interviews</string>
+    <string name="interviews_activity_title">Interviews</string>
     <string name="interviews_title">Interviews</string>
     <string name="lang_code_bg">bg</string>
     <string name="lang_code_ru">ru</string>
@@ -976,7 +977,7 @@
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorLanguageSelectBar</item>
+        <item name="colorPrimaryDark">@color/lightGray</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:colorBackground">@color/windowBackground</item>
@@ -2030,7 +2031,7 @@
         <item name="colorButtonNormal">@android:color/white</item>
     </style>
     <style name="LeftTranslatorButton">
-        <item name="colorButtonNormal">@color/leftTranslatorColor</item>
+        <item name="colorButtonNormal">@color/materialBlue</item>
     </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
@@ -2142,7 +2143,7 @@
         <item name="colorAccent">@android:color/white</item>
     </style>
     <style name="RightTranslatorButton">
-        <item name="colorButtonNormal">@color/rightTranslatorColor</item>
+        <item name="colorButtonNormal">@color/materialRed</item>
     </style>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="Base.DialogWindowTitle.AppCompat">
     </style>

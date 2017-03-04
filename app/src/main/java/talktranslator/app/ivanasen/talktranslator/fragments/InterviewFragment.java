@@ -1,52 +1,59 @@
 package talktranslator.app.ivanasen.talktranslator.fragments;
 
-import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.speech.tts.TextToSpeech;
-import android.support.annotation.NonNull;
+import android.speech.SpeechRecognizer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Chronometer;
 
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
 import talktranslator.app.ivanasen.talktranslator.adapters.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.R;
+import talktranslator.app.ivanasen.talktranslator.models.ChatTranslation;
 import talktranslator.app.ivanasen.talktranslator.models.Interview;
+import talktranslator.app.ivanasen.talktranslator.translation.TranslationResult;
 import talktranslator.app.ivanasen.talktranslator.translation.Translator;
-import talktranslator.app.ivanasen.talktranslator.utils.VoiceRecorder;
+import talktranslator.app.ivanasen.talktranslator.utils.InterviewMaker;
+import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 import talktranslator.app.ivanasen.talktranslator.views.TranslationPanel;
 
 public class InterviewFragment extends ConversationFragment {
     private static final String LOG_TAG = InterviewFragment.class.getSimpleName();
 
-    private VoiceRecorder mRecorder;
     private FloatingActionButton mRecordBtn;
     private FloatingActionButton mPauseBtn;
     private FloatingActionButton mStopBtn;
-    private TextView mInterviewLengthView;
+    private Chronometer mInterviewChronometer;
 
-    private long startHTime = 0L;
-    private Handler customHandler = new Handler();
-    long timeInMilliseconds = 0L;
-    long timeSwapBuff = 0L;
-    long updatedTime = 0L;
+    private InterviewMaker mInterviewMaker;
+    private boolean mIsInterviewing;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_interview, container, false);
         mTranslator = new Translator(getContext());
+        mInterviewMaker = new InterviewMaker(getActivity());
+
         setupSpeechRecognizer();
         setupChat();
 
-        mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer, mChatAdapter);
+        mTranslationPanel = new TranslationPanel(
+                getContext(), mRootView, mSpeechRecognizer, mChatAdapter, true);
 
         checkMicrophonePermission();
         if (mPermissionGranted) {
@@ -66,59 +73,124 @@ public class InterviewFragment extends ConversationFragment {
         return mRootView;
     }
 
-    private void setupMediaControls() {
-        mRecorder = new VoiceRecorder(getContext());
+    @Override
+    protected void translate(final String text) {
+        String leftLanguageCode = Utility.getCodeFromLanguage(getContext(),
+                Utility.getTranslatorLanguage(getContext(), Utility.LEFT_TRANSLATOR_LANGUAGE),
+                false);
+        String rightLanguageCode = Utility.getCodeFromLanguage(getContext(),
+                Utility.getTranslatorLanguage(getContext(), Utility.RIGHT_TRANSLATOR_LANGUAGE),
+                false);
 
+        Callback<TranslationResult> callback = new Callback<TranslationResult>() {
+            @Override
+            public void onResponse(Call<TranslationResult> call, Response<TranslationResult> response) {
+                final TranslationResult translation = response.body();
+                final String lang = translation.getLang();
+                String translatedText = translation.getText()[0];
+
+                ChatTranslation chatTranslation = mTranslationPanel.hasJustUsedLeftTranslator() ?
+                        new ChatTranslation(translatedText, text, true, lang) :
+                        new ChatTranslation(translatedText, text, false, lang);
+
+                if (mChatView.getVisibility() == View.GONE) {
+                    mChatView.setVisibility(View.VISIBLE);
+                    mEmptyConversationView.setVisibility(View.GONE);
+                }
+
+                mChatAdapter.addTranslation(chatTranslation);
+
+                if (!mTranslationPanel.hasJustUsedLeftTranslator()) {
+                    mInterviewMaker.addIntervieweeText(chatTranslation.getTranslatedText());
+                    Log.d(LOG_TAG, mInterviewMaker.getCurrentInterviewText());
+                }
+
+                if (mChatAdapter.getItemCount() > 0) {
+                    mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TranslationResult> call, Throwable t) {
+                Log.e(LOG_TAG, "Something went wrong.");
+            }
+        };
+
+        if (mTranslationPanel.hasJustUsedLeftTranslator()) {
+            mTranslator.translate(text, leftLanguageCode + "-" + rightLanguageCode, callback);
+        } else {
+            mTranslator.translate(text, rightLanguageCode + "-" + leftLanguageCode, callback);
+        }
+    }
+
+    private void setupMediaControls() {
         mRecordBtn = (FloatingActionButton) mRootView.findViewById(R.id.start_recording_btn);
         mPauseBtn = (FloatingActionButton) mRootView.findViewById(R.id.pause_recording_btn);
         mStopBtn = (FloatingActionButton) mRootView.findViewById(R.id.stop_recording_btn);
-        mInterviewLengthView = (TextView) mRootView.findViewById(R.id.record_length_textview);
-
-        final Runnable updateTimerThread = new Runnable() {
-            @Override
-            public void run() {
-                timeInMilliseconds = SystemClock.uptimeMillis() - startHTime;
-
-                updatedTime = timeSwapBuff + timeInMilliseconds;
-
-                int secs = (int) (updatedTime / 1000);
-                int mins = secs / 60;
-                secs = secs % 60;
-                if (mInterviewLengthView != null)
-                    mInterviewLengthView.setText("" + String.format("%02d", mins) + ":"
-                            + String.format("%02d", secs));
-                customHandler.postDelayed(this, 0);
-            }
-        };
 
         mRecordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mRecordBtn.setVisibility(View.GONE);
-                mStopBtn.setVisibility(View.VISIBLE);
-                mRecorder.startRecording(null);
-                startHTime = SystemClock.uptimeMillis();
-                customHandler.postDelayed(updateTimerThread, 0);
+                mPauseBtn.setVisibility(View.VISIBLE);
+                mIsInterviewing = true;
             }
         });
-
 
         mStopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mStopBtn.setVisibility(View.GONE);
+                mPauseBtn.setBackgroundColor(getResources().getColor(R.color.materialRed));
+                mPauseBtn.setVisibility(View.GONE);
                 mRecordBtn.setVisibility(View.VISIBLE);
-                mRecorder.stopRecording();
-                Interview interview =
-                        new Interview(mRecorder.getFileName(), (String) mInterviewLengthView.getText());
-                interview.save();
-                Toast.makeText(InterviewFragment.this.getContext(), "Interview saved", Toast.LENGTH_LONG).show();
-
-                timeSwapBuff = 0;
-                mInterviewLengthView.setText(R.string.interview_length_start);
-                customHandler.removeCallbacks(updateTimerThread);
+                mIsInterviewing = false;
+                long elapsedSeconds =
+                        (SystemClock.elapsedRealtime() - mInterviewChronometer.getBase()) / 1000;
+                mInterviewMaker.saveInterview(elapsedSeconds);
+                onInterviewChronometerStart(false, true);
             }
         });
+
+        mPauseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPauseBtn.setVisibility(View.GONE);
+                mRecordBtn.setVisibility(View.VISIBLE);
+                mIsInterviewing = false;
+            }
+        });
+    }
+
+    private void onInterviewChronometerStart(boolean shouldStart, boolean shouldReset) {
+        if (mInterviewChronometer == null) {
+            mInterviewChronometer = (Chronometer)
+                    mRootView.findViewById(R.id.interview_length_chronometer);
+            shouldReset = true;
+        }
+
+        if (shouldStart) {
+            if (shouldReset) {
+                mInterviewChronometer.setBase(SystemClock.elapsedRealtime());
+            }
+
+            mInterviewChronometer.start();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mInterviewChronometer.setTextColor(getResources()
+                        .getColor(R.color.materialBlue, null));
+            } else {
+                mInterviewChronometer.setTextColor(getResources()
+                        .getColor(R.color.materialBlue));
+            }
+        } else {
+            if (mInterviewChronometer != null) {
+                mInterviewChronometer.stop();
+                mInterviewChronometer.setTextColor(Color.DKGRAY);
+            }
+
+            if (shouldReset) {
+                mInterviewChronometer.setBase(SystemClock.elapsedRealtime());
+            }
+        }
     }
 
     @Override
@@ -155,5 +227,40 @@ public class InterviewFragment extends ConversationFragment {
         mChatView.setVisibility(View.GONE);
         mEmptyConversationView.setVisibility(View.VISIBLE);
 
+    }
+
+    @Override
+    public void onResults(Bundle results) {
+        super.onResults(results);
+
+        ArrayList<String> matches = results
+                .getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+
+        String text = null;
+        if (matches != null) {
+            text = matches.get(0);
+            if (mTranslationPanel.hasJustUsedLeftTranslator()) {
+                mInterviewMaker.addInterviewerText(text);
+                Log.d(LOG_TAG, mInterviewMaker.getCurrentInterviewText());
+            }
+        }
+    }
+
+    @Override
+    public void onBeginningOfSpeech() {
+        super.onBeginningOfSpeech();
+
+        if (mIsInterviewing) {
+            onInterviewChronometerStart(true, false);
+        }
+    }
+
+    @Override
+    public void onEndOfSpeech() {
+        super.onEndOfSpeech();
+
+        if (mIsInterviewing) {
+            onInterviewChronometerStart(false, false);
+        }
     }
 }

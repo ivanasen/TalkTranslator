@@ -66,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/default_margin"
-                    android:textColor="@color/leftTranslatorColor" />
+                    android:textColor="@color/materialBlue" />
 
                 <ImageButton
                     android:id="@+id/clear_btn"
@@ -105,7 +105,7 @@
                     android:layout_margin="16dp"
                     android:background="?selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_volume_up_white_24dp"
-                    android:tint="@color/leftTranslatorColor" />
+                    android:tint="@color/materialBlue" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 

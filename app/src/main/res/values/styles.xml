@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorLanguageSelectBar</item>
+        <item name="colorPrimaryDark">@color/lightGray</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:colorBackground">@color/windowBackground</item>
@@ -32,11 +32,11 @@
     </style>
 
     <style name="LeftTranslatorButton">
-        <item name="colorButtonNormal">@color/leftTranslatorColor</item>
+        <item name="colorButtonNormal">@color/materialBlue</item>
     </style>
 
     <style name="RightTranslatorButton">
-        <item name="colorButtonNormal">@color/rightTranslatorColor</item>
+        <item name="colorButtonNormal">@color/materialRed</item>
     </style>
 
     <style name="IntervieweeTranslatorButton">

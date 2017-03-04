@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -64,7 +63,8 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         setupSpeechRecognizer();
         setupChat();
 
-        mTranslationPanel = new TranslationPanel(getContext(), mRootView, mSpeechRecognizer, mChatAdapter);
+        mTranslationPanel = new TranslationPanel(
+                getContext(), mRootView, mSpeechRecognizer, mChatAdapter, false);
 
         checkMicrophonePermission();
 
@@ -185,7 +185,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         }
     }
 
-    private void translate(final String text) {
+    protected void translate(final String text) {
         String leftLanguageCode = Utility.getCodeFromLanguage(getContext(),
                 Utility.getTranslatorLanguage(getContext(), Utility.LEFT_TRANSLATOR_LANGUAGE),
                 false);
@@ -210,6 +210,10 @@ public class ConversationFragment extends Fragment implements RecognitionListene
                 }
 
                 mChatAdapter.addTranslation(chatTranslation);
+
+                if (!mTranslationPanel.hasJustUsedLeftTranslator()) {
+
+                }
 
                 if (mChatAdapter.getItemCount() > 0) {
                     mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
@@ -281,11 +285,11 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         String text = null;
         if (matches != null) {
             text = matches.get(0);
+            translate(text);
         }
         Log.d(LOG_TAG, text);
 
         refreshTranslationAnimation(); //Because there is a bug in SpeechRecognizer
-        translate(text);
     }
 
     private void refreshTranslationAnimation() {

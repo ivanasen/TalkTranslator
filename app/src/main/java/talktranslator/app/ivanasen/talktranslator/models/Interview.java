@@ -7,27 +7,37 @@ import com.orm.SugarRecord;
  */
 
 public class Interview extends SugarRecord {
-    private String internalPath;
-    private String length;
+    private String title;
+    private String text;
+    private long length;
 
-    public Interview(String internalPath, String length) {
-        this.internalPath = internalPath;
+    public Interview(String title, String text, long length) {
+        this.title = title;
+        this.text = text;
         this.length = length;
     }
 
-    public String getInternalPath() {
-        return internalPath;
+    public String getTitle() {
+        return title;
     }
 
-    public void setInternalPath(String internalPath) {
-        this.internalPath = internalPath;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLength() {
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public long getLength() {
         return length;
     }
 
-    public void setLength(String length) {
+    public void setLength(long length) {
         this.length = length;
     }
 }

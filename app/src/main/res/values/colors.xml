@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#f1f3ff</color>
-    <color name="colorLanguageSelectBar">#e8e9f4</color>
+    <color name="lightGray">#e8e9f4</color>
     <color name="statusBarColor">@color/colorPrimary</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">@color/dark_gray</color>
-    <color name="rightTranslatorColor">#FF5252</color>
+    <color name="materialRed">#FF5252</color>
     <color name="rightChatBubbleColor">#EF5350</color>
-    <color name="leftTranslatorColor">#448AFF</color>
+    <color name="materialBlue">#448AFF</color>
     <color name="leftChatBubbleColor">#448AFF</color>
     <color name="leftTranslatorColorBackground">#BBDEFB</color>
     <color name="rightTranslatorColorBackground">#FFCDD2</color>

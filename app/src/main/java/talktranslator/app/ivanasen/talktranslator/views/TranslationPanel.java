@@ -27,6 +27,7 @@ import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 public class TranslationPanel {
 
+    private final boolean mIsFromInterviewFragment;
     private Context mContext;
     private View mRootView;
     private PulsatingButton mLeftTranslator;
@@ -41,11 +42,13 @@ public class TranslationPanel {
     private ToggleButton mRightLanguageSelectBtn;
     private boolean mIsSpeechRecognitionOn;
 
-    public TranslationPanel(Context context, View rootView, SpeechRecognizer speechRecognizer, ChatAdapter adapter) {
+    public TranslationPanel(Context context, View rootView, SpeechRecognizer speechRecognizer,
+                            ChatAdapter adapter, boolean isFromInterviewFragment) {
         mContext = context;
         mRootView = rootView;
         mSpeechRecognizer = speechRecognizer;
         mChatAdapter = adapter;
+        mIsFromInterviewFragment = isFromInterviewFragment;
         setupTranslators();
     }
 
@@ -67,13 +70,23 @@ public class TranslationPanel {
         mRightTranslator = (PulsatingButton) mRootView.findViewById(R.id.right_translator);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mLeftTranslator.setPulseColor(mContext.getColor(R.color.leftTranslatorColor));
-            mRightTranslator.setPulseColor(mContext.getColor(R.color.rightTranslatorColor));
+            mLeftTranslator.setPulseColor(mContext.getColor(R.color.materialBlue));
+            if (mIsFromInterviewFragment) {
+                mRightTranslator.setPulseColor(mContext.getColor(R.color.lightGray));
+            } else {
+                mRightTranslator.setPulseColor(mContext.getColor(R.color.materialRed));
+            }
         } else {
             mLeftTranslator.setPulseColor(
-                    mContext.getResources().getColor(R.color.leftTranslatorColor));
-            mRightTranslator.setPulseColor(
-                    mContext.getResources().getColor(R.color.rightTranslatorColor));
+                    mContext.getResources().getColor(R.color.materialBlue));
+            if (mIsFromInterviewFragment) {
+                mRightTranslator.setPulseColor(
+                        mContext.getResources().getColor(R.color.lightGray)
+                );
+            } else {
+                mRightTranslator.setPulseColor(
+                        mContext.getResources().getColor(R.color.materialRed));
+            }
         }
 
         final String leftTranslatorLang = Utility.getTranslatorLanguage

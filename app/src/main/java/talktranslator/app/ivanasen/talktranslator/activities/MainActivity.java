@@ -174,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id) {
             case R.id.action_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
@@ -183,9 +182,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_clear_history:
                 SettingsFragment.askForHistoryDelete(this);
                 return true;
+            case R.id.action_view_interviews:
+                Intent interviewsIntent = new Intent(this, InterviewsActivity.class);
+                startActivity(interviewsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
 

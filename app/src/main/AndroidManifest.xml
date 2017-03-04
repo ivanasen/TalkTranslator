@@ -47,7 +47,12 @@
                 <category android:name="android.intent.category.PREFERENCE" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.InterviewsActivity"></activity>
+
+        <activity
+            android:name=".activities.InterviewsActivity"
+            android:label="@string/interviews_activity_title"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
