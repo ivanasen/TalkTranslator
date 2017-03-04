@@ -2,6 +2,7 @@ package talktranslator.app.ivanasen.talktranslator.adapters;
 
 import android.content.Context;
 import android.speech.tts.UtteranceProgressListener;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,7 +95,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     }
 
-    public ChatAdapter(Context context, List<ChatTranslation> chatTranslations,
+    public ChatAdapter(Context context, @Nullable List<ChatTranslation> chatTranslations,
                        MainActivity activity, boolean isInterviewFragment) {
         mContext = context;
         mActivity = activity;
@@ -282,6 +283,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         mJustAddedItem = true;
         mListItems.add(chatTranslation);
         notifyDataSetChanged();
+        chatTranslation.save();
     }
 
     public void changeLanguages(String language1, String language2) {

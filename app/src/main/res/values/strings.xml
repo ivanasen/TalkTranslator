@@ -16,7 +16,7 @@
     <string name="notify_text_copied">Translation copied to clipboard.</string>
     <string name="lang_code_bg">bg</string>
     <string name="lang_code_ru">ru</string>
-    <string name="empty_conversation_text">Tap one of the buttons below to start a conversation.</string>
+    <string name="empty_conversation_text">Tap one of the buttons below to start a conversation</string>
     <string name="changed_langs_label">Switched to %1$s-%2$s</string>
     <string name="error_no_match">Didn\'t understand, please try again.</string>
     <string name="error_no_speech">No speech was recognized</string>
@@ -45,4 +45,6 @@
     <string name="start_recording_btn_content_desc">Start recording</string>
     <string name="pause_recording_btn_content_desc">Pause recording</string>
     <string name="interviews_title">Interviews</string>
+    <string name="interview_record_hint">Tap the record button to start an interview</string>
+    <string name="interview_length_start">00:00</string>
 </resources>

@@ -17,7 +17,7 @@ import android.widget.Button;
 /**
  * Created by ivan on 2/14/2017.
  */
-public class PulsatingButton extends Button {
+public class PulsatingButton extends android.support.v7.widget.AppCompatButton {
 
     private static final int VOICE_INPUT_COLOR_ALPHA = 100;
     private static final float CORNER_RADIUS = 10;
@@ -47,11 +47,6 @@ public class PulsatingButton extends Button {
     public PulsatingButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public PulsatingButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     private void init() {
@@ -99,11 +94,11 @@ public class PulsatingButton extends Button {
             public void onAnimationUpdate(ValueAnimator animation) {
                 mPulseRadius = (float) animation.getAnimatedValue();
 
-                mRectF.set(getPaddingLeft() / 3 - mPulseRadius,
-                        getPaddingTop() / 3 - mPulseRadius,
-                        getMeasuredWidth() - getPaddingRight() / 3 + mPulseRadius,
-                        getMeasuredHeight() - getPaddingBottom() / 3 + mPulseRadius);
-                invalidate();
+                mRectF.set(PulsatingButton.this.getPaddingLeft() / 3 - mPulseRadius,
+                        PulsatingButton.this.getPaddingTop() / 3 - mPulseRadius,
+                        PulsatingButton.this.getMeasuredWidth() - PulsatingButton.this.getPaddingRight() / 3 + mPulseRadius,
+                        PulsatingButton.this.getMeasuredHeight() - PulsatingButton.this.getPaddingBottom() / 3 + mPulseRadius);
+                PulsatingButton.this.invalidate();
             }
         });
         mValueAnimator.start();

@@ -841,6 +841,7 @@
     <dimen name="record_btn_margin_horizontal">50dp</dimen>
     <dimen name="translation_bar_elevation">8dp</dimen>
     <dimen name="translation_bar_z">8dp</dimen>
+    <dimen name="translation_text_size_hint">20sp</dimen>
     <dimen name="translator_panel_margin">4dp</dimen>
     <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
     <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
@@ -924,7 +925,7 @@
     <string name="clear_history_title">Clear History</string>
     <string name="conversation_title">Conversation</string>
     <string name="edit_text_translation_hint">Tap to enter text</string>
-    <string name="empty_conversation_text">Tap one of the buttons below to start a conversation.</string>
+    <string name="empty_conversation_text">Tap one of the buttons below to start a conversation</string>
     <string name="enable_bg_text_to_speech_summ">May not pronounce every word properly</string>
     <string name="enable_bg_text_to_speech_title">Text-to-speech in Bulgarian</string>
     <string name="error_audio">Failed to record your voice</string>
@@ -936,7 +937,9 @@
     <string name="error_server">Sorry, server error</string>
     <string name="error_sometghing_wrong">Somethin went wrong</string>
     <string name="error_something_wrong">Something went wrong</string>
+    <string name="interview_length_start">00:00</string>
     <string name="interview_mode">Interview mode</string>
+    <string name="interview_record_hint">Tap the record button to start an interview</string>
     <string name="interview_title">Interview</string>
     <string name="interviewee_title">Interviewee</string>
     <string name="interviewer_title">Interviewer</string>

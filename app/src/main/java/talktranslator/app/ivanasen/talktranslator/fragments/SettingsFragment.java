@@ -1,5 +1,7 @@
 package talktranslator.app.ivanasen.talktranslator.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -25,13 +27,13 @@ public class SettingsFragment extends PreferenceFragment {
         clearHistoryPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                askForHistoryDelete();
+                askForHistoryDelete(SettingsFragment.this.getActivity());
                 return true;
             }
         });
     }
 
-    private void askForHistoryDelete() {
+    public static void askForHistoryDelete(Context context) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -47,7 +49,7 @@ public class SettingsFragment extends PreferenceFragment {
             }
         };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.alert_clear_history_title)
                 .setMessage(R.string.alert_clear_history_msg)
                 .setPositiveButton("Yes", dialogClickListener)

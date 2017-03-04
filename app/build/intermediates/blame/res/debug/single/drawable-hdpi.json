@@ -32,16 +32,12 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-hdpi\\ic_file_music_black_36dp.png"
     },
     {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_content_copy_white_24dp.png",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-hdpi\\ic_content_copy_white_24dp.png"
-    },
-    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_fiber_manual_record_black_24dp.png",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-hdpi\\ic_fiber_manual_record_black_24dp.png"
     },
     {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_pause_circle_filled_black_24dp.png",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-hdpi\\ic_pause_circle_filled_black_24dp.png"
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_content_copy_white_24dp.png",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-hdpi\\ic_content_copy_white_24dp.png"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_microphone_variant_black_36dp.png",

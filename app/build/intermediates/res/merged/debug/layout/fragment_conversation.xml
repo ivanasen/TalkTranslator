@@ -20,7 +20,7 @@
         android:text="@string/error_network"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/primary_text_dark"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/fake_view"
@@ -52,15 +52,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/translator_panel_margin"
+        android:layout_marginStart="@dimen/translator_panel_margin"
+        android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toLeftOf="@id/fake_view"
         android:layout_toStartOf="@id/fake_view"
         android:background="@color/colorPrimary"
         android:clipChildren="false"
         android:elevation="@dimen/app_elevation_default"
-        android:orientation="vertical"
-        android:layout_marginStart="@dimen/translator_panel_margin"
-        android:layout_marginLeft="@dimen/translator_panel_margin"
-        android:layout_marginTop="@dimen/translator_panel_margin">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,7 +89,6 @@
             android:id="@+id/left_translator_langs_listview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/leftTranslatorColorBackground"
             android:divider="@null"
             tools:ignore="Suspicious0dp" />
 
@@ -102,15 +101,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginEnd="@dimen/translator_panel_margin"
+        android:layout_marginRight="@dimen/translator_panel_margin"
+        android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toEndOf="@id/fake_view"
         android:layout_toRightOf="@id/fake_view"
         android:background="@color/colorPrimary"
         android:clipChildren="false"
         android:elevation="@dimen/app_elevation_default"
-        android:orientation="vertical"
-        android:layout_marginEnd="@dimen/translator_panel_margin"
-        android:layout_marginRight="@dimen/translator_panel_margin"
-        android:layout_marginTop="@dimen/translator_panel_margin">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,23 +138,39 @@
             android:id="@+id/right_translator_langs_listview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/rightTranslatorColorBackground"
             android:divider="@null"
             tools:ignore="Suspicious0dp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/empty_conversation_textview"
+    <LinearLayout
+        android:id="@+id/empty_conversation_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@id/left_translator_container"
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:padding="24dp"
-        android:text="@string/empty_conversation_text"
-        android:textSize="24sp"
-        android:visibility="gone" />
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_forum_black_36dp"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_conversation_text"
+            android:textSize="@dimen/translation_text_size_hint"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/conversation_container"
@@ -163,8 +178,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/fake_view"
         android:layout_alignParentTop="true"
-        android:paddingTop="@dimen/list_item_padding_vertical"
+        android:clipToPadding="false"
         android:paddingBottom="@dimen/list_item_padding_vertical"
-        android:clipToPadding="false"/>
+        android:paddingTop="@dimen/list_item_padding_vertical"/>
 
 </RelativeLayout>

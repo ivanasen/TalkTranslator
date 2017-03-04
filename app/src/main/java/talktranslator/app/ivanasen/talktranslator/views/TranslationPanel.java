@@ -98,7 +98,7 @@ public class TranslationPanel {
                 mJustUsedLeftTranslator = true;
                 String lang = Utility.getTranslatorLanguage(mContext, Utility.LEFT_TRANSLATOR_LANGUAGE);
                 String code = Utility.getCodeFromLanguage(mContext, lang, false);
-                promptSpeechInput(code);
+                TranslationPanel.this.promptSpeechInput(code);
             }
         });
 
@@ -115,7 +115,7 @@ public class TranslationPanel {
                 mJustUsedLeftTranslator = false;
                 String lang = Utility.getTranslatorLanguage(mContext, Utility.RIGHT_TRANSLATOR_LANGUAGE);
                 String code = Utility.getCodeFromLanguage(mContext, lang, false);
-                promptSpeechInput(code);
+                TranslationPanel.this.promptSpeechInput(code);
             }
         });
 
@@ -142,7 +142,7 @@ public class TranslationPanel {
 
                 mChatAdapter.changeLanguages(language, (String) mRightTranslator.getText());
 
-                collapseOrExpandLeftTranslator();
+                TranslationPanel.this.collapseOrExpandLeftTranslator();
             }
         });
 
@@ -156,7 +156,7 @@ public class TranslationPanel {
 
                 mChatAdapter.changeLanguages((String) mLeftTranslator.getText(), language);
 
-                collapseOrExpandRightTranslator();
+                TranslationPanel.this.collapseOrExpandRightTranslator();
             }
         });
 
@@ -165,7 +165,7 @@ public class TranslationPanel {
         mLeftLanguageSelectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collapseOrExpandLeftTranslator();
+                TranslationPanel.this.collapseOrExpandLeftTranslator();
             }
         });
 
@@ -174,7 +174,7 @@ public class TranslationPanel {
         mRightLanguageSelectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collapseOrExpandRightTranslator();
+                TranslationPanel.this.collapseOrExpandRightTranslator();
             }
         });
     }

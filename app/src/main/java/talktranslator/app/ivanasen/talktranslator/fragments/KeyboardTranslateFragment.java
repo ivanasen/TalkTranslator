@@ -92,17 +92,17 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
         waitForTextToSpeechToInitHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mLocales = ((MainActivity) getActivity()).getLocales();
+                mLocales = ((MainActivity) KeyboardTranslateFragment.this.getActivity()).getLocales();
                 if (mLocales == null) {
                     return;
                 }
 
                 isTextToSpeechInit = true;
-                String fromLangCode = Utility.getCodeFromLanguage(getContext(),
-                        Utility.getTranslatorLanguage(getContext(), Utility.LEFT_TRANSLATOR_LANGUAGE),
+                String fromLangCode = Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(),
+                        Utility.getTranslatorLanguage(KeyboardTranslateFragment.this.getContext(), Utility.LEFT_TRANSLATOR_LANGUAGE),
                         true);
-                String toLangCode = Utility.getCodeFromLanguage(getContext(),
-                        Utility.getTranslatorLanguage(getContext(), Utility.RIGHT_TRANSLATOR_LANGUAGE),
+                String toLangCode = Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(),
+                        Utility.getTranslatorLanguage(KeyboardTranslateFragment.this.getContext(), Utility.RIGHT_TRANSLATOR_LANGUAGE),
                         true);
                 Locale fromLocale =
                         Utility.getLocaleFromLangCode(fromLangCode, mLocales);
@@ -135,7 +135,7 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
         copyTranslationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utility.copyTextToClipboard(getContext(), mTranslationTextView.getText());
+                Utility.copyTextToClipboard(KeyboardTranslateFragment.this.getContext(), mTranslationTextView.getText());
             }
         });
         mSpeakTranslationBtn =
@@ -144,13 +144,13 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
             @Override
             public void onClick(View v) {
                 String fromLangCode =
-                        Utility.getCodeFromLanguage(getContext(), (String) mTranslateFromLanguage,
+                        Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(), (String) mTranslateFromLanguage,
                                 true);
                 String toLangCode =
-                        Utility.getCodeFromLanguage(getContext(), (String) mTranslateToLanguage,
+                        Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(), (String) mTranslateToLanguage,
                                 true);
                 String fromLangToLang = fromLangCode + "-" + toLangCode;
-                ((MainActivity) getActivity()).speakText(
+                ((MainActivity) KeyboardTranslateFragment.this.getActivity()).speakText(
                         (String) mTranslationTextView.getText(), fromLangToLang, null);
             }
         });
@@ -186,16 +186,16 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                         String toLanguageCode =
                                 Utility.getTranslatedLanguage((String) languagesTextView.getText());
                         String fromLanguage =
-                                Utility.getLanguageFromCode(getContext(), fromLanguageCode);
+                                Utility.getLanguageFromCode(KeyboardTranslateFragment.this.getContext(), fromLanguageCode);
                         String toLanguage =
-                                Utility.getLanguageFromCode(getContext(), toLanguageCode);
+                                Utility.getLanguageFromCode(KeyboardTranslateFragment.this.getContext(), toLanguageCode);
 
                         mTranslateFromLanguageSpinner.setSelection(
-                                Arrays.asList(getResources().getStringArray(R.array.languages))
+                                Arrays.asList(KeyboardTranslateFragment.this.getResources().getStringArray(R.array.languages))
                                         .indexOf(fromLanguage)
                         );
                         mTranslateToLanguageSpinner.setSelection(
-                                Arrays.asList(getResources().getStringArray(R.array.languages))
+                                Arrays.asList(KeyboardTranslateFragment.this.getResources().getStringArray(R.array.languages))
                                         .indexOf(toLanguage)
                         );
 
@@ -208,7 +208,9 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                 new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
                     @Override
-                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                    public boolean onMove(RecyclerView recyclerView,
+                                          RecyclerView.ViewHolder viewHolder,
+                                          RecyclerView.ViewHolder target) {
                         return false;
                     }
 
@@ -235,10 +237,10 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    translate();
-                    InputMethodManager imm = (InputMethodManager) getActivity()
+                    KeyboardTranslateFragment.this.translate();
+                    InputMethodManager imm = (InputMethodManager) KeyboardTranslateFragment.this.getActivity()
                             .getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                    imm.hideSoftInputFromWindow(KeyboardTranslateFragment.this.getView().getWindowToken(), 0);
                 }
 
                 return true;
@@ -280,7 +282,7 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                 if (isOpen) {
                     mTextInput.setCursorVisible(true);
                 } else {
-                    translate();
+                    KeyboardTranslateFragment.this.translate();
                     mTextInput.setCursorVisible(false);
                 }
             }
@@ -291,13 +293,13 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
             @Override
             public void onClick(View v) {
                 String fromLangCode =
-                        Utility.getCodeFromLanguage(getContext(), (String) mTranslateToLanguage,
+                        Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(), (String) mTranslateToLanguage,
                                 true);
                 String toLangCode =
-                        Utility.getCodeFromLanguage(getContext(), (String) mTranslateFromLanguage,
+                        Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(), (String) mTranslateFromLanguage,
                                 true);
                 String fromLangToLang = fromLangCode + "-" + toLangCode;
-                ((MainActivity) getActivity()).speakText(
+                ((MainActivity) KeyboardTranslateFragment.this.getActivity()).speakText(
                         mTextInput.getText().toString(), fromLangToLang, null);
             }
         });

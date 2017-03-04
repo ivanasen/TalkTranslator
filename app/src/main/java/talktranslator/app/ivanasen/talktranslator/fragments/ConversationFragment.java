@@ -39,18 +39,19 @@ import talktranslator.app.ivanasen.talktranslator.views.TranslationPanel;
 
 public class ConversationFragment extends Fragment implements RecognitionListener, ITextToSpeechUser {
 
-    private final String LOG_TAG = ConversationFragment.class.getSimpleName();
-    private static final int PERMISSION_REQUEST_RECORD_AUDIO = 1;
+    private static final String LOG_TAG = ConversationFragment.class.getSimpleName();
+    protected static final int PERMISSION_REQUEST_RECORD_AUDIO = 1;
 
-    private Translator mTranslator;
-    private SpeechRecognizer mSpeechRecognizer;
-    private View mRootView;
-    private TranslationPanel mTranslationPanel;
-    private RecyclerView mChatView;
-    private TextView mEmptyConversationView;
+    protected Translator mTranslator;
+    protected SpeechRecognizer mSpeechRecognizer;
+    protected View mRootView;
+    protected TranslationPanel mTranslationPanel;
+    protected RecyclerView mChatView;
+    protected View mEmptyConversationView;
 
-    private ChatAdapter mChatAdapter;
-    private boolean mRecogntionSuccess;
+    protected ChatAdapter mChatAdapter;
+    protected boolean mRecogntionSuccess;
+    protected boolean mPermissionGranted;
 
     public ConversationFragment() {
     }
@@ -78,8 +79,8 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         return mRootView;
     }
 
-    private void setupChat() {
-        mEmptyConversationView = (TextView) mRootView.findViewById(R.id.empty_conversation_textview);
+    protected void setupChat() {
+        mEmptyConversationView = mRootView.findViewById(R.id.empty_conversation_view);
         mChatView = (RecyclerView) mRootView.findViewById(R.id.conversation_container);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
@@ -143,6 +144,8 @@ public class ConversationFragment extends Fragment implements RecognitionListene
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{android.Manifest.permission.RECORD_AUDIO},
                     PERMISSION_REQUEST_RECORD_AUDIO);
+        } else {
+            mPermissionGranted = true;
         }
     }
 
@@ -161,7 +164,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         }
     }
 
-    private void setupSpeechRecognizer() {
+    protected void setupSpeechRecognizer() {
         if (mSpeechRecognizer != null) {
             mSpeechRecognizer.cancel();
             mSpeechRecognizer.destroy();
@@ -207,8 +210,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
                 }
 
                 mChatAdapter.addTranslation(chatTranslation);
-
-                chatTranslation.save();
 
                 if (mChatAdapter.getItemCount() > 0) {
                     mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);

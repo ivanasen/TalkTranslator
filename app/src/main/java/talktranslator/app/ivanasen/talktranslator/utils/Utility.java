@@ -110,7 +110,6 @@ public class Utility {
                 break;
             }
         }
-
         return resultLocale;
     }
 
@@ -142,18 +141,14 @@ public class Utility {
             }
         }
 
-        String result = listToString(charsList);
-
-        return result;
+        return listToString(charsList);
     }
 
     private static String listToString(List<Character> charsList) {
         StringBuilder builder = new StringBuilder();
-
         for (Character aChar : charsList) {
             builder.append(aChar);
         }
-
         return builder.toString();
     }
 

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="keyboardvisibilityevent-2.0.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/net.yslibrary.keyboardvisibilityevent/keyboardvisibilityevent/2.0.1/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/net.yslibrary.keyboardvisibilityevent/keyboardvisibilityevent/2.0.1/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/09f2bc3af95e13b56231a997e5ce813fffd08001/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/09f2bc3af95e13b56231a997e5ce813fffd08001/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

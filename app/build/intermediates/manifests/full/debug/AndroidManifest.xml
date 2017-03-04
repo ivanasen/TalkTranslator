@@ -53,6 +53,7 @@
                 <category android:name="android.intent.category.PREFERENCE" />
             </intent-filter>
         </activity>
+        <activity android:name="talktranslator.app.ivanasen.talktranslator.activities.InterviewsActivity" />
     </application>
 
 </manifest>

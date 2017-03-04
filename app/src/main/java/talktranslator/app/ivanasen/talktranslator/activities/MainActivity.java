@@ -33,6 +33,7 @@ import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.InterviewFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment;
+import talktranslator.app.ivanasen.talktranslator.fragments.SettingsFragment;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,11 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     mLocales = mTextToSpeech.getAvailableLanguages();
                 }
-
-//                ITextToSpeechUser user = (ITextToSpeechUser)
-//                        mPagerAdapter.getItem(mViewPager.getCurrentItem());
-
-//                user.setTextToSpeechReadyForUsing(true);
             }
         });
 
@@ -179,10 +175,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            Intent settingsIntent = new Intent(this, SettingsActivity.class);
-            startActivity(settingsIntent);
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.action_clear_history:
+                SettingsFragment.askForHistoryDelete(this);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
