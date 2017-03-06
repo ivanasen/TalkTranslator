@@ -1,12 +1,16 @@
 package talktranslator.app.ivanasen.talktranslator.fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.speech.SpeechRecognizer;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -24,7 +29,6 @@ import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
 import talktranslator.app.ivanasen.talktranslator.adapters.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.models.ChatTranslation;
-import talktranslator.app.ivanasen.talktranslator.models.Interview;
 import talktranslator.app.ivanasen.talktranslator.translation.TranslationResult;
 import talktranslator.app.ivanasen.talktranslator.translation.Translator;
 import talktranslator.app.ivanasen.talktranslator.utils.InterviewMaker;
@@ -41,6 +45,11 @@ public class InterviewFragment extends ConversationFragment {
 
     private InterviewMaker mInterviewMaker;
     private boolean mIsInterviewing;
+    private long mTtimeWhenStopped;
+
+    private View mRecordingView;
+
+    private InterviewerLanguageChangedCallback mLanguageCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -54,9 +63,22 @@ public class InterviewFragment extends ConversationFragment {
 
         mTranslationPanel = new TranslationPanel(
                 getContext(), mRootView, mSpeechRecognizer, mChatAdapter, true);
+        mLanguageCallback = new InterviewerLanguageChangedCallback() {
+            @Override
+            public void onLanguageChanged() {
+                onInterviewChronometerStart(false, true);
+                long elapsedSeconds =
+                        (SystemClock.elapsedRealtime() - mInterviewChronometer.getBase()) / 1000;
+                mInterviewMaker.saveInterview(elapsedSeconds);
+            }
+        };
+        mTranslationPanel.setInterviewerCallback(mLanguageCallback);
 
         checkMicrophonePermission();
-        if (mPermissionGranted) {
+
+        int permissionCheck = ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.RECORD_AUDIO);
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
             setupMediaControls();
         }
 
@@ -124,39 +146,52 @@ public class InterviewFragment extends ConversationFragment {
     }
 
     private void setupMediaControls() {
+        mRecordingView = mRootView.findViewById(R.id.recording_view);
         mRecordBtn = (FloatingActionButton) mRootView.findViewById(R.id.start_recording_btn);
         mPauseBtn = (FloatingActionButton) mRootView.findViewById(R.id.pause_recording_btn);
         mStopBtn = (FloatingActionButton) mRootView.findViewById(R.id.stop_recording_btn);
 
+        final ImageView recordDotImageView = (ImageView) mRecordingView.findViewById(R.id.record_dot);
+        recordDotImageView.setBackgroundResource(R.drawable.record_animation);
+        final AnimationDrawable recordingAnimation = (AnimationDrawable) recordDotImageView.getBackground();
+
         mRecordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                recordingAnimation.start();
+                mRecordingView.setVisibility(View.VISIBLE);
+                mIsInterviewing = true;
                 mRecordBtn.setVisibility(View.GONE);
                 mPauseBtn.setVisibility(View.VISIBLE);
-                mIsInterviewing = true;
             }
         });
 
         mStopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPauseBtn.setBackgroundColor(getResources().getColor(R.color.materialRed));
-                mPauseBtn.setVisibility(View.GONE);
-                mRecordBtn.setVisibility(View.VISIBLE);
-                mIsInterviewing = false;
-                long elapsedSeconds =
-                        (SystemClock.elapsedRealtime() - mInterviewChronometer.getBase()) / 1000;
-                mInterviewMaker.saveInterview(elapsedSeconds);
-                onInterviewChronometerStart(false, true);
+                if (mInterviewChronometer != null) {
+                    mIsInterviewing = false;
+                    mRecordingView.setVisibility(View.GONE);
+                    mPauseBtn.setBackgroundColor(getResources().getColor(R.color.materialRed));
+                    mPauseBtn.setVisibility(View.GONE);
+                    mRecordBtn.setVisibility(View.VISIBLE);
+                    long elapsedSeconds =
+                            Utility.getSecondsFromChronometer((String) mInterviewChronometer.getText());
+                    if (elapsedSeconds > 0) {
+                        mInterviewMaker.saveInterview(elapsedSeconds);
+                    }
+                    onInterviewChronometerStart(false, true);
+                }
             }
         });
 
         mPauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                recordingAnimation.stop();
                 mPauseBtn.setVisibility(View.GONE);
                 mRecordBtn.setVisibility(View.VISIBLE);
-                mIsInterviewing = false;
+                onInterviewChronometerStart(false, false);
             }
         });
     }
@@ -171,6 +206,9 @@ public class InterviewFragment extends ConversationFragment {
         if (shouldStart) {
             if (shouldReset) {
                 mInterviewChronometer.setBase(SystemClock.elapsedRealtime());
+                mTtimeWhenStopped = 0;
+            } else {
+                mInterviewChronometer.setBase(SystemClock.elapsedRealtime() + mTtimeWhenStopped);
             }
 
             mInterviewChronometer.start();
@@ -183,12 +221,14 @@ public class InterviewFragment extends ConversationFragment {
             }
         } else {
             if (mInterviewChronometer != null) {
+                mTtimeWhenStopped = mInterviewChronometer.getBase() - SystemClock.elapsedRealtime();
                 mInterviewChronometer.stop();
                 mInterviewChronometer.setTextColor(Color.DKGRAY);
             }
 
             if (shouldReset) {
                 mInterviewChronometer.setBase(SystemClock.elapsedRealtime());
+                mTtimeWhenStopped = 0;
             }
         }
     }
@@ -232,7 +272,6 @@ public class InterviewFragment extends ConversationFragment {
     @Override
     public void onResults(Bundle results) {
         super.onResults(results);
-
         ArrayList<String> matches = results
                 .getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
@@ -262,5 +301,9 @@ public class InterviewFragment extends ConversationFragment {
         if (mIsInterviewing) {
             onInterviewChronometerStart(false, false);
         }
+    }
+
+    public interface InterviewerLanguageChangedCallback {
+        public void onLanguageChanged();
     }
 }

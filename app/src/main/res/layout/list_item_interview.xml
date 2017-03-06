@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bordered_view_white"
+    android:orientation="horizontal"
+    android:padding="@dimen/list_item_padding_horizontal">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/interview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Obama interview"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/interview_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Language: English" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/interview_length_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin" />
+
+
+    <ImageButton
+        android:id="@+id/play_interview_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_play_arrow_black_24dp" />
+
+
+    <ImageButton
+        android:id="@+id/interview_being_played_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_volume_up_white_24dp"
+        android:tint="@color/materialBlue"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin"
+        android:indeterminateTint="@color/colorAccent"
+        android:theme="@style/ProgressBarTheme"
+        android:visibility="gone" />
+
+</LinearLayout>

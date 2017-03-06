@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 SettingsFragment.askForHistoryDelete(this);
                 return true;
             case R.id.action_view_interviews:
-                Intent interviewsIntent = new Intent(this, InterviewsActivity.class);
+                Intent interviewsIntent = new Intent(this, InterviewExplorerActivity.class);
                 startActivity(interviewsIntent);
                 return true;
             default:

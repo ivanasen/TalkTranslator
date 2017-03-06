@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
 import android.speech.SpeechRecognizer;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.prefs.Preferences;
 
 import talktranslator.app.ivanasen.talktranslator.R;
 
@@ -52,19 +54,26 @@ public class Utility {
     }
 
     public static String getCodeFromLanguage(Context context, String language, boolean forTextToSpeech) {
+        boolean isBulgarianTTSEnabled = isBulgarianTextToSpeechEnabled(context);
         int i = -1;
         for (String currentLang : context.getResources().getStringArray(R.array.languages)) {
             i++;
             if (currentLang.equals(language)) {
                 String langCode = context.getResources().getStringArray(R.array.lang_codes)[i];
                 if (langCode.equals(context.getResources().getString(R.string.lang_code_bg))
-                        && forTextToSpeech) {
+                        && forTextToSpeech && isBulgarianTTSEnabled) {
                     return context.getResources().getString(R.string.lang_code_ru);
                 }
                 return langCode;
             }
         }
         return null;
+    }
+
+    private static boolean isBulgarianTextToSpeechEnabled(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String prefKey = context.getString(R.string.pref_enable_bg_text_to_speech_key);
+        return prefs.getBoolean(prefKey, false);
     }
 
     public static String getTranslateFromLanguage(String fromLangToLang) {
@@ -206,4 +215,9 @@ public class Utility {
         return message;
     }
 
+    public static long getSecondsFromChronometer(String chronoText) {
+        String[] minsAndSeconds = chronoText.split(":");
+        int mins = Integer.parseInt(minsAndSeconds[0]);
+        return Integer.parseInt(minsAndSeconds[1]) + (mins * 60);
+    }
 }

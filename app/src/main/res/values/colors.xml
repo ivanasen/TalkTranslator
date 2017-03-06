@@ -3,7 +3,6 @@
     <color name="colorPrimary">#f1f3ff</color>
     <color name="lightGray">#e8e9f4</color>
     <color name="statusBarColor">@color/colorPrimary</color>
-    <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">@color/dark_gray</color>
     <color name="materialRed">#FF5252</color>
     <color name="rightChatBubbleColor">#EF5350</color>

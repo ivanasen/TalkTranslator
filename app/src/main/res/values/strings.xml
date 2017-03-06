@@ -48,4 +48,12 @@
     <string name="interview_record_hint">Tap the record button to start an interview</string>
     <string name="interview_length_start">00:00</string>
     <string name="interview_default_name">Interview</string>
+    <string name="interview_saved_toast">Interview saved</string>
+    <string name="save_interview_dialog_title">Save interview?</string>
+    <string name="save_itnerview_dialog_msg">Enter interview name</string>
+    <string name="save_interview_dialog_positive_btn">OK</string>
+    <string name="save_interview_dialog_negative_btn">Cancel</string>
+    <string name="empty_interviews_text">Empty here</string>
+    <string name="recording_view_text">rec</string>
+    <string name="pref_enable_bg_text_to_speech_key">pref_enable_bulgarian_text_to_speech</string>
 </resources>

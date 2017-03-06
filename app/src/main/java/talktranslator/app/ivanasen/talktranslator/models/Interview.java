@@ -9,11 +9,16 @@ import com.orm.SugarRecord;
 public class Interview extends SugarRecord {
     private String title;
     private String text;
+    private String language;
     private long length;
 
-    public Interview(String title, String text, long length) {
+    public Interview() {
+    }
+
+    public Interview(String title, String text, String language, long length) {
         this.title = title;
         this.text = text;
+        this.language = language;
         this.length = length;
     }
 
@@ -39,5 +44,13 @@ public class Interview extends SugarRecord {
 
     public void setLength(long length) {
         this.length = length;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

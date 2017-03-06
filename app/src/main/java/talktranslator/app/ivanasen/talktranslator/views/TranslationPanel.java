@@ -19,6 +19,7 @@ import android.widget.ToggleButton;
 
 import talktranslator.app.ivanasen.talktranslator.adapters.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.R;
+import talktranslator.app.ivanasen.talktranslator.fragments.InterviewFragment;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 /**
@@ -41,6 +42,7 @@ public class TranslationPanel {
     private ToggleButton mLeftLanguageSelectBtn;
     private ToggleButton mRightLanguageSelectBtn;
     private boolean mIsSpeechRecognitionOn;
+    private InterviewFragment.InterviewerLanguageChangedCallback mInterviewerCallback;
 
     public TranslationPanel(Context context, View rootView, SpeechRecognizer speechRecognizer,
                             ChatAdapter adapter, boolean isFromInterviewFragment) {
@@ -152,10 +154,12 @@ public class TranslationPanel {
                 Utility.setTranslatorLanguage(mContext, Utility.LEFT_TRANSLATOR_LANGUAGE, language);
                 mLeftTranslator.setText(language);
                 mLeftLanguageSelectBtn.setChecked(false);
-
                 mChatAdapter.changeLanguages(language, (String) mRightTranslator.getText());
-
                 TranslationPanel.this.collapseOrExpandLeftTranslator();
+
+                if (mInterviewerCallback != null) {
+                    mInterviewerCallback.onLanguageChanged();
+                }
             }
         });
 
@@ -166,9 +170,7 @@ public class TranslationPanel {
                 Utility.setTranslatorLanguage(mContext, Utility.RIGHT_TRANSLATOR_LANGUAGE, language);
                 mRightTranslator.setText(language);
                 mRightLanguageSelectBtn.setChecked(false);
-
                 mChatAdapter.changeLanguages((String) mLeftTranslator.getText(), language);
-
                 TranslationPanel.this.collapseOrExpandRightTranslator();
             }
         });
@@ -288,5 +290,10 @@ public class TranslationPanel {
     public void setEnabled(boolean enabled) {
         mLeftTranslator.setEnabled(enabled);
         mRightTranslator.setEnabled(enabled);
+    }
+
+    public void setInterviewerCallback(
+            InterviewFragment.InterviewerLanguageChangedCallback callback) {
+        mInterviewerCallback = callback;
     }
 }

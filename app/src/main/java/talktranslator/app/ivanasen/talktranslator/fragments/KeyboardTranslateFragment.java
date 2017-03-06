@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.UtteranceProgressListener;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -63,8 +65,12 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
     private ImageButton mClearBtn;
     private RecyclerView mHistoryRecyclerView;
     private TranslationHistoryAdapter mAdapter;
+
     private ImageButton mSpeakInputTextBtn;
+    private ProgressBar mInputProgressBar;
     private ImageButton mSpeakTranslationBtn;
+    private ProgressBar mTranslationProgressBar;
+
     private Set<Locale> mLocales;
     private boolean isTextToSpeechInit;
 
@@ -138,11 +144,37 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                 Utility.copyTextToClipboard(KeyboardTranslateFragment.this.getContext(), mTranslationTextView.getText());
             }
         });
+
+        final UtteranceProgressListener listener = new UtteranceProgressListener() {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    toggleTranslationPlayBtnVisibility();
+                }
+            };
+
+            @Override
+            public void onStart(String utteranceId) {
+                getActivity().runOnUiThread(r);
+            }
+
+            @Override
+            public void onDone(String utteranceId) {
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+            }
+        };
+
+        mTranslationProgressBar = (ProgressBar) mRootView.findViewById(R.id.translation_progressbar);
         mSpeakTranslationBtn =
                 (ImageButton) mRootView.findViewById(R.id.speak_translation_btn);
         mSpeakTranslationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toggleTranslationPlayBtnVisibility();
+
                 String fromLangCode =
                         Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(), (String) mTranslateFromLanguage,
                                 true);
@@ -151,7 +183,7 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                                 true);
                 String fromLangToLang = fromLangCode + "-" + toLangCode;
                 ((MainActivity) KeyboardTranslateFragment.this.getActivity()).speakText(
-                        (String) mTranslationTextView.getText(), fromLangToLang, null);
+                        (String) mTranslationTextView.getText(), fromLangToLang, listener);
             }
         });
     }
@@ -288,10 +320,35 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
             }
         });
 
+        final UtteranceProgressListener listener = new UtteranceProgressListener() {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    toggleInputPlayBtnVisibility();
+                }
+            };
+
+            @Override
+            public void onStart(String utteranceId) {
+                getActivity().runOnUiThread(r);
+            }
+
+            @Override
+            public void onDone(String utteranceId) {
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+            }
+        };
+
+        mInputProgressBar = (ProgressBar) mRootView.findViewById(R.id.input_progressbar);
         mSpeakInputTextBtn = (ImageButton) mRootView.findViewById(R.id.speak_text_btn);
         mSpeakInputTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                toggleInputPlayBtnVisibility();
+
                 String fromLangCode =
                         Utility.getCodeFromLanguage(KeyboardTranslateFragment.this.getContext(), (String) mTranslateToLanguage,
                                 true);
@@ -300,9 +357,29 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                                 true);
                 String fromLangToLang = fromLangCode + "-" + toLangCode;
                 ((MainActivity) KeyboardTranslateFragment.this.getActivity()).speakText(
-                        mTextInput.getText().toString(), fromLangToLang, null);
+                        mTextInput.getText().toString(), fromLangToLang, listener);
             }
         });
+    }
+
+    private void toggleInputPlayBtnVisibility() {
+        if (mSpeakInputTextBtn.getVisibility() == View.VISIBLE) {
+            mSpeakInputTextBtn.setVisibility(View.GONE);
+            mInputProgressBar.setVisibility(View.VISIBLE);
+        } else {
+            mSpeakInputTextBtn.setVisibility(View.VISIBLE);
+            mInputProgressBar.setVisibility(View.GONE);
+        }
+    }
+
+    private void toggleTranslationPlayBtnVisibility() {
+        if (mSpeakTranslationBtn.getVisibility() == View.VISIBLE) {
+            mSpeakTranslationBtn.setVisibility(View.GONE);
+            mTranslationProgressBar.setVisibility(View.VISIBLE);
+        } else {
+            mSpeakTranslationBtn.setVisibility(View.VISIBLE);
+            mTranslationProgressBar.setVisibility(View.GONE);
+        }
     }
 
     private void translate() {
@@ -440,29 +517,6 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    @Override
     public void setTextToSpeechReadyForUsing(boolean isReady) {
-
-    }
-
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

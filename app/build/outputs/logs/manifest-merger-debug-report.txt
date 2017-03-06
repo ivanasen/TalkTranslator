@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:2:1-58:12
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:2:1-59:12
 	package
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:3:5-57
 		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
@@ -26,7 +26,7 @@ ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:7:22-68
 application
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:9:5-56:19
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:9:5-57:19
 MERGED from [com.android.support:design:25.2.0] C:\Users\vanka\.android\build-cache\233d296dc45097335a603b777c716e1da529bc52\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:25.2.0] C:\Users\vanka\.android\build-cache\fc5a0963297c1318becbb64b9e84df11489b22a7\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] C:\Users\vanka\.android\build-cache\9908d1db70f2b5f0c75934bc14bbe05e35cdca97\output\AndroidManifest.xml:22:5-20
@@ -53,7 +53,9 @@ MERGED from [com.android.support:support-compat:25.2.0] C:\Users\vanka\.android\
 	android:name
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:10:9-40
 activity#talktranslator.app.ivanasen.talktranslator.activities.MainActivity
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:16:9-25:20
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:16:9-26:20
+	android:screenOrientation
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:20:13-49
 	android:label
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:18:13-45
 	android:theme
@@ -61,67 +63,67 @@ ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:17:13-52
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:21:13-25:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:22:17-69
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:22:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:24:17-77
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:24:27-74
 meta-data#DATABASE
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:27:9-29:50
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:28:9-30:50
 	android:value
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:29:13-47
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:30:13-47
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:28:13-36
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:29:13-36
 meta-data#VERSION
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:30:9-32:33
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:31:9-33:33
 	android:value
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:32:13-30
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:33:13-30
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:31:13-35
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:32:13-35
 meta-data#QUERY_LOG
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:33:9-35:36
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:34:9-36:36
 	android:value
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:35:13-33
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:36:13-33
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:34:13-37
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:35:13-37
 meta-data#DOMAIN_PACKAGE_NAME
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:36:9-38:59
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:37:9-39:59
 	android:value
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:38:13-56
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:39:13-56
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:37:13-47
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:38:13-47
 activity#talktranslator.app.ivanasen.talktranslator.activities.SettingsActivity
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:40:9-49:20
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:41:9-50:20
 	android:screenOrientation
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:44:13-49
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:45:13-49
 	android:label
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:42:13-51
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:43:13-51
 	android:parentActivityName
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:43:13-66
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:44:13-66
 	android:theme
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:45:13-44
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:46:13-44
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:41:13-56
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:42:13-56
 intent-filter#android.intent.category.PREFERENCE
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:46:13-48:29
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:47:13-49:29
 category#android.intent.category.PREFERENCE
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:47:17-79
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:48:17-79
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:47:27-76
-activity#talktranslator.app.ivanasen.talktranslator.activities.InterviewsActivity
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:51:9-55:46
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:48:27-76
+activity#talktranslator.app.ivanasen.talktranslator.activities.InterviewExplorerActivity
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:52:9-56:46
 	android:label
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:53:13-62
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:54:13-62
 	android:parentActivityName
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:54:13-66
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:55:13-66
 	android:theme
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:55:13-44
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:56:13-44
 	android:name
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:52:13-58
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:53:13-65
 uses-sdk
 INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.2.0] C:\Users\vanka\.android\build-cache\233d296dc45097335a603b777c716e1da529bc52\output\AndroidManifest.xml:21:5-23:62

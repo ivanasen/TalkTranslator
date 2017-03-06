@@ -2,14 +2,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
         android:defaultValue="true"
-        android:key="pref_enable_bulgarian_text_to_speech"
+        android:key="@string/pref_enable_bg_text_to_speech_key"
         android:summary="@string/enable_bg_text_to_speech_summ"
         android:title="@string/enable_bg_text_to_speech_title" />
-    <MultiSelectListPreference
-        android:entries="@array/languages"
-        android:entryValues="@array/languages"
-        android:key="multi_select_list_preference_1"
-        android:title="Manage offline languages" />\
+
     <Preference
         android:key="@string/clear_history_key"
         android:title="@string/pref_clear_history_title" />

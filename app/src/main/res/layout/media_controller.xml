@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/media_controller"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,54 +12,92 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/bordered_view"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/list_item_padding_horizontal"
+        android:orientation="vertical"
         app:elevation="@dimen/app_elevation_default">
 
-        <Chronometer
-            android:id="@+id/interview_length_chronometer"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"/>
+            android:background="@drawable/bordered_view"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/list_item_padding_horizontal">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/start_recording_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
-            android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
-            android:layout_marginRight="@dimen/record_btn_margin_horizontal"
-            android:layout_marginStart="@dimen/record_btn_margin_horizontal"
-            android:src="@drawable/ic_fiber_manual_record_black_24dp"
-            app:backgroundTint="@color/materialRed"
-            app:elevation="0dp"
-            app:fabSize="normal" />
+            <Chronometer
+                android:id="@+id/interview_length_chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/pause_recording_btn"
-            android:layout_width="wrap_content"
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/start_recording_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
+                android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
+                android:layout_marginRight="@dimen/record_btn_margin_horizontal"
+                android:layout_marginStart="@dimen/record_btn_margin_horizontal"
+                android:src="@drawable/ic_fiber_manual_record_black_24dp"
+                app:backgroundTint="@color/materialRed"
+                app:elevation="0dp"
+                app:fabSize="normal" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/pause_recording_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
+                android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
+                android:layout_marginRight="@dimen/record_btn_margin_horizontal"
+                android:layout_marginStart="@dimen/record_btn_margin_horizontal"
+                android:src="@drawable/ic_pause_black_24dp"
+                android:visibility="gone"
+                app:backgroundTint="@color/materialBlue"
+                app:elevation="0dp"
+                app:fabSize="normal" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/stop_recording_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/pause_recording_btn_content_desc"
+                android:src="@drawable/ic_stop_black_24dp"
+                app:backgroundTint="@color/materialBlue"
+                app:elevation="0dp"
+                app:fabSize="mini" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/recording_view"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/record_btn_margin_horizontal"
-            android:layout_marginLeft="@dimen/record_btn_margin_horizontal"
-            android:layout_marginRight="@dimen/record_btn_margin_horizontal"
-            android:layout_marginStart="@dimen/record_btn_margin_horizontal"
-            android:src="@drawable/ic_pause_black_24dp"
+            android:orientation="horizontal"
+            android:gravity="center"
             android:visibility="gone"
-            app:backgroundTint="@color/materialBlue"
-            app:elevation="0dp"
-            app:fabSize="normal" />
+            android:animateLayoutChanges="true">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/stop_recording_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/pause_recording_btn_content_desc"
-            android:src="@drawable/ic_stop_black_24dp"
-            app:backgroundTint="@color/materialBlue"
-            app:elevation="0dp"
-            app:fabSize="mini" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/recording_view_text"
+                android:textAllCaps="true"
+                android:textColor="@color/materialRed" />
+
+            <ImageView
+                android:id="@+id/record_dot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:tint="@color/materialRed"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
 </android.support.v7.widget.CardView>

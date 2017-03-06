@@ -41,24 +41,15 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private boolean mScrollingEnabled;
     private boolean mIsInterviewFragment;
 
-    public void removeTranslation(int index) {
-        if (getItemViewType(index) != VIEW_TYPE_CHANGED_LANGUAGES) {
-            ChatTranslation.delete(mListItems.get(index));
-            mListItems.remove(index);
-            notifyItemRemoved(index);
-        }
-    }
-
     public boolean shouldScroll() {
         return mScrollingEnabled;
     }
 
     private class TranslationViewHolder extends RecyclerView.ViewHolder {
-
         TextView translatedTextView;
         TextView originalTextView;
         ImageButton replayTranslationBtn;
-        LinearLayout mChatBubble;
+        LinearLayout chatBubble;
         ProgressBar progressBar;
 
         private TranslationViewHolder(View itemView) {
@@ -66,7 +57,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             translatedTextView = (TextView) itemView.findViewById(R.id.translated_textview);
             originalTextView = (TextView) itemView.findViewById(R.id.original_text_textview);
             replayTranslationBtn = (ImageButton) itemView.findViewById(R.id.speak_translation_btn);
-            mChatBubble = (LinearLayout) itemView.findViewById(R.id.chat_bubble);
+            chatBubble = (LinearLayout) itemView.findViewById(R.id.chat_bubble);
             progressBar = (ProgressBar) itemView.findViewById(R.id.progressbar);
         }
 
@@ -86,8 +77,8 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private class LanguagesChange {
 
         String language1;
-        String language2;
 
+        String language2;
         private LanguagesChange(String language1, String language2) {
             this.language1 = language1;
             this.language2 = language2;
@@ -159,7 +150,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         final CharSequence translatedText = translationViewHolder.translatedTextView.getText();
-        ((TranslationViewHolder) holder).mChatBubble.setOnLongClickListener(
+        ((TranslationViewHolder) holder).chatBubble.setOnLongClickListener(
                 new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
@@ -284,6 +275,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         mListItems.add(chatTranslation);
         notifyDataSetChanged();
         chatTranslation.save();
+    }
+
+    public void removeTranslation(int index) {
+        if (getItemViewType(index) != VIEW_TYPE_CHANGED_LANGUAGES) {
+            ChatTranslation.delete(mListItems.get(index));
+            mListItems.remove(index);
+            notifyItemRemoved(index);
+           }
     }
 
     public void changeLanguages(String language1, String language2) {

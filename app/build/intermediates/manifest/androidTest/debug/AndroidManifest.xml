@@ -3,7 +3,7 @@
     package="talktranslator.app.ivanasen.talktranslator.test" >
 
     <uses-sdk
-        android:minSdkVersion="25"
+        android:minSdkVersion="16"
         android:targetSdkVersion="25" />
 
     <instrumentation

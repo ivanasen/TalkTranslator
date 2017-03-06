@@ -12,6 +12,10 @@
         "source": "C:\\Users\\vanka\\.android\\build-cache\\fc5a0963297c1318becbb64b9e84df11489b22a7\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_interviews.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\layout\\fragment_interviews.xml"
+    },
+    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
         "source": "C:\\Users\\vanka\\.android\\build-cache\\fc5a0963297c1318becbb64b9e84df11489b22a7\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
@@ -90,6 +94,10 @@
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
         "source": "C:\\Users\\vanka\\.android\\build-cache\\fc5a0963297c1318becbb64b9e84df11489b22a7\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_interview.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\layout\\list_item_interview.xml"
     },
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",

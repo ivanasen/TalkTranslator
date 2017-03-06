@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.models.Interview;
@@ -32,8 +33,8 @@ public class InterviewMaker {
     public InterviewMaker(Context activityContext) {
         mContext = activityContext;
         mBuilder = new StringBuilder();
-        mHasJustAddedInterviewerText = false;
         mHasJustStartedInterview = true;
+        mHasJustAddedInterviewerText = false;
     }
 
     public void addInterviewerText(String text) {
@@ -63,14 +64,19 @@ public class InterviewMaker {
     }
 
     public void saveInterview(final long length) {
-        mBuilder = new StringBuilder();
-
+        final String interviewText = mBuilder.toString();
+        mBuilder.setLength(0);
+        final String language =
+                Utility.getTranslatorLanguage(mContext, Utility.LEFT_TRANSLATOR_LANGUAGE);
         InterviewTitleCallback callback = new InterviewTitleCallback() {
             @Override
             public void onTitleEntered(String title) {
-                String interviewText = mBuilder.toString();
-                Interview interview = new Interview(title, interviewText, length);
+                Interview interview = new Interview(title, interviewText, language, length);
                 interview.save();
+                Toast.makeText(mContext,
+                        mContext.getString(R.string.interview_saved_toast),
+                        Toast.LENGTH_LONG)
+                        .show();
             }
         };
         askUserForInterviewTitle(callback);
@@ -90,16 +96,16 @@ public class InterviewMaker {
         titleEditText.setText(interviewName);
 
         AlertDialog dialog = new AlertDialog.Builder(mContext)
-                .setTitle("Save interview")
-                .setMessage("Enter interview name")
+                .setTitle(R.string.save_interview_dialog_title)
+                .setMessage(R.string.save_itnerview_dialog_msg)
                 .setView(interviewTitleView)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.save_interview_dialog_positive_btn, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         callback.onTitleEntered(titleEditText.getText().toString());
                     }
                 })
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(R.string.save_interview_dialog_negative_btn, null)
                 .show();
     }
 

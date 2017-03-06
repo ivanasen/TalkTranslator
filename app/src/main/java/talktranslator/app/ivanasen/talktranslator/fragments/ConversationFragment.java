@@ -50,7 +50,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
     protected ChatAdapter mChatAdapter;
     protected boolean mRecogntionSuccess;
-    protected boolean mPermissionGranted;
 
     public ConversationFragment() {
     }
@@ -68,17 +67,8 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
         checkMicrophonePermission();
 
-        Handler waitForTextToSpeechToInitHandler = new Handler();
-        waitForTextToSpeechToInitHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mChatAdapter.notifyDataSetChanged();
-            }
-        }, getResources().getInteger(R.integer.wait_for_text_to_speech_to_init_millis));
-
         return mRootView;
     }
-
     protected void setupChat() {
         mEmptyConversationView = mRootView.findViewById(R.id.empty_conversation_view);
         mChatView = (RecyclerView) mRootView.findViewById(R.id.conversation_container);
@@ -138,14 +128,12 @@ public class ConversationFragment extends Fragment implements RecognitionListene
     }
 
     public void checkMicrophonePermission() {
-        int microphonePermission =
-                ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.RECORD_AUDIO);
-        if (microphonePermission != PackageManager.PERMISSION_GRANTED) {
+        int microphonePermission = ContextCompat.checkSelfPermission(
+                getContext(), android.Manifest.permission.RECORD_AUDIO);
+        if (microphonePermission == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{android.Manifest.permission.RECORD_AUDIO},
                     PERMISSION_REQUEST_RECORD_AUDIO);
-        } else {
-            mPermissionGranted = true;
         }
     }
 

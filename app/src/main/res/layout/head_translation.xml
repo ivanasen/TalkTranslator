@@ -24,28 +24,39 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/translation_language"
             android:layout_marginBottom="@dimen/default_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:textColor="@android:color/white"
-            android:textSize="36sp"
             android:hint="@string/chatTranslation"
-            android:textColorHint="#aaffffff"/>
+            android:textColor="@android:color/white"
+            android:textColorHint="#aaffffff"
+            android:textSize="36sp" />
 
 
         <ImageButton
             android:id="@+id/speak_translation_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@id/translated_text"
             android:layout_margin="16dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_volume_up_white_24dp"
-            android:tint="@android:color/white"/>
+            android:tint="@android:color/white" />
+
+        <ProgressBar
+            android:id="@+id/translation_progressbar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/translated_text"
+            android:layout_margin="16dp"
+            android:theme="@style/ProgressBarTheme"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/copy_translation_btn"
@@ -53,9 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/translated_text"
             android:layout_margin="16dp"
-            android:layout_toLeftOf="@id/speak_translation_btn"
-            android:layout_toStartOf="@id/speak_translation_btn"
             android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_content_copy_white_24dp"/>
+            android:src="@drawable/ic_content_copy_white_24dp" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>
