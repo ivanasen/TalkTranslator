@@ -49,8 +49,6 @@ public class InterviewFragment extends ConversationFragment {
 
     private View mRecordingView;
 
-    private InterviewerLanguageChangedCallback mLanguageCallback;
-
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,13 +61,17 @@ public class InterviewFragment extends ConversationFragment {
 
         mTranslationPanel = new TranslationPanel(
                 getContext(), mRootView, mSpeechRecognizer, mChatAdapter, true);
-        mLanguageCallback = new InterviewerLanguageChangedCallback() {
+        InterviewerLanguageChangedCallback mLanguageCallback = new InterviewerLanguageChangedCallback() {
             @Override
             public void onLanguageChanged() {
                 onInterviewChronometerStart(false, true);
-                long elapsedSeconds =
-                        (SystemClock.elapsedRealtime() - mInterviewChronometer.getBase()) / 1000;
-                mInterviewMaker.saveInterview(elapsedSeconds);
+                long seconds = Utility.getSecondsFromChronometer(
+                        (String) mInterviewChronometer.getText());
+                if (mIsInterviewing && seconds > 0) {
+                    long elapsedSeconds =
+                            (SystemClock.elapsedRealtime() - mInterviewChronometer.getBase()) / 1000;
+                    mInterviewMaker.saveInterview(elapsedSeconds);
+                }
             }
         };
         mTranslationPanel.setInterviewerCallback(mLanguageCallback);
@@ -81,16 +83,6 @@ public class InterviewFragment extends ConversationFragment {
         if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
             setupMediaControls();
         }
-
-        Handler waitForTextToSpeechToInitHandler = new Handler();
-        waitForTextToSpeechToInitHandler.postDelayed(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        mChatAdapter.notifyDataSetChanged();
-                    }
-                },
-                getResources().getInteger(R.integer.wait_for_text_to_speech_to_init_millis));
 
         return mRootView;
     }
@@ -169,12 +161,12 @@ public class InterviewFragment extends ConversationFragment {
         mStopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mIsInterviewing = false;
+                mRecordingView.setVisibility(View.GONE);
+                mPauseBtn.setBackgroundColor(getResources().getColor(R.color.materialRed));
+                mPauseBtn.setVisibility(View.GONE);
+                mRecordBtn.setVisibility(View.VISIBLE);
                 if (mInterviewChronometer != null) {
-                    mIsInterviewing = false;
-                    mRecordingView.setVisibility(View.GONE);
-                    mPauseBtn.setBackgroundColor(getResources().getColor(R.color.materialRed));
-                    mPauseBtn.setVisibility(View.GONE);
-                    mRecordBtn.setVisibility(View.VISIBLE);
                     long elapsedSeconds =
                             Utility.getSecondsFromChronometer((String) mInterviewChronometer.getText());
                     if (elapsedSeconds > 0) {
@@ -182,6 +174,7 @@ public class InterviewFragment extends ConversationFragment {
                     }
                     onInterviewChronometerStart(false, true);
                 }
+
             }
         });
 
@@ -241,7 +234,7 @@ public class InterviewFragment extends ConversationFragment {
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         mChatView.setLayoutManager(layoutManager);
 
-        mChatAdapter = new ChatAdapter(getContext(), null, (MainActivity) getActivity(), true);
+        mChatAdapter = new ChatAdapter(getContext(), (MainActivity) getActivity(), true);
         mChatView.setAdapter(mChatAdapter);
         mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
         mChatView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {

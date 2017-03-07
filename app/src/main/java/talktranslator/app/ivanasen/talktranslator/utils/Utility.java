@@ -70,7 +70,7 @@ public class Utility {
         return null;
     }
 
-    private static boolean isBulgarianTextToSpeechEnabled(Context context) {
+    public static boolean isBulgarianTextToSpeechEnabled(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String prefKey = context.getString(R.string.pref_enable_bg_text_to_speech_key);
         return prefs.getBoolean(prefKey, false);

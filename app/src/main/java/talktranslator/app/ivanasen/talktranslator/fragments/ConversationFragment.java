@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
-import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
 import android.support.annotation.NonNull;
@@ -28,7 +27,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import talktranslator.app.ivanasen.talktranslator.adapters.ChatAdapter;
 import talktranslator.app.ivanasen.talktranslator.models.ChatTranslation;
-import talktranslator.app.ivanasen.talktranslator.utils.ITextToSpeechUser;
 import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
 import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.translation.TranslationResult;
@@ -36,7 +34,7 @@ import talktranslator.app.ivanasen.talktranslator.translation.Translator;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 import talktranslator.app.ivanasen.talktranslator.views.TranslationPanel;
 
-public class ConversationFragment extends Fragment implements RecognitionListener, ITextToSpeechUser {
+public class ConversationFragment extends Fragment implements RecognitionListener {
 
     private static final String LOG_TAG = ConversationFragment.class.getSimpleName();
     protected static final int PERMISSION_REQUEST_RECORD_AUDIO = 1;
@@ -61,7 +59,6 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         mTranslator = new Translator(getContext());
         setupSpeechRecognizer();
         setupChat();
-
         mTranslationPanel = new TranslationPanel(
                 getContext(), mRootView, mSpeechRecognizer, mChatAdapter, false);
 
@@ -69,6 +66,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
         return mRootView;
     }
+
     protected void setupChat() {
         mEmptyConversationView = mRootView.findViewById(R.id.empty_conversation_view);
         mChatView = (RecyclerView) mRootView.findViewById(R.id.conversation_container);
@@ -76,8 +74,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         mChatView.setLayoutManager(layoutManager);
 
-        List<ChatTranslation> chatTranslations = ChatTranslation.listAll(ChatTranslation.class);
-        mChatAdapter = new ChatAdapter(getContext(), chatTranslations, (MainActivity) getActivity(), false);
+        mChatAdapter = new ChatAdapter(getContext(), (MainActivity) getActivity(), false);
         mChatView.setAdapter(mChatAdapter);
         mChatView.scrollToPosition(mChatAdapter.getItemCount() - 1);
         mChatView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
@@ -99,32 +96,11 @@ public class ConversationFragment extends Fragment implements RecognitionListene
             public void onChildViewDetachedFromWindow(View view) {
             }
         });
-        if (chatTranslations == null || chatTranslations.size() == 0) {
+
+        if (mChatAdapter.getItemCount() == 0) {
             mChatView.setVisibility(View.GONE);
             mEmptyConversationView.setVisibility(View.VISIBLE);
         }
-
-//        ItemTouchHelper.SimpleCallback simpleItemTouchCallback =
-//                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-//
-//                    @Override
-//                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-//                        return false;
-//                    }
-//
-//                    @Override
-//                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-//                        mChatAdapter.removeTranslation(viewHolder.getAdapterPosition());
-//
-//                        if (mChatAdapter.getItemCount() == 0) {
-//                            mChatView.setVisibility(View.GONE);
-//                            mEmptyConversationView.setVisibility(View.VISIBLE);
-//                        }
-//                    }
-//                };
-//
-//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-//        itemTouchHelper.attachToRecyclerView(mChatView);
     }
 
     public void checkMicrophonePermission() {
@@ -298,8 +274,4 @@ public class ConversationFragment extends Fragment implements RecognitionListene
         Log.d(LOG_TAG, "onEvent");
     }
 
-
-    @Override
-    public void setTextToSpeechReadyForUsing(boolean isReady) {
-    }
 }

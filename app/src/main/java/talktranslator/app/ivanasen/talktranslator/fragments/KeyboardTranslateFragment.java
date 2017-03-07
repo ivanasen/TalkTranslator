@@ -40,13 +40,12 @@ import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
 import talktranslator.app.ivanasen.talktranslator.adapters.TranslationHistoryAdapter;
 import talktranslator.app.ivanasen.talktranslator.models.Translation;
 import talktranslator.app.ivanasen.talktranslator.translation.TranslationResult;
-import talktranslator.app.ivanasen.talktranslator.utils.ITextToSpeechUser;
 import talktranslator.app.ivanasen.talktranslator.R;
 import talktranslator.app.ivanasen.talktranslator.translation.Translator;
 import talktranslator.app.ivanasen.talktranslator.utils.ItemClickSupport;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
-public class KeyboardTranslateFragment extends Fragment implements ITextToSpeechUser {
+public class KeyboardTranslateFragment extends Fragment {
     private static final String LOG_TAG = KeyboardTranslateFragment.class.getSimpleName();
 
     private Translator mTranslator;
@@ -514,9 +513,5 @@ public class KeyboardTranslateFragment extends Fragment implements ITextToSpeech
                 translate();
             }
         });
-    }
-
-    @Override
-    public void setTextToSpeechReadyForUsing(boolean isReady) {
     }
 }

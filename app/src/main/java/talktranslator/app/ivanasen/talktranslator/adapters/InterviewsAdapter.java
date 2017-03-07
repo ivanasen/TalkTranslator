@@ -139,6 +139,12 @@ public class InterviewsAdapter extends RecyclerView.Adapter<InterviewsAdapter.In
         });
     }
 
+    public void removeInterview(int position) {
+        Interview interviewToDelete = mInterviews.remove(position);
+        notifyDataSetChanged();
+        Interview.delete(interviewToDelete);
+    }
+
     @Override
     public int getItemCount() {
         return mInterviews.size();

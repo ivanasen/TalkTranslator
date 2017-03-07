@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
 import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
@@ -86,17 +87,18 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     }
 
-    public ChatAdapter(Context context, @Nullable List<ChatTranslation> chatTranslations,
+    public ChatAdapter(Context context,
                        MainActivity activity, boolean isInterviewFragment) {
         mContext = context;
         mActivity = activity;
         mIsInterviewFragment = isInterviewFragment;
 
-        if (chatTranslations == null) {
-            chatTranslations = new ArrayList<>();
+        if (mIsInterviewFragment) {
+            mListItems = new ArrayList<>();
+        } else {
+            List<ChatTranslation> translations = ChatTranslation.listAll(ChatTranslation.class);
+            mListItems = new ArrayList<Object>(translations);
         }
-
-        mListItems = new ArrayList<Object>(chatTranslations);
     }
 
     @Override
@@ -189,7 +191,8 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         String langCode = Utility.getTranslatedLanguage(languages);
         String translation = chatTranslation.getTranslatedText();
 
-        if (langCode.equals(mContext.getString(R.string.lang_code_bg))) {
+        boolean isBulgarianTTSEnabled = Utility.isBulgarianTextToSpeechEnabled(mContext);
+        if (langCode.equals(mContext.getString(R.string.lang_code_bg)) && isBulgarianTTSEnabled) {
             langCode = mContext.getString(R.string.lang_code_ru);
             translation = Utility.editBulgarianTextForRussianReading(translation);
         }
