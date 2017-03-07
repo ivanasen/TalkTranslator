@@ -34,7 +34,8 @@ public class Utility {
 
     public static String getTranslatorLanguage(Context context, String translatorLanguageName) {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_APPEND);
-        return prefs.getString(translatorLanguageName, Locale.ENGLISH.getDisplayLanguage());
+        return prefs.getString(translatorLanguageName,
+                translatorLanguageName.equals(LEFT_TRANSLATOR_LANGUAGE) ? "English" : "Bulgarian");
     }
 
     public static void setTranslatorLanguage(Context context, String translatorLanguageName, String language) {
@@ -73,7 +74,7 @@ public class Utility {
     public static boolean isBulgarianTextToSpeechEnabled(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String prefKey = context.getString(R.string.pref_enable_bg_text_to_speech_key);
-        return prefs.getBoolean(prefKey, false);
+        return prefs.getBoolean(prefKey, true);
     }
 
     public static String getTranslateFromLanguage(String fromLangToLang) {

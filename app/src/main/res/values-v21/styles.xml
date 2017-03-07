@@ -4,7 +4,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="android:statusBarColor">@color/dark_gray</item>
     </style>
 
     <style name="SpeakNowBtn">
@@ -21,10 +21,8 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/lightGray</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:colorBackground">@color/windowBackground</item>
-        <item name="android:statusBarColor">@color/lightGray</item>
     </style>
 </resources>

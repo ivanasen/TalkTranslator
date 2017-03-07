@@ -106,7 +106,6 @@ public class TranslationPanel {
                     mSpeechRecognizer.cancel();
                     mLeftTranslator.setAnimationOn(false);
                     mIsSpeechRecognitionOn = false;
-
                     return;
                 }
 

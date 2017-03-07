@@ -16,8 +16,5 @@
     <item
         android:id="@+id/action_clear_history"
         android:title="@string/clear_history_title" />
-    <item
-        android:id="@+id/action_about"
-        android:title="@string/menu_title_about" />
 </menu>
 

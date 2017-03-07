@@ -3319,7 +3319,6 @@ containing a value of this type.
     }
     public static final class id {
         public static final int action0=0x7f0f00c8;
-        public static final int action_about=0x7f0f00e2;
         public static final int action_bar=0x7f0f006c;
         public static final int action_bar_activity_content=0x7f0f0000;
         public static final int action_bar_container=0x7f0f006b;

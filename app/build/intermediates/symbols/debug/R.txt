@@ -813,7 +813,6 @@ int drawable side_nav_bar 0x7f02007a
 int drawable swap_horizontal 0x7f02007b
 int drawable up_arrow 0x7f02007c
 int id action0 0x7f0f00c8
-int id action_about 0x7f0f00e2
 int id action_bar 0x7f0f006c
 int id action_bar_activity_content 0x7f0f0000
 int id action_bar_container 0x7f0f006b
