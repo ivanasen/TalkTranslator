@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
 import android.support.annotation.NonNull;
@@ -63,6 +64,14 @@ public class ConversationFragment extends Fragment implements RecognitionListene
                 getContext(), mRootView, mSpeechRecognizer, mChatAdapter, false);
 
         checkMicrophonePermission();
+
+        Handler waitForTTSToInitHandler = new Handler();
+        waitForTTSToInitHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mChatAdapter.notifyDataSetChanged();
+            }
+        }, getResources().getInteger(R.integer.wait_for_text_to_speech_to_init_millis));
 
         return mRootView;
     }
@@ -200,7 +209,7 @@ public class ConversationFragment extends Fragment implements RecognitionListene
 
     @Override
     public void onReadyForSpeech(Bundle params) {
-        Log.d(LOG_TAG, "onReadyforSpeach");
+        Log.d(LOG_TAG, "onReadyfor`ch");
     }
 
     @Override

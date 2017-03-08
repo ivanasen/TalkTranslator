@@ -1,7 +1,6 @@
 package talktranslator.app.ivanasen.talktranslator.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.UtteranceProgressListener;
@@ -97,7 +96,7 @@ public class KeyboardTranslateFragment extends Fragment {
         waitForTextToSpeechToInitHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mLocales = ((MainActivity) KeyboardTranslateFragment.this.getActivity()).getLocales();
+                mLocales = ((MainActivity) KeyboardTranslateFragment.this.getActivity()).getAvailableTextToSpeechLangs();
                 if (mLocales == null) {
                     return;
                 }

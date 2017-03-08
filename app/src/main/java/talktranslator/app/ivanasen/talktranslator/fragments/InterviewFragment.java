@@ -84,6 +84,14 @@ public class InterviewFragment extends ConversationFragment {
             setupMediaControls();
         }
 
+        Handler waitForTTSToInitHandler = new Handler();
+        waitForTTSToInitHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mChatAdapter.notifyDataSetChanged();
+            }
+        }, getResources().getInteger(R.integer.wait_for_text_to_speech_to_init_millis));
+
         return mRootView;
     }
 

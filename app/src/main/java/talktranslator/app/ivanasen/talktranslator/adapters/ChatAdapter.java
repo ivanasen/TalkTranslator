@@ -2,7 +2,6 @@ package talktranslator.app.ivanasen.talktranslator.adapters;
 
 import android.content.Context;
 import android.speech.tts.UtteranceProgressListener;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Set;
 
 import talktranslator.app.ivanasen.talktranslator.activities.MainActivity;
@@ -147,7 +145,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         translationViewHolder.translatedTextView.setText(chatTranslation.getTranslatedText());
         translationViewHolder.originalTextView.setText(chatTranslation.getOriginalText());
 
-        if (mActivity.getTextToSpeech() != null) {
+        if (mActivity.getAvailableTextToSpeechLangs() != null) {
             setupReplayTranslationButton(translationViewHolder, chatTranslation);
         }
 
@@ -197,7 +195,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             translation = Utility.editBulgarianTextForRussianReading(translation);
         }
 
-        Set<Locale> locales = mActivity.getLocales();
+        Set<Locale> locales = mActivity.getAvailableTextToSpeechLangs();
         Locale locale = null;
         if (locales != null) {
             locale = Utility.getLocaleFromLangCode(langCode, locales);

@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public Set<Locale> getLocales() {
+    public Set<Locale> getAvailableTextToSpeechLangs() {
         return mLocales;
     }
 
