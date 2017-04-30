@@ -53,7 +53,7 @@
             android:paddingLeft="8dp"
             android:paddingStart="8dp"
         />
-        <Chronometer android:id="@+id/interview_length_chronometer"
+        <Chronometer android:id="@+id/chronometer"
             android:textAppearance="@style/TextAppearance.AppCompat.Notification.Time.Media"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

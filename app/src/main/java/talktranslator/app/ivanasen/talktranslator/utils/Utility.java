@@ -138,6 +138,7 @@ public class Utility {
                     charsList.add(i, 'э');
                     break;
                 case 'щ':
+                    charsList.set(i, 'ш');
                     if (i == charsList.size() - 1) {
                         charsList.add('т');
                     } else {

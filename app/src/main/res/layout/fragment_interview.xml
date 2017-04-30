@@ -63,14 +63,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="@dimen/translator_panel_margin"
-        android:layout_marginStart="@dimen/translator_panel_margin"
         android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toLeftOf="@id/fake_view"
         android:layout_toStartOf="@id/fake_view"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/bordered_view"
         android:clipChildren="false"
-        android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
 
         <LinearLayout
@@ -119,14 +116,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="@dimen/translator_panel_margin"
-        android:layout_marginRight="@dimen/translator_panel_margin"
         android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toEndOf="@id/fake_view"
         android:layout_toRightOf="@id/fake_view"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/bordered_view"
         android:clipChildren="false"
-        android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
 
         <LinearLayout

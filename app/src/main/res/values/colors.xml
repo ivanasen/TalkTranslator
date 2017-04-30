@@ -12,6 +12,10 @@
     <color name="rightTranslatorColorBackground">#FFCDD2</color>
     <color name="tabColor">#f1f3ff</color>
     <color name="chat_secondary_text">#c3ffffff</color>
-    <color name="windowBackground">#f9faff</color>
+    <color name="windowBackground">#f7f8ff</color>
     <color name="dark_gray">#424242</color>
+    <color name="lightColorBlue">#00bfa5</color>
+    <color name="pulseColorBlue">#42a5f5</color>
+    <color name="pulseColorRed">#EC407A</color>
+    <color name="transparentDark">#3c000000</color>
 </resources>

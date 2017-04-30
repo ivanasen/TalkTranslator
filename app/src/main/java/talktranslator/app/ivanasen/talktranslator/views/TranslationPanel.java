@@ -72,22 +72,22 @@ public class TranslationPanel {
         mRightTranslator = (PulsatingButton) mRootView.findViewById(R.id.right_translator);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mLeftTranslator.setPulseColor(mContext.getColor(R.color.materialBlue));
+            mLeftTranslator.setPulseColor(mContext.getColor(R.color.pulseColorBlue));
             if (mIsFromInterviewFragment) {
                 mRightTranslator.setPulseColor(mContext.getColor(R.color.lightGray));
             } else {
-                mRightTranslator.setPulseColor(mContext.getColor(R.color.materialRed));
+                mRightTranslator.setPulseColor(mContext.getColor(R.color.pulseColorRed));
             }
         } else {
             mLeftTranslator.setPulseColor(
-                    mContext.getResources().getColor(R.color.materialBlue));
+                    mContext.getResources().getColor(R.color.pulseColorBlue));
             if (mIsFromInterviewFragment) {
                 mRightTranslator.setPulseColor(
                         mContext.getResources().getColor(R.color.lightGray)
                 );
             } else {
                 mRightTranslator.setPulseColor(
-                        mContext.getResources().getColor(R.color.materialRed));
+                        mContext.getResources().getColor(R.color.pulseColorRed));
             }
         }
 

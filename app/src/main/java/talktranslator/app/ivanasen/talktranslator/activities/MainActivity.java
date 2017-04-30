@@ -34,6 +34,7 @@ import talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment
 import talktranslator.app.ivanasen.talktranslator.fragments.InterviewFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment;
 import talktranslator.app.ivanasen.talktranslator.fragments.SettingsFragment;
+import talktranslator.app.ivanasen.talktranslator.services.ClipboardService;
 import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        createCopyService();
+
         mTextToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -74,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
         setupTabNavigation();
         checkInternetConnection();
+    }
+
+    private void createCopyService() {
+        Intent service = new Intent(this, ClipboardService.class);
+        startService(service);
     }
 
     private void checkInternetConnection() {
@@ -102,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
         Drawable interviewDrawable;
         Drawable translateDrawable;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            conversationDrawable = getDrawable(R.drawable.ic_forum_black_36dp);
-            interviewDrawable = getDrawable(R.drawable.ic_microphone_variant_black_36dp);
+            conversationDrawable = getDrawable(R.drawable.chart_bubble);
+            interviewDrawable = getDrawable(R.drawable.microphone_outline);
             translateDrawable = getDrawable(R.drawable.ic_translate_black_36dp);
         } else {
-            conversationDrawable = getResources().getDrawable(R.drawable.ic_forum_black_36dp);
-            interviewDrawable = getResources().getDrawable(R.drawable.ic_microphone_variant_black_36dp);
+            conversationDrawable = getResources().getDrawable(R.drawable.chart_bubble);
+            interviewDrawable = getResources().getDrawable(R.drawable.microphone_outline);
             translateDrawable = getResources().getDrawable(R.drawable.ic_translate_black_36dp);
         }
         if (conversationDrawable != null && interviewDrawable != null && translateDrawable != null) {

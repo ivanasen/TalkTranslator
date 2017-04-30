@@ -6,6 +6,8 @@ import android.util.Log;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Locale;
 
@@ -33,9 +35,16 @@ public class Translator {
     }
 
     public void translate(String textToTranslate, String fromLanguageCodeToLanguageCode,
-                            Callback<TranslationResult> callback) {
+                          Callback<TranslationResult> callback) {
         Call<TranslationResult> translationCall =
                 mService.translate(BuildConfig.YANDEX_TRANSLATE_API_KEY, textToTranslate, fromLanguageCodeToLanguageCode);
         translationCall.enqueue(callback);
     }
+
+    public void detectLanguage(String text, Callback<LanguageWrapper> callback) {
+        Call<LanguageWrapper> languageCall =
+                mService.detectLanguage(BuildConfig.YANDEX_TRANSLATE_API_KEY, text);
+        languageCall.enqueue(callback);
+    }
+
 }

@@ -9,4 +9,8 @@ interface TranslationService {
     Call<TranslationResult> translate(@Query("key") String apiKey,
                                       @Query("text") String textToTranslate,
                                       @Query("lang") String fromLangToLang);
+
+    @GET("api/v1.5/tr.json/detect")
+    Call<LanguageWrapper> detectLanguage(@Query("key") String apiKey,
+                                         @Query("text") String text);
 }

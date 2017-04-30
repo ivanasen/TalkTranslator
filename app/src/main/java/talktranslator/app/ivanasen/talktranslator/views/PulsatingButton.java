@@ -19,18 +19,13 @@ import android.widget.Button;
  */
 public class PulsatingButton extends android.support.v7.widget.AppCompatButton {
 
-    private static final int VOICE_INPUT_COLOR_ALPHA = 100;
+    private static final int VOICE_INPUT_COLOR_ALPHA = 75;
     private static final float CORNER_RADIUS = 10;
     private static final float MAX_PULSE_RADIUS = 100;
-    private static final float ANIMATION_TRANSLATION_Z = 20;
 
     private boolean mAnimationOn;
     private Paint mVoiceInputPaint;
     private AnimatableRectF mRectF;
-
-    private int mRippleColor;
-
-    private float mRmsdB;
     private float mPulseRadius;
     private ValueAnimator mValueAnimator;
 
@@ -80,9 +75,8 @@ public class PulsatingButton extends android.support.v7.widget.AppCompatButton {
         animatePulse(currentPulseRadius);
     }
 
-    public void setPulseColor(int mRippleColor) {
-        this.mRippleColor = mRippleColor;
-        mVoiceInputPaint.setColor(mRippleColor);
+    public void setPulseColor(int rippleColor) {
+        mVoiceInputPaint.setColor(rippleColor);
         mVoiceInputPaint.setAlpha(VOICE_INPUT_COLOR_ALPHA);
     }
 

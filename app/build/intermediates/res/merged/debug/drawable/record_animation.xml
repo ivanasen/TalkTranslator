@@ -1,0 +1,9 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@android:drawable/ic_notification_overlay"
+        android:duration="1000" />
+    <item
+        android:drawable="@android:color/transparent"
+        android:duration="1000" />
+</animation-list>

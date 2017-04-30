@@ -22,7 +22,7 @@
             android:layout_marginTop="@dimen/chat_margin_vertical"
             android:background="@drawable/rounded_corner_right"
             android:clickable="true"
-            android:elevation="@dimen/chat_bubble_elevation"
+
             android:maxWidth="256dp"
             android:minWidth="64dp">
 
@@ -34,7 +34,7 @@
                 android:layout_margin="16dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_volume_up_white_24dp"
-                android:tint="@android:color/white"/>
+                android:tint="@android:color/white" />
 
             <ProgressBar
                 android:id="@+id/progressbar"
@@ -43,7 +43,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:theme="@style/ProgressBarTheme"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/text_container"

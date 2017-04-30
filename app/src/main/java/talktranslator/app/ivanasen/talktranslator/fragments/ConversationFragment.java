@@ -154,7 +154,11 @@ public class ConversationFragment extends Fragment implements RecognitionListene
     public void onDestroy() {
         super.onDestroy();
         if (mSpeechRecognizer != null) {
-            mSpeechRecognizer.destroy();
+            try {
+                mSpeechRecognizer.destroy();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

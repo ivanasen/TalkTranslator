@@ -23,7 +23,6 @@
             android:layout_marginTop="@dimen/chat_margin_vertical"
             android:background="@drawable/rounded_corner_left"
             android:clickable="true"
-            android:elevation="@dimen/chat_bubble_elevation"
             android:minWidth="64dp">
 
             <LinearLayout

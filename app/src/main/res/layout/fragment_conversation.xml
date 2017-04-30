@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
@@ -15,7 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/dark_gray"
-        android:elevation="@dimen/app_elevation_default"
         android:padding="@dimen/list_item_padding_vertical"
         android:text="@string/error_network"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -52,12 +52,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="@dimen/translator_panel_margin"
-        android:layout_marginStart="@dimen/translator_panel_margin"
         android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toLeftOf="@id/fake_view"
         android:layout_toStartOf="@id/fake_view"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/bordered_view"
         android:clipChildren="false"
         android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
@@ -101,12 +99,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="@dimen/translator_panel_margin"
-        android:layout_marginRight="@dimen/translator_panel_margin"
         android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toEndOf="@id/fake_view"
         android:layout_toRightOf="@id/fake_view"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/bordered_view"
         android:clipChildren="false"
         android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
@@ -150,24 +146,24 @@
         android:layout_above="@id/left_translator_container"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:padding="24dp"
         android:orientation="vertical"
+        android:padding="24dp"
         android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_forum_black_36dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:scaleX="2"
             android:scaleY="2"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+            android:src="@drawable/ic_forum_black_36dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/empty_conversation_text"
-            android:textSize="@dimen/translation_text_size_hint"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textSize="@dimen/translation_text_size_hint" />
 
     </LinearLayout>
 
@@ -180,6 +176,6 @@
         android:layout_alignParentTop="true"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/list_item_padding_vertical"
-        android:paddingTop="@dimen/list_item_padding_vertical"/>
+        android:paddingTop="@dimen/list_item_padding_vertical" />
 
 </RelativeLayout>
