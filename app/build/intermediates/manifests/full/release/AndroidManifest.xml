@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="talktranslator.app.ivanasen.talktranslator"
+    android:versionCode="3"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.GET_CLIPS" />
+    <uses-permission android:name="android.permission.READ_CLIPS" />
+    <uses-permission android:name="android.permission.WRITE_CLIPS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
+    <application
+        android:name="com.orm.SugarApp"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="talktranslator.app.ivanasen.talktranslator.activities.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="DATABASE"
+            android:value="talk_translator.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="talktranslator.app.ivanasen" />
+
+        <activity
+            android:name="talktranslator.app.ivanasen.talktranslator.activities.SettingsActivity"
+            android:label="@string/settings_title"
+            android:parentActivityName="talktranslator.app.ivanasen.talktranslator.activities.MainActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="talktranslator.app.ivanasen.talktranslator.activities.InterviewExplorerActivity"
+            android:label="@string/interviews_activity_title"
+            android:parentActivityName="talktranslator.app.ivanasen.talktranslator.activities.MainActivity"
+            android:theme="@style/AppTheme" />
+
+        <service android:name="talktranslator.app.ivanasen.talktranslator.services.ClipboardService" />
+
+        <activity
+            android:name="talktranslator.app.ivanasen.talktranslator.activities.CopyToTranslateActivity"
+            android:documentLaunchMode="always"
+            android:label="@string/title_activity_copy_to_translate"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+    </application>
+
+</manifest>

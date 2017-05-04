@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    tools:context="talktranslator.app.ivanasen.talktranslator.fragments.ConversationFragment">
+
+    <TextView
+        android:id="@+id/no_connection_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/dark_gray"
+        android:padding="@dimen/list_item_padding_vertical"
+        android:text="@string/error_network"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/primary_text_dark"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/fake_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <ToggleButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="0dp"
+            android:background="@drawable/expand_button_background"
+            android:textColor="@android:color/transparent"
+            android:textSize="0sp" />
+
+        <Button
+            style="@style/SpeakNowBtn"
+            android:theme="@style/LeftTranslatorButton" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/left_translator_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/translator_panel_margin"
+        android:layout_toLeftOf="@id/fake_view"
+        android:layout_toStartOf="@id/fake_view"
+        android:background="@color/colorPrimary"
+        android:clipChildren="false"
+        android:elevation="@dimen/app_elevation_default"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/left_translator_language_select_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="0dp"
+                android:background="@drawable/expand_button_background"
+                android:textColor="@android:color/transparent"
+                android:textSize="0sp" />
+
+            <talktranslator.app.ivanasen.talktranslator.views.PulsatingButton
+                android:id="@+id/left_translator"
+                style="@style/SpeakNowBtn"
+                android:theme="@style/LeftTranslatorButton" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/left_translator_langs_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:divider="@null"
+            tools:ignore="Suspicious0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_translator_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/translator_panel_margin"
+        android:layout_toEndOf="@id/fake_view"
+        android:layout_toRightOf="@id/fake_view"
+        android:background="@color/colorPrimary"
+        android:clipChildren="false"
+        android:elevation="@dimen/app_elevation_default"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:orientation="vertical">
+
+            <ToggleButton
+                android:id="@+id/right_translator_language_select_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="0dp"
+                android:background="@drawable/expand_button_background"
+                android:textColor="@android:color/transparent"
+                android:textSize="0sp" />
+
+            <talktranslator.app.ivanasen.talktranslator.views.PulsatingButton
+                android:id="@+id/right_translator"
+                style="@style/SpeakNowBtn"
+                android:theme="@style/RightTranslatorButton" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/right_translator_langs_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:divider="@null"
+            tools:ignore="Suspicious0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/empty_conversation_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/left_translator_container"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:srcCompat="@drawable/chart_bubble" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_conversation_text"
+            android:textAlignment="center"
+            android:textSize="@dimen/translation_text_size_hint" />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/conversation_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fake_view"
+        android:layout_alignParentTop="true"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/list_item_padding_vertical"
+        android:paddingTop="@dimen/list_item_padding_vertical" />
+
+</RelativeLayout>

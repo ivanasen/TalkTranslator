@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_copy_to_translate_title">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_copy_to_translate_key"
+            android:summary="@string/pref_copy_to_translate_summary"
+            android:title="Enable Copy To Translate" />
+
+        <ListPreference
+            android:enabled="false"
+            android:entries="@array/languages"
+            android:entryValues="@array/lang_codes"
+            android:key="@string/pref_copy_to_translate_language"
+            android:summary="System Default"
+            android:title="Copy To Translate language" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_other_preferences_title">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_enable_bg_text_to_speech_key"
+            android:summary="@string/enable_bg_text_to_speech_summ"
+            android:title="@string/enable_bg_text_to_speech_title" />
+
+        <Preference
+            android:key="@string/clear_history_key"
+            android:title="@string/pref_clear_history_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,206 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:2:1-73:12
+	package
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:4:5-57
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:8:5-71
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:8:22-68
+uses-permission#android.permission.GET_CLIPS
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:9:5-68
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:9:22-65
+uses-permission#android.permission.READ_CLIPS
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:10:5-69
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:10:22-66
+uses-permission#android.permission.WRITE_CLIPS
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:11:5-70
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:11:22-67
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:12:22-78
+application
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:14:5-71:19
+MERGED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\vanka\.android\build-cache\df6f4653b5da733f622fd259a4cb52b07df17282\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\b81dcb9522cad8973b1b39c31d621971dfa4c50e\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\vanka\.android\build-cache\531b3c003f0e7fd5bab457bacd4ccf9b3dc478a2\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\vanka\.android\build-cache\40efb660fe65b8487e105da569ef1aae3c05a125\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\4eceacedca51e111b0effb5eb4a4d7de4d18f156\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta5] C:\Users\vanka\.android\build-cache\fcf9f904447c681a8c9dc144dcb65ec1ed1351a1\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\vanka\.android\build-cache\13d9c5742eccd8461aeb57e3001edeba0b2b6767\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\vanka\.android\build-cache\bd1b5bd474b6a01ea91a5098f6653298f057fed2\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\vanka\.android\build-cache\ee52ba1f1a4af5e76364f10c9edd8137304e9dcb\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\vanka\.android\build-cache\0be3052f966ee0db10a6d6f9f55400e36b2fa80f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\vanka\.android\build-cache\2c6775c8561c560149beec6a23ea5af24eeddc8c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\vanka\.android\build-cache\c90f340f42c766802a3fdf87bf78af37b32dcb5f\output\AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:19:9-41
+	android:supportsRtl
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:20:9-35
+	android:fullBackupContent
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:17:9-41
+	android:allowBackup
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:16:9-35
+	android:icon
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:18:9-43
+	android:theme
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:21:9-40
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:15:9-40
+activity#talktranslator.app.ivanasen.talktranslator.activities.MainActivity
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:22:9-32:20
+	android:screenOrientation
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:25:13-49
+	android:label
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:24:13-45
+	android:theme
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:26:13-56
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:23:13-52
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:30:27-74
+meta-data#DATABASE
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:34:9-36:50
+	android:value
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:36:13-47
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:35:13-36
+meta-data#VERSION
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:37:9-39:33
+	android:value
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:39:13-30
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:38:13-35
+meta-data#QUERY_LOG
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:40:9-42:36
+	android:value
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:42:13-33
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:41:13-37
+meta-data#DOMAIN_PACKAGE_NAME
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:43:9-45:59
+	android:value
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:45:13-56
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:44:13-47
+activity#talktranslator.app.ivanasen.talktranslator.activities.SettingsActivity
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:47:9-56:20
+	android:screenOrientation
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:51:13-49
+	android:label
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:49:13-51
+	android:parentActivityName
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:50:13-66
+	android:theme
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:52:13-44
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:48:13-56
+intent-filter#android.intent.category.PREFERENCE
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:53:13-55:29
+category#android.intent.category.PREFERENCE
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:54:17-79
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:54:27-76
+activity#talktranslator.app.ivanasen.talktranslator.activities.InterviewExplorerActivity
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:57:9-61:47
+	android:label
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:59:13-62
+	android:parentActivityName
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:60:13-66
+	android:theme
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:61:13-44
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:58:13-65
+service#talktranslator.app.ivanasen.talktranslator.services.ClipboardService
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:63:9-62
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:63:18-59
+activity#talktranslator.app.ivanasen.talktranslator.activities.CopyToTranslateActivity
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:65:9-70:42
+	android:label
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:67:13-69
+	tools:targetApi
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:70:13-39
+	android:documentLaunchMode
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:69:13-48
+	android:theme
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:68:13-63
+	android:name
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:66:13-63
+uses-sdk
+INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\vanka\.android\build-cache\df6f4653b5da733f622fd259a4cb52b07df17282\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\b81dcb9522cad8973b1b39c31d621971dfa4c50e\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\vanka\.android\build-cache\e520ead95cdc6cd32668d59df76cf9ef79c7e9cc\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\vanka\.android\build-cache\531b3c003f0e7fd5bab457bacd4ccf9b3dc478a2\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\vanka\.android\build-cache\40efb660fe65b8487e105da569ef1aae3c05a125\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\4eceacedca51e111b0effb5eb4a4d7de4d18f156\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta5] C:\Users\vanka\.android\build-cache\fcf9f904447c681a8c9dc144dcb65ec1ed1351a1\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.satyan:sugar:1.4] C:\Users\vanka\.android\build-cache\7a6e41cec3fcab93994a56b73adfd4cc2736b79e\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\vanka\.android\build-cache\13d9c5742eccd8461aeb57e3001edeba0b2b6767\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\vanka\.android\build-cache\bd1b5bd474b6a01ea91a5098f6653298f057fed2\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\vanka\.android\build-cache\ee52ba1f1a4af5e76364f10c9edd8137304e9dcb\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\vanka\.android\build-cache\0be3052f966ee0db10a6d6f9f55400e36b2fa80f\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\vanka\.android\build-cache\2c6775c8561c560149beec6a23ea5af24eeddc8c\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\vanka\.android\build-cache\c90f340f42c766802a3fdf87bf78af37b32dcb5f\output\AndroidManifest.xml:21:5-23:58
+MERGED from [net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.0.1] C:\Users\vanka\.android\build-cache\09f2bc3af95e13b56231a997e5ce813fffd08001\output\AndroidManifest.xml:8:5-10:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\vanka\.android\build-cache\df6f4653b5da733f622fd259a4cb52b07df17282\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\b81dcb9522cad8973b1b39c31d621971dfa4c50e\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\vanka\.android\build-cache\e520ead95cdc6cd32668d59df76cf9ef79c7e9cc\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\vanka\.android\build-cache\531b3c003f0e7fd5bab457bacd4ccf9b3dc478a2\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\vanka\.android\build-cache\40efb660fe65b8487e105da569ef1aae3c05a125\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\4eceacedca51e111b0effb5eb4a4d7de4d18f156\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\vanka\.android\build-cache\13d9c5742eccd8461aeb57e3001edeba0b2b6767\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\vanka\.android\build-cache\bd1b5bd474b6a01ea91a5098f6653298f057fed2\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\vanka\.android\build-cache\ee52ba1f1a4af5e76364f10c9edd8137304e9dcb\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\vanka\.android\build-cache\0be3052f966ee0db10a6d6f9f55400e36b2fa80f\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\vanka\.android\build-cache\2c6775c8561c560149beec6a23ea5af24eeddc8c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\vanka\.android\build-cache\c90f340f42c766802a3fdf87bf78af37b32dcb5f\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:26:9-47

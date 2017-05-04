@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="talktranslator.app.ivanasen.talktranslator.activities.MainActivity">
+
+    <item
+        android:id="@+id/action_view_interviews"
+        android:title="@string/interviews_title"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_clear_history"
+        android:title="@string/clear_history_title" />
+</menu>
+

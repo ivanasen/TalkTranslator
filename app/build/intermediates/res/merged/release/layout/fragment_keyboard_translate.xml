@@ -1,0 +1,132 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="talktranslator.app.ivanasen.talktranslator.fragments.KeyboardTranslateFragment">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="@dimen/app_elevation_default">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordered_view">
+
+                <Spinner
+                    android:id="@+id/translate_from_language_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:dropDownVerticalOffset="48dp"
+                    android:dropDownWidth="156dp"
+                    android:entries="@array/languages"
+                    android:popupBackground="@color/lightGray" />
+
+                <ImageButton
+                    android:id="@+id/swap_languages_btn"
+                    style="?android:attr/actionButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/swap_horizontal" />
+
+                <Spinner
+                    android:id="@+id/translate_to_language_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:dropDownVerticalOffset="48dp"
+                    android:dropDownWidth="156dp"
+                    android:entries="@array/languages"
+                    android:popupBackground="@color/colorPrimary" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_input_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin" />
+
+                <ImageButton
+                    android:id="@+id/clear_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:tint="@color/materialBlue"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/translate_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_input_language"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:fontFamily="sans-serif-thin"
+                    android:hint="@string/edit_text_translation_hint"
+                    android:imeOptions="actionSend"
+                    android:inputType="text"
+                    android:textCursorDrawable="@null"
+                    android:textSize="24sp" />
+
+                <ImageButton
+                    android:id="@+id/speak_text_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/translate_text_input"
+                    android:layout_margin="16dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_volume_up_white_24dp" />
+
+                <ProgressBar
+                    android:id="@+id/input_progressbar"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/translate_text_input"
+                    android:layout_margin="16dp"
+                    android:theme="@style/ProgressBarTheme"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <include layout="@layout/head_translation" />
+
+        <include layout="@layout/translation_history" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+

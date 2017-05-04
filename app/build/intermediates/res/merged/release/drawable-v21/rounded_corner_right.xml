@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#b71c1c">
+    <item>
+        <shape>
+            <gradient android:endColor="@color/rightChatBubbleColor"
+                android:startColor="@color/pulseColorRed"
+                android:centerX="0.1"/>
+            <corners
+                android:bottomRightRadius="2dp"
+                android:radius="20dp" />
+            <padding
+                android:bottom="0dp"
+                android:left="0dp"
+                android:right="0dp"
+                android:top="0dp" />
+        </shape>
+    </item>
+</ripple>
