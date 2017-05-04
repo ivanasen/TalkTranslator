@@ -71,6 +71,7 @@ public class KeyboardTranslateFragment extends Fragment {
 
     private Set<Locale> mLocales;
     private boolean isTextToSpeechInit;
+    private boolean mIsFromCopiedText;
 
     public KeyboardTranslateFragment() {
     }
@@ -124,6 +125,32 @@ public class KeyboardTranslateFragment extends Fragment {
                 }
             }
         }, getResources().getInteger(R.integer.wait_for_text_to_speech_to_init_millis));
+
+        long translationId = getActivity().getIntent()
+                .getLongExtra(MainActivity.TRANSLATION_EXTRA, 0);
+        if (translationId != 0) {
+            mIsFromCopiedText = true;
+
+            Translation translation = Translation.findById(Translation.class, translationId);
+            String fromLanguageCode =
+                    Utility.getTranslateFromLanguage(translation.getLanguage());
+            String toLanguageCode =
+                    Utility.getTranslatedLanguage(translation.getLanguage());
+            String fromLanguage =
+                    Utility.getLanguageFromCode(KeyboardTranslateFragment.this.getContext(),
+                            fromLanguageCode);
+            String toLanguage =
+                    Utility.getLanguageFromCode(KeyboardTranslateFragment.this.getContext(),
+                            toLanguageCode);
+
+            mTranslateFromLanguageSpinner.setSelection(Arrays.asList(getResources()
+                    .getStringArray(R.array.languages)).indexOf(fromLanguage));
+            mTranslateToLanguageSpinner.setSelection(Arrays.asList(getResources()
+                    .getStringArray(R.array.languages)).indexOf(toLanguage));
+
+            mTranslationTextView.setText(translation.getTranslatedText());
+            mTextInput.setText(translation.getOriginalText());
+        }
 
 
         return mRootView;
@@ -382,7 +409,8 @@ public class KeyboardTranslateFragment extends Fragment {
 
     private void translate() {
         final String text = mTextInput.getText().toString();
-        if (text.equals("")) {
+        if (text.equals("") || mIsFromCopiedText) {
+            mIsFromCopiedText = false;
             return;
         }
 

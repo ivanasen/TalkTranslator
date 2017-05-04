@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="talktranslator.app.ivanasen.talktranslator">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -65,8 +66,8 @@
             android:name=".activities.CopyToTranslateActivity"
             android:label="@string/title_activity_copy_to_translate"
             android:theme="@style/Theme.AppCompat.Translucent"
-            android:autoRemoveFromRecents="true"
-            android:documentLaunchMode="always"/>
+            android:documentLaunchMode="always"
+            tools:targetApi="lollipop" />
     </application>
 
 </manifest>

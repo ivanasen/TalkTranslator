@@ -55,7 +55,6 @@
                     android:id="@+id/translated_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginEnd="12dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"

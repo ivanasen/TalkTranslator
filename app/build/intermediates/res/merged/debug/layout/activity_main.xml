@@ -17,21 +17,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:theme="@style/ToolbarStyle"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMaxWidth="0dp"
             app:tabGravity="fill"
-            app:tabMode="fixed"
-            android:background="@color/tabColor"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabTextColor="@android:color/secondary_text_dark">
+            app:tabIndicatorColor="@color/tabColor"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed">
 
         </android.support.design.widget.TabLayout>
 

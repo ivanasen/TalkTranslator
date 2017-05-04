@@ -9,5 +9,4 @@
     android:paddingRight="@dimen/list_item_padding_horizontal"
     android:paddingStart="@dimen/list_item_padding_horizontal"
     android:paddingTop="@dimen/list_item_padding_vertical"
-    android:textColor="@color/materialBlue"
     android:textSize="16sp" />

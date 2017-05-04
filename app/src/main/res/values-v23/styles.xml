@@ -5,14 +5,5 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/lightGray</item>
-    </style>
-
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorPrimaryDark">@color/lightGray</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorBackground">@color/windowBackground</item>
     </style>
 </resources>

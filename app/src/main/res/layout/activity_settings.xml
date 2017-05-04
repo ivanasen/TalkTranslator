@@ -4,7 +4,6 @@
     android:id="@+id/activity_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context="talktranslator.app.ivanasen.talktranslator.activities.SettingsActivity">
 
     <fragment

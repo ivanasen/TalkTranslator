@@ -180,13 +180,6 @@
         android:paddingTop="8dp"
         android:visibility="gone">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/expand_button_background"
-            android:tint="@color/dark_gray"
-            android:layout_gravity="center_horizontal"/>
-
         <TextView
             android:id="@+id/record_textview"
             android:layout_width="match_parent"

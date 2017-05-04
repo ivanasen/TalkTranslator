@@ -55,7 +55,7 @@
         android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toLeftOf="@id/fake_view"
         android:layout_toStartOf="@id/fake_view"
-        android:background="@drawable/bordered_view"
+        android:background="@color/colorPrimary"
         android:clipChildren="false"
         android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
@@ -102,7 +102,7 @@
         android:layout_marginTop="@dimen/translator_panel_margin"
         android:layout_toEndOf="@id/fake_view"
         android:layout_toRightOf="@id/fake_view"
-        android:background="@drawable/bordered_view"
+        android:background="@color/colorPrimary"
         android:clipChildren="false"
         android:elevation="@dimen/app_elevation_default"
         android:orientation="vertical">
@@ -156,7 +156,7 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:scaleX="2"
             android:scaleY="2"
-            android:src="@drawable/ic_forum_black_36dp" />
+            app:srcCompat="@drawable/chart_bubble" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f1f3ff</color>
-    <color name="lightGray">#e8e9f4</color>
-    <color name="statusBarColor">@color/colorPrimary</color>
-    <color name="colorAccent">@color/dark_gray</color>
+    <color name="colorPrimary">#373644</color>
+    <color name="colorPrimaryDark">#2b2b35</color>
+    <color name="colorAccent">@color/materialBlue</color>
+
+    <color name="lightGray">#555462</color>
+
+
     <color name="materialRed">#FF5252</color>
     <color name="rightChatBubbleColor">#EF5350</color>
     <color name="materialBlue">#448AFF</color>
     <color name="leftChatBubbleColor">#448AFF</color>
-    <color name="leftTranslatorColorBackground">#BBDEFB</color>
-    <color name="rightTranslatorColorBackground">#FFCDD2</color>
-    <color name="tabColor">#f1f3ff</color>
-    <color name="chat_secondary_text">#c3ffffff</color>
-    <color name="windowBackground">#f7f8ff</color>
+
+    <color name="tabColor">@color/materialBlue</color>
+
+    <color name="windowBackground">@color/colorPrimaryDark</color>
     <color name="dark_gray">#424242</color>
     <color name="lightColorBlue">#00bfa5</color>
     <color name="pulseColorBlue">#42a5f5</color>
     <color name="pulseColorRed">#EC407A</color>
-    <color name="transparentDark">#3c000000</color>
+    <color name="chat_secondary_text">#c3ffffff</color>
+
+    <color name="copy_to_translate_translucent_bck">#3c000000</color>
 </resources>

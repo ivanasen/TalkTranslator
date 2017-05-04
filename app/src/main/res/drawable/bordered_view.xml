@@ -8,11 +8,11 @@
         </shape>
     </item>
 
-    <item android:top="1dp" android:drawable="@color/colorPrimary">
+    <item android:top="0.5dp" android:drawable="@color/colorPrimary">
         <shape android:shape="rectangle">
             <stroke
                 android:width="1dp"
-                android:color="@color/colorPrimary" />
+                android:color="@color/colorPrimaryDark" />
         </shape>
     </item>
 

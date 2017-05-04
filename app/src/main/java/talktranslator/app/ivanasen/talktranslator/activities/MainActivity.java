@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.support.annotation.Nullable;
@@ -40,6 +41,12 @@ import talktranslator.app.ivanasen.talktranslator.utils.Utility;
 public class MainActivity extends AppCompatActivity {
 
     public static final String UTTERANCE_ID = "translator utterance id";
+    public static final String TAB_SELECTED_EXTRA = "selected tab key";
+    public static final String TRANSLATION_EXTRA = "translation key";
+
+    public static final int TAB_POSITION_CONVERSATION = 0;
+    public static final int TAB_POSITION_INTERVIEW = 1;
+    public static final int TAB_POSITION_KEYBOARD = 2;
     private final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private ViewPager mViewPager;
@@ -58,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        createCopyService();
+        checkClipboardService();
 
         mTextToSpeech = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -79,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
         checkInternetConnection();
     }
 
-    private void createCopyService() {
-        Intent service = new Intent(this, ClipboardService.class);
-        startService(service);
+    private void checkClipboardService() {
+        boolean shouldTurnOn = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.pref_copy_to_translate_key), false);
+        SettingsFragment.toggleClipboardService(this, shouldTurnOn);
     }
 
     private void checkInternetConnection() {
@@ -112,11 +120,11 @@ public class MainActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             conversationDrawable = getDrawable(R.drawable.chart_bubble);
             interviewDrawable = getDrawable(R.drawable.microphone_outline);
-            translateDrawable = getDrawable(R.drawable.ic_translate_black_36dp);
+            translateDrawable = getDrawable(R.drawable.translate);
         } else {
             conversationDrawable = getResources().getDrawable(R.drawable.chart_bubble);
             interviewDrawable = getResources().getDrawable(R.drawable.microphone_outline);
-            translateDrawable = getResources().getDrawable(R.drawable.ic_translate_black_36dp);
+            translateDrawable = getResources().getDrawable(R.drawable.translate);
         }
         if (conversationDrawable != null && interviewDrawable != null && translateDrawable != null) {
             conversationDrawable.setAlpha(getResources().getInteger(R.integer.unselected_icon_alpha));
@@ -124,14 +132,14 @@ public class MainActivity extends AppCompatActivity {
             translateDrawable.setAlpha(getResources().getInteger(R.integer.unselected_icon_alpha));
         }
 
-        tabLayout.getTabAt(0).setIcon(conversationDrawable).setText(R.string.tab_text);
-        tabLayout.getTabAt(1).setIcon(interviewDrawable).setText(R.string.tab_text);
-        tabLayout.getTabAt(2).setIcon(translateDrawable).setText(R.string.tab_text);
+        tabLayout.getTabAt(TAB_POSITION_CONVERSATION)
+                .setIcon(conversationDrawable).setText(R.string.tab_text);
+        tabLayout.getTabAt(TAB_POSITION_INTERVIEW)
+                .setIcon(interviewDrawable).setText(R.string.tab_text);
+        tabLayout.getTabAt(TAB_POSITION_KEYBOARD)
+                .setIcon(translateDrawable).setText(R.string.tab_text);
 
-        TabLayout.Tab selectedTab = tabLayout.getTabAt(tabLayout.getSelectedTabPosition());
-        markSelectedTab(selectedTab);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        TabLayout.OnTabSelectedListener tabListener = new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 String title = (String) mPagerAdapter.getPageTitle(tab.getPosition());
@@ -160,7 +168,13 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(title);
                 markSelectedTab(tab);
             }
-        });
+        };
+        tabLayout.addOnTabSelectedListener(tabListener);
+
+        int selectedTabPosition = getIntent()
+                .getIntExtra(TAB_SELECTED_EXTRA, TAB_POSITION_CONVERSATION);
+        mViewPager.setCurrentItem(selectedTabPosition);
+        tabListener.onTabSelected(tabLayout.getTabAt(selectedTabPosition));
     }
 
     private void markSelectedTab(TabLayout.Tab tab) {
@@ -168,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle(mPagerAdapter.getPageTitle(pos));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            tab.getIcon().setColorFilter(getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+            tab.getIcon().setColorFilter(getColor(R.color.tabColor), PorterDuff.Mode.SRC_ATOP);
         }
         tab.getIcon().setAlpha(getResources().getInteger(R.integer.selected_icon_alpha));
     }

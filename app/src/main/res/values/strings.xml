@@ -57,8 +57,16 @@
     <string name="recording_view_text">rec</string>
     <string name="pref_enable_bg_text_to_speech_key">pref_enable_bulgarian_text_to_speech</string>
     <string name="pref_copy_to_translate_key">pref_enable_copy_to_translate</string>
-    <string name="pref_copy_to_translate_title">Translate text copied to clipboard</string>
-    <string name="pref_copy_to_translate_summary">Copy to translate</string>
+    <string name="pref_copy_to_translate_summary">Translate text copied to device clipboard</string>
+    <string name="pref_copy_to_translate_title">Copy To Translate</string>
     <string name="title_activity_copy_to_translate">CopyToTranslateActivity</string>
     <string name="open_in_talk_translator_btn_title">Open in Talk Translator</string>
+    <string name="copy_to_translate_title">Translate</string>
+    <string name="translated_from_string_format">Translated from %s</string>
+    <string name="clipboard_notification_title">Copy To Translate is active</string>
+    <string name="clipboard_notification_text">Tap to disable</string>
+    <string name="pref_copy_to_translate_language">pref_copy_to_translate_language</string>
+    <string name="pref_other_preferences_title">Other preferences</string>
+    <string name="invalid_text_toast">Can\'t translate URLs</string>
+    <string name="english">English</string>
 </resources>

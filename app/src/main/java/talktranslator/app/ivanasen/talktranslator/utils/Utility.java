@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
@@ -26,7 +27,6 @@ import talktranslator.app.ivanasen.talktranslator.R;
 
 public class Utility {
 
-
     private static final String LOG_TAG = Utility.class.getSimpleName();
     public static final String PREFERENCES_NAME = "Translator_prefs";
     public static final String LEFT_TRANSLATOR_LANGUAGE = "leftTranslatorLang";
@@ -35,7 +35,8 @@ public class Utility {
     public static String getTranslatorLanguage(Context context, String translatorLanguageName) {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_APPEND);
         return prefs.getString(translatorLanguageName,
-                translatorLanguageName.equals(LEFT_TRANSLATOR_LANGUAGE) ? "English" : "Bulgarian");
+                translatorLanguageName.equals(LEFT_TRANSLATOR_LANGUAGE) ?
+                        context.getString(R.string.english) : Locale.getDefault().getDisplayLanguage());
     }
 
     public static void setTranslatorLanguage(Context context, String translatorLanguageName, String language) {
@@ -221,5 +222,11 @@ public class Utility {
         String[] minsAndSeconds = chronoText.split(":");
         int mins = Integer.parseInt(minsAndSeconds[0]);
         return Integer.parseInt(minsAndSeconds[1]) + (mins * 60);
+    }
+
+    public static String getPreferredTranslationLanguage(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(context.getString(R.string.pref_copy_to_translate_language),
+                Locale.getDefault().getLanguage());
     }
 }

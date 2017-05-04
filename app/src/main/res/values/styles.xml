@@ -1,12 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/materialBlue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
-        <item name="android:colorBackground">@color/windowBackground</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+    </style>
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -27,7 +31,7 @@
         <item name="android:paddingBottom">18dp</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:fontFamily" tools:targetApi="jelly_bean">Roboto-Thin</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">sans-serif-light</item>
     </style>
 
     <style name="LeftTranslatorButton">
@@ -42,19 +46,13 @@
         <item name="colorButtonNormal">#f8f8ff</item>
     </style>
 
-    <style name="ToolbarStyle" parent="Theme.AppCompat.Light">
-        <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:textColorSecondary">@color/colorAccent</item>
-        <item name="actionMenuTextColor">@color/colorAccent</item>
-    </style>
-
     <style name="ProgressBarTheme">
         <item name="colorAccent">@android:color/white</item>
     </style>
 
     <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/transparentDark</item>
+        <item name="android:windowBackground">@color/copy_to_translate_translucent_bck</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>

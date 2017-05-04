@@ -73,7 +73,6 @@
 
         <activity
             android:name="talktranslator.app.ivanasen.talktranslator.activities.CopyToTranslateActivity"
-            android:autoRemoveFromRecents="true"
             android:documentLaunchMode="always"
             android:label="@string/title_activity_copy_to_translate"
             android:theme="@style/Theme.AppCompat.Translucent" />

@@ -4,6 +4,10 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-xhdpi\\ic_fiber_manual_record_black_24dp.png"
     },
     {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_stat_translate.png",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-xhdpi\\ic_stat_translate.png"
+    },
+    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_stop_black_24dp.png",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-xhdpi\\ic_stop_black_24dp.png"
     },
@@ -42,9 +46,5 @@
     {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_pause_black_24dp.png",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-xhdpi\\ic_pause_black_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_translate_black_36dp.png",
-        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable-xhdpi\\ic_translate_black_36dp.png"
     }
 ]
