@@ -3,37 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bordered_view_white"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="@dimen/list_item_padding_horizontal">
 
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/interview_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_view"
+        android:padding="@dimen/default_padding"
+        android:text="English" />
+
+    <TextView
+        android:id="@+id/interview_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:text="Obama interview"
+        android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/interview_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Obama interview"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/interview_language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Language: English" />
-    </LinearLayout>
 
     <TextView
         android:id="@+id/interview_length_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/default_margin" />
+        android:layout_margin="@dimen/default_margin"
+        android:text="20:00" />
 
 
     <ImageButton
@@ -43,8 +42,8 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/default_margin"
         android:background="?selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_play_arrow_black_24dp" />
-
+        android:src="@drawable/ic_play_arrow_black_24dp"
+        android:tint="@color/lightColorBlue" />
 
     <ImageButton
         android:id="@+id/interview_being_played_btn"
@@ -54,7 +53,7 @@
         android:layout_margin="@dimen/default_margin"
         android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/ic_volume_up_white_24dp"
-        android:tint="@color/materialBlue"
+        android:tint="@color/lightColorBlue"
         android:visibility="gone" />
 
     <ProgressBar
@@ -63,7 +62,7 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_margin="@dimen/default_margin"
-        android:indeterminateTint="@color/colorAccent"
+        android:indeterminateTint="@color/lightColorBlue"
         android:theme="@style/ProgressBarTheme"
         android:visibility="gone" />
 

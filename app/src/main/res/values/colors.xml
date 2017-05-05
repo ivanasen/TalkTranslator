@@ -22,4 +22,5 @@
     <color name="chat_secondary_text">#c3ffffff</color>
 
     <color name="copy_to_translate_translucent_bck">#3c000000</color>
+    <color name="media_controller_bck">#f2373644</color>
 </resources>

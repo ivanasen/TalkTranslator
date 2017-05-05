@@ -17,9 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/rounded_view"
         android:gravity="center"
+        android:paddingBottom="@dimen/default_padding"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="@dimen/default_padding"
         android:text="@string/empty_interviews_text"
         android:textColor="@color/materialRed"
         android:textSize="20sp"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 </FrameLayout>
