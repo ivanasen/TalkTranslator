@@ -4,30 +4,36 @@
     android:id="@+id/media_controller"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    app:cardBackgroundColor="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@drawable/bordered_view"
         android:gravity="center"
         android:orientation="vertical"
+        android:background="@drawable/bordered_view"
         app:elevation="@dimen/app_elevation_default">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bordered_view"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="@dimen/list_item_padding_horizontal">
 
             <Chronometer
                 android:id="@+id/interview_length_chronometer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_view"
+                android:paddingBottom="@dimen/default_padding"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="@dimen/default_padding"
+                android:textColor="@color/materialBlue" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/start_recording_btn"
@@ -73,10 +79,10 @@
             android:id="@+id/recording_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:animateLayoutChanges="true"
             android:gravity="center"
-            android:visibility="gone"
-            android:animateLayoutChanges="true">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -90,10 +96,9 @@
                 android:id="@+id/record_dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                android:tint="@color/materialRed"/>
+                android:layout_margin="4dp"
+                android:layout_gravity="center"
+                android:tint="@color/materialRed" />
 
         </LinearLayout>
 

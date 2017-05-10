@@ -1,7 +1,9 @@
 package talktranslator.app.ivanasen.talktranslator;
 
 
+import android.content.ContextWrapper;
 import android.support.test.runner.AndroidJUnit4;
+import android.test.mock.MockContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +19,7 @@ import talktranslator.app.ivanasen.talktranslator.utils.InterviewMaker;
 public class InterviewMakerTest {
     @Test
     public void test() {
-        InterviewMaker maker = new InterviewMaker();
+        InterviewMaker maker = new InterviewMaker(new MockContext());
 
         String s = "Hello";
         maker.addInterviewerText(s);

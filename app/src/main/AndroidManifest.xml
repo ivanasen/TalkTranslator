@@ -67,6 +67,7 @@
             android:label="@string/title_activity_copy_to_translate"
             android:theme="@style/Theme.AppCompat.Translucent"
             android:documentLaunchMode="always"
+            android:excludeFromRecents="true"
             tools:targetApi="lollipop" />
     </application>
 

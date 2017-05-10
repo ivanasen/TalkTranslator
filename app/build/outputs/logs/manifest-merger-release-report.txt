@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:2:1-73:12
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:2:1-74:12
 	package
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:4:5-57
 		INJECTED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml
@@ -44,7 +44,7 @@ ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:12:22-78
 application
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:14:5-71:19
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:14:5-72:19
 MERGED from [com.android.support:design:25.3.1] C:\Users\vanka\.android\build-cache\d431840836f481c911e475978bf185e9459636b4\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\vanka\.android\build-cache\df6f4653b5da733f622fd259a4cb52b07df17282\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\vanka\.android\build-cache\b81dcb9522cad8973b1b39c31d621971dfa4c50e\output\AndroidManifest.xml:26:5-20
@@ -149,11 +149,13 @@ ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\Andr
 	android:name
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:63:18-59
 activity#talktranslator.app.ivanasen.talktranslator.activities.CopyToTranslateActivity
-ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:65:9-70:42
+ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:65:9-71:42
 	android:label
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:67:13-69
+	android:excludeFromRecents
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:70:13-46
 	tools:targetApi
-		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:70:13-39
+		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:71:13-39
 	android:documentLaunchMode
 		ADDED from C:\Users\vanka\AndroidStudioProjects\TalkTranslator\app\src\main\AndroidManifest.xml:69:13-48
 	android:theme

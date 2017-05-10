@@ -44,6 +44,10 @@
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable\\record_animation.xml"
     },
     {
+        "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\release\\drawable\\red_circle.xml",
+        "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable\\red_circle.xml"
+    },
+    {
         "merged": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\build\\intermediates\\res\\merged\\release\\drawable\\swap_horizontal.xml",
         "source": "C:\\Users\\vanka\\AndroidStudioProjects\\TalkTranslator\\app\\src\\main\\res\\drawable\\swap_horizontal.xml"
     },

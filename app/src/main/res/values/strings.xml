@@ -59,7 +59,7 @@
     <string name="pref_copy_to_translate_key">pref_enable_copy_to_translate</string>
     <string name="pref_copy_to_translate_summary">Translate text copied to device clipboard</string>
     <string name="pref_copy_to_translate_title">Copy To Translate</string>
-    <string name="title_activity_copy_to_translate">CopyToTranslateActivity</string>
+    <string name="title_activity_copy_to_translate">Copy To Translate</string>
     <string name="open_in_talk_translator_btn_title">Open in Talk Translator</string>
     <string name="copy_to_translate_title">Translate</string>
     <string name="translated_from_string_format">Translated from %s</string>
